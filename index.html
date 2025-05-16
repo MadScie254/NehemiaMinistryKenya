@@ -1,1 +1,1787 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nehemia Ministry Kenya - Digital Sanctuary</title>
+    <link rel="icon" type="image/png" href="asset/logo.png">
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Custom CSS Block */
+        :root {
+            --primary-color: #0D47A1; /* Deep Blue */
+            --secondary-color: #FFC107; /* Amber */
+            --accent-color: #4CAF50; /* Green */
+            --light-bg: #f8f9fa;
+            --dark-bg: #1A1A1A; /* Dark Charcoal Black */
+            --light-text: #212529;
+            --dark-text: #e2e8f0; /* Tailwind gray-300 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding-top: 70px; /* Ensure content below fixed navbar is not obscured. Adjust if navbar height changes. */
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light-bg); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; 
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .dark-mode #preloader {
+            background-color: var(--dark-bg);
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .bg-light {
+            background-color: #2d3748 !important; 
+        }
+        .dark-mode .text-dark {
+            color: var(--dark-text) !important;
+        }
+        .dark-mode .text-muted {
+            color: #a0aec0 !important; 
+        }
+        .dark-mode .border-gray-200 {
+            border-color: #4a5568; 
+        }
+        .dark-mode .hover\:bg-gray-100:hover {
+            background-color: #4a5568 !important; 
+        }
+        .dark-mode .navbar {
+            background-color: var(--dark-bg) !important; 
+            border-bottom: 1px solid #4a5568;
+        }
+        .dark-mode .navbar-brand, .dark-mode .nav-link {
+            color: var(--dark-text) !important;
+        }
+        .dark-mode .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        .dark-mode .dropdown-menu {
+            background-color: #2d3748;
+        }
+        .dark-mode .dropdown-item {
+            color: var(--dark-text);
+        }
+        .dark-mode .dropdown-item:hover {
+            background-color: #4a5568;
+            color: var(--secondary-color);
+        }
+        .dark-mode .card {
+            background-color: #2d3748; 
+            border-color: #4a5568; 
+        }
+        .dark-mode .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #1a202c; 
+        }
+        .dark-mode .btn-primary:hover {
+            background-color: #ffca28; 
+            border-color: #ffca28;
+        }
+        .dark-mode .btn-outline-light {
+            color: var(--dark-text);
+            border-color: var(--dark-text);
+        }
+        .dark-mode .btn-outline-light:hover {
+            background-color: var(--dark-text);
+            color: var(--dark-bg);
+        }
+        .dark-mode .form-control {
+            background-color: #4a5568;
+            color: var(--dark-text);
+            border-color: #718096;
+        }
+        .dark-mode .form-control::placeholder {
+            color: #a0aec0;
+        }
+        .dark-mode .modal-content {
+            background-color: #2d3748;
+        }
+        .dark-mode .modal-header, .dark-mode .modal-footer {
+            border-color: #4a5568;
+        }
+        .dark-mode .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+
+        .navbar-brand-logo {
+            max-height: 50px; 
+            width: auto;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/0D47A1/FFFFFF?text=Nehemia+Ministry+Kenya+Welcome') no-repeat center center;
+            background-size: cover;
+            color: white;
+            min-height: 80vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .dark-mode .hero-section {
+             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/1A202C/E2E8F0?text=Nehemia+Ministry+Dark+Mode') no-repeat center center;
+             background-size: cover;
+        }
+
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .dark-mode .section-title {
+            color: var(--secondary-color);
+        }
+
+        .cta-button {
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .dark-mode .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+            border-color: var(--secondary-color);
+        }
+        .dark-mode .cta-button:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .dark-mode .card-hover-effect:hover {
+            box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+        }
+
+        #scripture-slider {
+            font-size: 1.5rem;
+            font-style: italic;
+            min-height: 100px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            position: relative; 
+            overflow: hidden; /* Important for sliding effect */
+        }
+        .scripture-text {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            position: absolute; 
+            text-align: center;
+            width: 90%; 
+            transform: translateX(100%); /* Start off-screen to the right */
+            color: white; /* Changed to white for better contrast on hero */
+            font-weight: 500; /* Slightly bolder */
+        }
+        .dark-mode .scripture-text {
+            /* color: var(--secondary-color); /* Amber for dark mode - Removed for consistent white */
+        }
+        .scripture-text.active {
+            opacity: 1;
+            transform: translateX(0); /* Slide in to center */
+        }
+        .scripture-text.exiting { /* For sliding out */
+            opacity: 0;
+            transform: translateX(-100%); /* Slide out to the left */
+        }
+
+        #word-of-the-day {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .dark-mode #word-of-the-day {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .testimonial-slider .carousel-item {
+            padding: 2rem 4rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        .dark-mode .testimonial-slider .carousel-item {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .testimonial-slider blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        .testimonial-slider .testimonial-author {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--primary-color);
+        }
+        .dark-mode .testimonial-slider .testimonial-author {
+            color: var(--secondary-color);
+        }
+        .testimonial-slider .carousel-control-prev-icon,
+        .testimonial-slider .carousel-control-next-icon {
+            background-color: var(--primary-color); 
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .dark-mode .testimonial-slider .carousel-control-prev-icon,
+        .dark-mode .testimonial-slider .carousel-control-next-icon {
+            background-color: var(--secondary-color);
+        }
+
+        #event-countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        #event-countdown span {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0.25rem;
+            margin: 0 0.25rem;
+        }
+        .dark-mode #event-countdown span {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        #admin-login-button {
+            display: none; 
+        }
+        
+        .onboarding-modal-img {
+            max-height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .navbar-controls {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-controls .form-select, .navbar-controls .btn, .navbar-controls .btn-translate {
+            margin-left: 0.5rem;
+            padding: 0.375rem 0.75rem; 
+            font-size: 0.9rem; 
+        }
+        .navbar-controls .form-select {
+            width: auto; 
+        }
+        .dark-mode-toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem; 
+            color: var(--primary-color); 
+        }
+        .dark-mode .dark-mode-toggle-btn {
+            color: var(--secondary-color);
+        }
+        .dark-mode-toggle-btn:hover {
+            color: var(--secondary-color);
+        }
+        .dark-mode .dark-mode-toggle-btn:hover {
+            color: #fff;
+        }
+        .btn-translate { /* Style for the new translate button */
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        .btn-translate:hover {
+            background-color: #388E3C; /* Darker green */
+            color: white;
+        }
+        .dark-mode .btn-translate {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+         .dark-mode .btn-translate:hover {
+            background-color: #FFB300; /* Darker amber */
+        }
+        
+        .sermon-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 0.75rem; 
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .dark-mode .sermon-card {
+            border-color: #4a5568;
+            box-shadow: 0 4px 8px rgba(255,255,255,0.05);
+        }
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .dark-mode .sermon-card:hover {
+            box-shadow: 0 8px 16px rgba(255,255,255,0.1);
+        }
+        .sermon-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .sermon-card .card-body {
+            padding: 1rem;
+        }
+        .sermon-card .card-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .dark-mode .sermon-card .card-title {
+            color: var(--secondary-color);
+        }
+        .sermon-card .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+        .sermon-card audio {
+            width: 100%;
+            margin-top: 0.75rem;
+            border-radius: 0.5rem; 
+        }
+        .sermon-card audio::-webkit-media-controls-panel {
+            background-color: #f0f0f0;
+        }
+        .dark-mode .sermon-card audio::-webkit-media-controls-panel {
+            background-color: #3a4758;
+        }
+        .sermon-card .btn-play-preview {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        .sermon-card .btn-play-preview:hover {
+            background-color: #3e8e41;
+            border-color: #3e8e41;
+        }
+        .dark-mode .sermon-card .btn-play-preview {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        /* Styling for the new "Our Church Network" section */
+        .church-branch-card {
+            background-color: #ffffff; /* Light background for cards */
+            border: 1px solid #e0e0e0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .dark-mode .church-branch-card {
+            background-color: #2d3748; /* Darker card background in dark mode */
+            border-color: #4a5568;
+        }
+        .church-branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .dark-mode .church-branch-card:hover {
+             box-shadow: 0 8px 16px rgba(255,255,255,0.1);
+        }
+        .church-branch-card h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .dark-mode .church-branch-card h5 {
+            color: var(--secondary-color);
+        }
+        .church-branch-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+
+    </style>
+</head>
+<body class="bg-light text-dark">
+
+    <div id="preloader">
+        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_Stt1R6.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="asset/logo.png" alt="Nehemia Ministry Kenya Logo" class="navbar-brand-logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/0D47A1/FFFFFF?text=Logo+Error';">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html" data-lang="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" data-lang="about">About Us</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang="ministries">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html#hospital" data-lang="hospital">Kingdom Faith-Based Mission Hospital</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#bibleschool" data-lang="bibleSchool">Matco Training Institute</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#orphanage" data-lang="orphanage">New Promise Home</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="ministries.html" data-lang="allMinistries">All Ministries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="sermons.html" data-lang="sermons">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html" data-lang="gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" data-lang="events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prayer-wall.html" data-lang="prayerWall">Prayer Wall</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html" data-lang="blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="leadership.html" data-lang="leadership">Leadership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="give.html" data-lang="give">Give</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" data-lang="contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" id="admin-login-button" href="#admin-section" data-lang="adminLogin">Admin Login</a></li>
+                </ul>
+                <div class="navbar-controls ms-lg-3">
+                    <select id="language-selector" class="form-select form-select-sm" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="sw">Kiswahili</option>
+                    </select>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle-btn ms-2" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i> 
+                    </button>
+                    <button id="google-translate-button" class="btn btn-sm btn-translate ms-2" aria-label="Translate this page" data-lang="translatePage">
+                        <i class="fas fa-language"></i> <span data-lang="translateBtnText">Translate</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-3 font-bold mb-4 animate-on-scroll" data-lang="heroTitle">Welcome to Nehemia Ministry Kenya</h1>
+            <p class="lead mb-4 animate-on-scroll" data-lang="heroSubtitle">A beacon of faith, hope, and transformation in Western Kenya and beyond. Discover our journey, our mission, and our community.</p>
+            <div id="scripture-slider" class="my-5 animate-on-scroll">
+                </div>
+            <a href="about.html" class="btn btn-lg btn-warning rounded-pill px-5 py-3 animate-on-scroll" data-lang="learnMore">Learn More About Us</a>
+        </div>
+    </header>
+
+    <section id="word-of-the-day" class="animate-on-scroll">
+        <p data-lang="wordOfTheDayTitle">Word of the Day: <span id="word-of-the-day-text">Loading...</span></p>
+    </section>
+
+    <section id="about-preview" class="py-5 animate-on-scroll">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="asset/founders.jpg" class="img-fluid rounded shadow-lg" alt="Bishop David and Reverend Selina Walukhu" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4CAF50/FFFFFF?text=Our+Founders';">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title" data-lang="aboutPreviewTitle">Our Journey of Faith</h2>
+                    <p class="mb-4" data-lang="aboutPreviewText1">Nehemia Ministry Kenya, founded in 2006 by Bishop David Walukhu and his wife, Reverend Selina Walukhu, began as a humble, spirit-led grassroots movement in Mukhonje village, Kakamega County. It has since blossomed into a significant spiritual force, touching countless lives across Western Kenya and extending its compassionate reach far beyond.</p>
+                    <p class="mb-4" data-lang="aboutPreviewText2">Our core mission is to spread the Gospel, nurture believers, and actively demonstrate God's love through impactful community service. We are deeply committed to spiritual growth, holistic well-being, and empowering individuals to live purposeful, faith-filled lives. This digital sanctuary is an extension of our commitment to connect, share, and grow together in Christ.</p>
+                    <a href="about.html" class="btn cta-button w-100" data-lang="readOurStory">Read Our Full Story & Vision</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ministries-overview" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="ministriesOverviewTitle">Our Core Ministries & Outreach</h2>
+            <p class="text-center lead mb-5" data-lang="ministriesOverviewSubtitle">Serving God, Serving Humanity: Discover the heart of Nehemia Ministry Kenya through our diverse and impactful programs designed to uplift, heal, and educate.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm card-hover-effect">
+                        <img src="asset/hospital.jpg" class="card-img-top" alt="Kingdom Faith-Based Mission Hospital" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFC107/000000?text=Mission+Hospital';">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" data-lang="hospitalCardTitle">Kingdom Faith-Based Mission Hospital</h5>
+                            <p class="card-text flex-grow-1" data-lang="hospitalCardText">Providing compassionate, community-focused healthcare that integrates faith and professional medical services. We are dedicated to healing both physical ailments and spiritual needs with utmost care and dedication.</p>
+                            <a href="ministries.html#hospital" class="btn btn-outline-primary mt-auto" data-lang="learnMore">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm card-hover-effect">
+                        <img src="asset/bible_school.jpg" class="card-img-top" alt="Matco Training Institute" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0D47A1/FFFFFF?text=Bible+School';">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" data-lang="bibleSchoolCardTitle">Matco Training Institute – Bible School</h5>
+                            <p class="card-text flex-grow-1" data-lang="bibleSchoolCardText">Located in Malaha, our dynamic Bible school and leadership institute is committed to equipping future clergy, church workers, and lay leaders with profound Biblical literacy, theological understanding, and missional zeal.</p>
+                            <a href="ministries.html#bibleschool" class="btn btn-outline-primary mt-auto" data-lang="learnMore">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm card-hover-effect">
+                        <img src="asset/orphanage.jpg" class="card-img-top" alt="New Promise Home Orphanage" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4CAF50/FFFFFF?text=Orphanage';">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" data-lang="orphanageCardTitle">New Promise Home – Orphanage</h5>
+                            <p class="card-text flex-grow-1" data-lang="orphanageCardText">A nurturing sanctuary in Lwandeti for orphaned and vulnerable children. We provide comprehensive care including food, shelter, education, spiritual guidance, and mentorship in a loving, Christ-centered environment.</p>
+                            <a href="ministries.html#orphanage" class="btn btn-outline-primary mt-auto" data-lang="learnMore">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="ministries.html" class="btn cta-button w-100" data-lang="exploreAllMinistries">Explore All Our Ministries</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sermons-preview" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="sermonsPreviewTitle">Latest Sermons & Teachings</h2>
+            <p class="text-center lead mb-5" data-lang="sermonsPreviewSubtitle">Be uplifted and inspired by the Word of God. Listen to recent messages from our pastors and guest speakers, bringing timeless truths to contemporary life.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="sermon-card card-hover-effect">
+                        <img src="asset/sermon_art_1.jpg" alt="Sermon Art 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E91E63/FFFFFF?text=Sermon+Art+1';">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="sermonTitle1">The Power of Unwavering Faith</h5>
+                            <p class="card-text text-muted" data-lang="sermonSpeaker1">Speaker: Bishop David Walukhu</p>
+                            <p class="card-text" data-lang="sermonDesc1">Discover the incredible strength that comes from a faith that does not falter, even in the midst of life's greatest storms. This message will empower you.</p>
+                            <audio controls class="w-100 mt-2" src="asset/sermon_audio_1.mp3" aria-label="Play sermon The Power of Unwavering Faith">Your browser does not support the audio element.</audio>
+                            <button class="btn btn-sm btn-play-preview w-100 mt-2" data-bs-toggle="modal" data-bs-target="#sermonModal1" data-lang="playPreview">
+                                <i class="fas fa-play-circle me-2"></i>Play Full Sermon / Read Transcript
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="sermon-card card-hover-effect">
+                        <img src="asset/sermon_art_2.jpg" alt="Sermon Art 2" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2196F3/FFFFFF?text=Sermon+Art+2';">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="sermonTitle2">Living a Life of Purpose</h5>
+                            <p class="card-text text-muted" data-lang="sermonSpeaker2">Speaker: Rev. Selina Walukhu</p>
+                            <p class="card-text" data-lang="sermonDesc2">Explore how to identify and walk in the unique purpose God has for your life. A transformative teaching for all seekers of meaning.</p>
+                            <audio controls class="w-100 mt-2" src="asset/sermon_audio_2.mp3" aria-label="Play sermon Living a Life of Purpose">Your browser does not support the audio element.</audio>
+                             <button class="btn btn-sm btn-play-preview w-100 mt-2" data-bs-toggle="modal" data-bs-target="#sermonModal2" data-lang="playPreview">
+                                <i class="fas fa-play-circle me-2"></i>Play Full Sermon / Read Transcript
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="sermon-card card-hover-effect">
+                        <img src="asset/sermon_art_3.jpg" alt="Sermon Art 3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/795548/FFFFFF?text=Sermon+Art+3';">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="sermonTitle3">Grace Greater Than Our Sin</h5>
+                            <p class="card-text text-muted" data-lang="sermonSpeaker3">Speaker: Guest Minister</p>
+                            <p class="card-text" data-lang="sermonDesc3">A powerful reminder of the boundless and unconditional grace of God that is available to all. This sermon brings hope and restoration.</p>
+                            <audio controls class="w-100 mt-2" src="asset/sermon_audio_3.mp3" aria-label="Play sermon Grace Greater Than Our Sin">Your browser does not support the audio element.</audio>
+                             <button class="btn btn-sm btn-play-preview w-100 mt-2" data-bs-toggle="modal" data-bs-target="#sermonModal3" data-lang="playPreview">
+                                <i class="fas fa-play-circle me-2"></i>Play Full Sermon / Read Transcript
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="sermons.html" class="btn cta-button w-100" data-lang="viewAllSermons">View All Sermons</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="modal fade" id="sermonModal1" tabindex="-1" aria-labelledby="sermonModal1Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sermonModal1Label" data-lang="sermonTitle1">The Power of Unwavering Faith</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p data-lang="sermonSpeaker1Modal"><strong>Speaker:</strong> Bishop David Walukhu</p>
+            <p data-lang="sermonDate1Modal"><strong>Date:</strong> May 12, 2025</p>
+            <audio controls class="w-100 mb-3" src="asset/sermon_audio_1.mp3">Your browser does not support the audio element.</audio>
+            <h6 data-lang="sermonTranscriptTitle">Transcript Preview:</h6>
+            <p data-lang="sermonTranscript1">"My beloved brothers and sisters, in a world that is constantly shifting, where challenges arise like mountains before us, there is one anchor that holds steadfast, one power that can move those mountains – and that is unwavering faith. Not a fleeting belief, but a deep, abiding trust in the Almighty God who promises to be with us, to strengthen us, and to guide us through every valley and over every peak..." (Full transcript available on the sermons page).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang="closeButton">Close</button>
+            <a href="sermons.html#sermon1" class="btn btn-primary" data-lang="goToSermonPage">Go to Full Sermon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="sermonModal2" tabindex="-1" aria-labelledby="sermonModal2Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sermonModal2Label" data-lang="sermonTitle2">Living a Life of Purpose</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+             <p data-lang="sermonSpeaker2Modal"><strong>Speaker:</strong> Rev. Selina Walukhu</p>
+             <p data-lang="sermonDate2Modal"><strong>Date:</strong> May 5, 2025</p>
+             <audio controls class="w-100 mb-3" src="asset/sermon_audio_2.mp3">Your browser does not support the audio element.</audio>
+             <h6 data-lang="sermonTranscriptTitle">Transcript Preview:</h6>
+             <p data-lang="sermonTranscript2">"Each one of us is uniquely created by God, instilled with gifts, talents, and a divine calling. The journey of life becomes truly meaningful when we discover and embrace this God-given purpose. It's not just about existing; it's about living intentionally, making an impact, and glorifying our Creator through our actions and our very being..." (Full transcript available on the sermons page).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang="closeButton">Close</button>
+            <a href="sermons.html#sermon2" class="btn btn-primary" data-lang="goToSermonPage">Go to Full Sermon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="sermonModal3" tabindex="-1" aria-labelledby="sermonModal3Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sermonModal3Label" data-lang="sermonTitle3">Grace Greater Than Our Sin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+             <p data-lang="sermonSpeaker3Modal"><strong>Speaker:</strong> Guest Minister</p>
+             <p data-lang="sermonDate3Modal"><strong>Date:</strong> April 28, 2025</p>
+             <audio controls class="w-100 mb-3" src="asset/sermon_audio_3.mp3">Your browser does not support the audio element.</audio>
+             <h6 data-lang="sermonTranscriptTitle">Transcript Preview:</h6>
+             <p data-lang="sermonTranscript3">"Often, we are weighed down by our past mistakes, our shortcomings, the moments we fell short. But the glorious truth of the Gospel is that God's grace is infinitely greater than any sin we could ever commit. It's a grace that cleanses, restores, and empowers us to live anew. Come and experience this profound, life-changing grace..." (Full transcript available on the sermons page).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang="closeButton">Close</button>
+            <a href="sermons.html#sermon3" class="btn btn-primary" data-lang="goToSermonPage">Go to Full Sermon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="events-preview" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="eventsPreviewTitle">Upcoming Events & Gatherings</h2>
+            <p class="text-center lead mb-4" data-lang="eventsPreviewSubtitle">Join us for fellowship, worship, and community engagement. There's always something happening at Nehemia Ministry!</p>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <h4 data-lang="nextEventTitle">Next Major Event: <span id="next-event-name">End Year Kesha</span></h4>
+                    <p data-lang="nextEventDate">Date: <span id="next-event-date">December 9, 2025</span></p>
+                    <p id="next-event-description-text" data-lang="nextEventDesc">An inspiring overnight prayer meeting to usher in the new season with powerful worship, prophetic declarations, and thanksgiving. Theme: "Crossing Over Victoriously!"</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5 data-lang="countdownTitle">Countdown to Event:</h5>
+                    <div id="event-countdown" class="mb-3">
+                        </div>
+                    <a href="events.html#event-end-year-kesha" class="btn btn-success btn-sm" data-lang="eventDetails">View Event Details</a>
+                </div>
+            </div>
+
+            <h4 class="text-center mb-4" data-lang="eventCalendarTitle">Our Event Calendar</h4>
+            <div id="event-calendar-grid" class="bg-white p-4 rounded shadow-sm text-center">
+                <p data-lang="calendarLoading">Loading calendar preview...</p>
+                <div class="row">
+                    <div class="col"><strong>Sun</strong></div>
+                    <div class="col"><strong>Mon</strong></div>
+                    <div class="col"><strong>Tue</strong></div>
+                    <div class="col"><strong>Wed</strong></div>
+                    <div class="col"><strong>Thu</strong></div>
+                    <div class="col"><strong>Fri</strong></div>
+                    <div class="col"><strong>Sat</strong></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col border p-2">1</div>
+                    <div class="col border p-2">2 <small class="d-block text-primary" data-lang="eventPrayerMeeting">Prayer Meeting</small></div>
+                    <div class="col border p-2">3</div>
+                    <div class="col border p-2">4</div>
+                    <div class="col border p-2">5 <small class="d-block text-success" data-lang="eventBibleStudy">Bible Study</small></div>
+                    <div class="col border p-2">6</div>
+                    <div class="col border p-2">7</div>
+                </div>
+                 <p class="mt-3 fst-italic" data-lang="calendarFull">A full, interactive calendar is available on our events page.</p>
+            </div>
+            <div class="text-center mt-4">
+                <a href="events.html" class="btn cta-button w-100" data-lang="seeAllEvents">See All Upcoming Events</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="prayer-wall-preview" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="prayerWallPreviewTitle">Community Prayer Wall</h2>
+            <p class="text-center lead mb-5" data-lang="prayerWallPreviewSubtitle">"For where two or three gather in my name, there am I with them." (Matthew 18:20). Share your requests and pray for others.</p>
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" data-lang="latestPrayerRequest">Latest Prayer Request:</h5>
+                    <blockquote class="blockquote">
+                        <p id="latest-prayer-request-text" class="mb-0" data-lang="samplePrayerText">"Please pray for my family's health and for guidance in a difficult decision we are facing. We need wisdom and peace."</p>
+                        <footer class="blockquote-footer mt-1" data-lang="samplePrayerAuthor">A Member of our Community</footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="text-center">
+                 <a href="prayer-wall.html" class="btn cta-button w-100" data-lang="visitPrayerWall">Visit the Prayer Wall & Submit Your Request</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery-preview" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="galleryPreviewTitle">Moments & Memories</h2>
+            <p class="text-center lead mb-5" data-lang="galleryPreviewSubtitle">A glimpse into the life and activities of Nehemia Ministry Kenya. See the joy, fellowship, and impact of our community.</p>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="asset/gallery_1_large.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-src="asset/gallery_1_large.jpg">
+                        <img src="asset/gallery_1_thumb.jpg" class="img-fluid rounded shadow-sm hover:opacity-75 transition-opacity" alt="Church Event" onerror="this.onerror=null;this.src='https://placehold.co/400x300/0D47A1/FFFFFF?text=Event';">
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                     <a href="asset/gallery_2_large.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-src="asset/gallery_2_large.jpg">
+                        <img src="asset/gallery_2_thumb.jpg" class="img-fluid rounded shadow-sm hover:opacity-75 transition-opacity" alt="Community Outreach" onerror="this.onerror=null;this.src='https://placehold.co/400x300/4CAF50/FFFFFF?text=Outreach';">
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                     <a href="asset/gallery_3_large.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-src="asset/gallery_3_large.jpg">
+                        <img src="asset/gallery_3_thumb.jpg" class="img-fluid rounded shadow-sm hover:opacity-75 transition-opacity" alt="Youth Ministry" onerror="this.onerror=null;this.src='https://placehold.co/400x300/FFC107/000000?text=Youth';">
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                     <a href="asset/gallery_4_large.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-src="asset/gallery_4_large.jpg">
+                        <img src="asset/gallery_4_thumb.jpg" class="img-fluid rounded shadow-sm hover:opacity-75 transition-opacity" alt="Worship Session" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E91E63/FFFFFF?text=Worship';">
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="gallery.html" class="btn cta-button w-100" data-lang="viewFullGallery">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="imageModalLabel" data-lang="imagePreview">Image Preview</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="" id="lightboxImage" class="img-fluid rounded" alt="Lightbox Image" onerror="this.onerror=null;this.src='https://placehold.co/1200x900/CCCCCC/FFFFFF?text=Image+Not+Found';">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="testimonials" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="testimonialsTitle">Voices of Our Community</h2>
+            <p class="text-center lead mb-5" data-lang="testimonialsSubtitle">Hear from those whose lives have been touched by Nehemia Ministry Kenya. Real stories, real impact.</p>
+            <div id="testimonialCarousel" class="carousel slide testimonial-slider" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <blockquote class="text-center">
+                            <p data-lang="testimonial1Text">"Nehemia Ministry has been a true blessing to my family. The teachings are profound, the community is welcoming, and the support we received during a difficult time was overwhelming. I've grown so much in my faith here."</p>
+                            <footer class="testimonial-author" data-lang="testimonial1Author">- Grace M. (Kakamega)</footer>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="text-center">
+                            <p data-lang="testimonial2Text">"The Matco Bible School equipped me not just with knowledge, but with a passion for service. The leaders are inspiring, and I now feel confident to minister in my own community. Thank you, Nehemia Ministry!"</p>
+                            <footer class="testimonial-author" data-lang="testimonial2Author">- John K. (Malaha Graduate)</footer>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="text-center">
+                            <p data-lang="testimonial3Text">"Finding New Promise Home was an answer to prayer. My children are safe, loved, and are receiving a good education and spiritual grounding. It's more than an orphanage; it's a family."</p>
+                            <footer class="testimonial-author" data-lang="testimonial3Author">- A Guardian (Lwandeti)</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden" data-lang="previous">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden" data-lang="next">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="church-network" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="churchNetworkTitle">Our Church Network Across Kenya</h2>
+            <p class="text-center lead mb-5" data-lang="churchNetworkSubtitle">Extending God's kingdom, one community at a time. Nehemia Ministry is blessed to have a growing family of churches serving various regions in Kenya.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchNairobiTitle">Nehemia Ministry Nairobi</h5>
+                        <p data-lang="branchNairobiText">Our vibrant urban center for worship, outreach, and community programs in the heart of Kenya's capital city. Reaching out with the love of Christ to city dwellers from all walks of life.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchMombasaTitle">Nehemia Ministry Mombasa</h5>
+                        <p data-lang="branchMombasaText">A beacon of hope and faith on the coast. Our Mombasa branch is dedicated to serving the coastal communities with spiritual nourishment and social support programs.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchKisumuTitle">Nehemia Ministry Kisumu</h5>
+                        <p data-lang="branchKisumuText">Serving the lakeside city and its environs, our Kisumu church focuses on discipleship, youth empowerment, and community development projects.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchNakuruTitle">Nehemia Ministry Nakuru</h5>
+                        <p data-lang="branchNakuruText">Growing in faith in the Rift Valley. Our Nakuru assembly is a dynamic fellowship committed to evangelism and holistic ministry in the region.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchEldoretTitle">Nehemia Ministry Eldoret</h5>
+                        <p data-lang="branchEldoretText">A thriving congregation in the North Rift, focused on family ministries, leadership training, and reaching out to surrounding communities with the Gospel.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="church-branch-card h-100">
+                        <h5 data-lang="branchHQTitle">Headquarters - Mukhonje, Kakamega</h5>
+                        <p data-lang="branchHQText">The heart from which our ministry began and continues to grow. Our mother church in Mukhonje remains a central hub for spiritual leadership and regional coordination.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="branches.html" class="btn cta-button w-100" data-lang="exploreFullNetwork">Explore Our Full Church Network & Locations</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="call-to-give" class="py-5 bg-primary text-white text-center animate-on-scroll">
+        <div class="container">
+            <h2 class="font-playfair display-5 mb-3" data-lang="giveTitle">Partner With Us in Ministry</h2>
+            <p class="lead mb-4" data-lang="giveSubtitle">Your generous support enables us to continue our vital work: spreading the Gospel, supporting our communities, and expanding our outreach programs. Every contribution, big or small, makes a difference.</p>
+            <p class="mb-4" data-lang="giveText">Through your giving, you become an active partner in the Kingdom Faith-Based Mission Hospital's healing ministry, in equipping leaders at Matco Training Institute, and in providing a loving home for children at New Promise Home. You help us share the message of hope and transform lives.</p>
+            <a href="give.html" class="btn btn-warning btn-lg rounded-pill px-5 py-3" data-lang="giveNow">Give Generously Today</a>
+        </div>
+    </section>
+
+    <section id="contact-preview" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="contactPreviewTitle">Get In Touch With Us</h2>
+            <p class="text-center lead mb-5" data-lang="contactPreviewSubtitle">We'd love to hear from you! Whether you have a question, need prayer, or want to learn more about our ministry, please reach out.</p>
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h4 data-lang="ourLocation">Our Main Office</h4>
+                    <p data-lang="addressLine1">Nehemia Ministry Kenya</p>
+                    <p data-lang="addressLine2">Mukhonje Village, Kakamega County</p>
+                    <p data-lang="addressLine3">P.O. Box 123, Kakamega, Kenya</p>
+                    <p><strong data-lang="phone">Phone:</strong> <a href="tel:+254700000000">+254 700 000 000</a></p>
+                    <p><strong data-lang="email">Email:</strong> <a href="mailto:info@nehemiaministry.or.ke">info@nehemiaministry.or.ke</a></p>
+                    <div class="mt-3">
+                        <h5 data-lang="officeHours">Office Hours:</h5>
+                        <p data-lang="officeHoursMonFri">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                        <p data-lang="officeHoursSat">Saturday: 10:00 AM - 2:00 PM</p>
+                        <p data-lang="officeHoursSun">Sunday: Closed (Join us for Worship!)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8168947.220709094!2d33.02390628020291!3d0.023559000000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182780aa73d8c563%3A0x8618682905989253!2sKenya!5e0!3m2!1sen!2ske" width="100%" height="350" style="border:0; border-radius: 0.5rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Location of Kenya on Google Maps"></iframe>
+                    
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="contact.html" class="btn cta-button w-100" data-lang="fullContactPage">Visit Our Full Contact Page</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="admin-section" class="py-5 bg-light animate-on-scroll" style="display: none;">
+        <div class="container">
+            <h2 class="section-title text-center" data-lang="adminPanelTitle">Admin Panel (Simulated)</h2>
+            <p class="text-center lead mb-4" data-lang="adminPanelWelcome">Welcome, Admin! This is a placeholder for admin functionalities.</p>
+            <div class="alert alert-info" role="alert" data-lang="adminPanelInfo">
+              This section is visible because an 'admin' flag was found in your browser's local storage. In a real application, this would be protected by a proper login system.
+            </div>
+            <button id="clear-admin-flag" class="btn btn-danger" data-lang="logoutAdmin">Logout (Clear Admin Flag)</button>
+        </div>
+    </section>
+
+
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 data-lang="footerAboutTitle">Nehemia Ministry Kenya</h5>
+                    <p data-lang="footerAboutText">Transforming lives through faith, hope, and love. Serving communities in Western Kenya and beyond since 2006.</p>
+                    <p>© <span id="currentYear"></span> Nehemia Ministry Kenya. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h5 data-lang="footerQuickLinks">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white text-decoration-none hover:text-warning" data-lang="about">About Us</a></li>
+                        <li><a href="sermons.html" class="text-white text-decoration-none hover:text-warning" data-lang="sermons">Sermons</a></li>
+                        <li><a href="ministries.html" class="text-white text-decoration-none hover:text-warning" data-lang="ministries">Ministries</a></li>
+                        <li><a href="give.html" class="text-white text-decoration-none hover:text-warning" data-lang="give">Give</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5 data-lang="footerContactUs">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li data-lang="footerAddress">Mukhonje, Kakamega, Kenya</li>
+                        <li><a href="tel:+254700000000" class="text-white text-decoration-none hover:text-warning" data-lang="footerPhone">+254 700 000 000</a></li>
+                        <li><a href="mailto:info@nehemiaministry.or.ke" class="text-white text-decoration-none hover:text-warning" data-lang="footerEmail">info@nehemiaministry.or.ke</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5 data-lang="footerFollowUs">Follow Us</h5>
+                    <a href="#" class="text-white me-2 fs-4 hover:text-warning" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-2 fs-4 hover:text-warning" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/daniel-wanjala-912b8b17b/" target="_blank" class="text-white me-2 fs-4 hover:text-warning" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white me-2 fs-4 hover:text-warning" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-white fs-4 hover:text-warning" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center">
+                <p class="mb-0" data-lang="footerDevNote">This website is a demonstration project. Developed with passion and dedication.</p>
+                <p class="mb-0" data-lang="footerDesignedBy">Designed by AI for Nehemia Ministry Kenya.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/254700000000?text=Hello%20Nehemia%20Ministry%20Kenya%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about..." target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="modal fade" id="onboardingModal1" tabindex="-1" aria-labelledby="onboardingModal1Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="onboardingModal1Label" data-lang="onboardingModal1Title">Welcome to Our Digital Sanctuary!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="asset/onboarding_welcome.png" alt="Welcome to Nehemia Ministry" class="img-fluid rounded onboarding-modal-img" onerror="this.onerror=null;this.src='https://placehold.co/300x200/0D47A1/FFFFFF?text=Welcome';">
+            <p data-lang="onboardingModal1Text">We are thrilled to have you visit the online home of Nehemia Ministry Kenya. Explore our site to learn about our mission, ministries, and how you can get involved. Karibu Sana!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-target="#onboardingModal2" data-bs-toggle="modal" data-bs-dismiss="modal" data-lang="nextButton">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="onboardingModal2" tabindex="-1" aria-labelledby="onboardingModal2Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="onboardingModal2Label" data-lang="onboardingModal2Title">Discover Our Features</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="asset/onboarding_features.png" alt="Site Features" class="img-fluid rounded onboarding-modal-img" onerror="this.onerror=null;this.src='https://placehold.co/300x200/4CAF50/FFFFFF?text=Features';">
+            <p data-lang="onboardingModal2Text">You can switch languages (English/Swahili) and toggle dark mode using the controls in the top navigation bar. Don't miss our latest sermons, events, and prayer wall!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-target="#onboardingModal3" data-bs-toggle="modal" data-bs-dismiss="modal" data-lang="nextButton">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="onboardingModal3" tabindex="-1" aria-labelledby="onboardingModal3Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="onboardingModal3Label" data-lang="onboardingModal3Title">Join Our Community</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+             <img src="asset/onboarding_community.png" alt="Community Connection" class="img-fluid rounded onboarding-modal-img" onerror="this.onerror=null;this.src='https://placehold.co/300x200/FFC107/000000?text=Community';">
+            <p data-lang="onboardingModal3Text">We invite you to connect with us, partner in our mission, and grow in faith together. Feel free to explore, and may God bless you abundantly.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" data-lang="getStartedButton">Get Started!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+    // All JavaScript code goes here
+
+    // --- PRELOADER SCRIPT ---
+    const preloader = document.getElementById('preloader');
+    let preloaderHidden = false;
+
+    function hidePreloader() {
+        if (preloader && !preloaderHidden) {
+            preloader.classList.add('hidden');
+            preloaderHidden = true;
+            console.log("Preloader hidden."); // For debugging
+        }
+    }
+
+    window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 200); // Hide 200ms after full load event
+    });
+
+    // Fallback: Hide preloader after 3 seconds max, 
+    // even if 'load' event is significantly delayed or fails for some assets.
+    // This is to prevent the preloader from blocking the page indefinitely.
+    setTimeout(hidePreloader, 3000);
+    // --- END PRELOADER SCRIPT ---
+
+
+    // Language and Content Management
+    const translations = {
+        en: {
+            home: "Home",
+            about: "About Us",
+            ministries: "Ministries",
+            hospital: "Kingdom Faith-Based Mission Hospital",
+            bibleSchool: "Matco Training Institute",
+            orphanage: "New Promise Home",
+            allMinistries: "All Ministries",
+            sermons: "Sermons",
+            gallery: "Gallery",
+            events: "Events",
+            prayerWall: "Prayer Wall",
+            blog: "Blog",
+            leadership: "Leadership",
+            give: "Give",
+            contact: "Contact Us",
+            adminLogin: "Admin Login",
+            translatePage: "Translate Page",
+            translateBtnText: "Translate",
+            heroTitle: "Welcome to Nehemia Ministry Kenya",
+            heroSubtitle: "A beacon of faith, hope, and transformation in Western Kenya and beyond. Discover our journey, our mission, and our community.",
+            learnMore: "Learn More",
+            wordOfTheDayTitle: "Word of the Day:",
+            aboutPreviewTitle: "Our Journey of Faith",
+            aboutPreviewText1: "Nehemia Ministry Kenya, founded in 2006 by Bishop David Walukhu and his wife, Reverend Selina Walukhu, began as a humble, spirit-led grassroots movement in Mukhonje village, Kakamega County. It has since blossomed into a significant spiritual force, touching countless lives across Western Kenya and extending its compassionate reach far beyond.",
+            aboutPreviewText2: "Our core mission is to spread the Gospel, nurture believers, and actively demonstrate God's love through impactful community service. We are deeply committed to spiritual growth, holistic well-being, and empowering individuals to live purposeful, faith-filled lives. This digital sanctuary is an extension of our commitment to connect, share, and grow together in Christ.",
+            readOurStory: "Read Our Full Story & Vision",
+            ministriesOverviewTitle: "Our Core Ministries & Outreach",
+            ministriesOverviewSubtitle: "Serving God, Serving Humanity: Discover the heart of Nehemia Ministry Kenya through our diverse and impactful programs designed to uplift, heal, and educate.",
+            hospitalCardTitle: "Kingdom Faith-Based Mission Hospital",
+            hospitalCardText: "Providing compassionate, community-focused healthcare that integrates faith and professional medical services. We are dedicated to healing both physical ailments and spiritual needs with utmost care and dedication.",
+            bibleSchoolCardTitle: "Matco Training Institute – Bible School",
+            bibleSchoolCardText: "Located in Malaha, our dynamic Bible school and leadership institute is committed to equipping future clergy, church workers, and lay leaders with profound Biblical literacy, theological understanding, and missional zeal.",
+            orphanageCardTitle: "New Promise Home – Orphanage",
+            orphanageCardText: "A nurturing sanctuary in Lwandeti for orphaned and vulnerable children. We provide comprehensive care including food, shelter, education, spiritual guidance, and mentorship in a loving, Christ-centered environment.",
+            exploreAllMinistries: "Explore All Our Ministries",
+            sermonsPreviewTitle: "Latest Sermons & Teachings",
+            sermonsPreviewSubtitle: "Be uplifted and inspired by the Word of God. Listen to recent messages from our pastors and guest speakers, bringing timeless truths to contemporary life.",
+            sermonTitle1: "The Power of Unwavering Faith",
+            sermonSpeaker1: "Speaker: Bishop David Walukhu",
+            sermonDesc1: "Discover the incredible strength that comes from a faith that does not falter, even in the midst of life's greatest storms. This message will empower you.",
+            sermonTitle2: "Living a Life of Purpose",
+            sermonSpeaker2: "Speaker: Rev. Selina Walukhu",
+            sermonDesc2: "Explore how to identify and walk in the unique purpose God has for your life. A transformative teaching for all seekers of meaning.",
+            sermonTitle3: "Grace Greater Than Our Sin",
+            sermonSpeaker3: "Speaker: Guest Minister",
+            sermonDesc3: "A powerful reminder of the boundless and unconditional grace of God that is available to all. This sermon brings hope and restoration.",
+            playPreview: "Play Full Sermon / Read Transcript",
+            viewAllSermons: "View All Sermons",
+            closeButton: "Close",
+            goToSermonPage: "Go to Full Sermon",
+            sermonSpeaker1Modal: "Speaker: Bishop David Walukhu",
+            sermonDate1Modal: "Date: May 12, 2025",
+            sermonTranscriptTitle: "Transcript Preview:",
+            sermonTranscript1: "\"My beloved brothers and sisters, in a world that is constantly shifting, where challenges arise like mountains before us, there is one anchor that holds steadfast, one power that can move those mountains – and that is unwavering faith. Not a fleeting belief, but a deep, abiding trust in the Almighty God who promises to be with us, to strengthen us, and to guide us through every valley and over every peak...\" (Full transcript available on the sermons page).",
+            sermonSpeaker2Modal: "Speaker: Rev. Selina Walukhu",
+            sermonDate2Modal: "Date: May 5, 2025",
+            sermonTranscript2: "\"Each one of us is uniquely created by God, instilled with gifts, talents, and a divine calling. The journey of life becomes truly meaningful when we discover and embrace this God-given purpose. It's not just about existing; it's about living intentionally, making an impact, and glorifying our Creator through our actions and our very being...\" (Full transcript available on the sermons page).",
+            sermonSpeaker3Modal: "Speaker: Guest Minister",
+            sermonDate3Modal: "Date: April 28, 2025",
+            sermonTranscript3: "\"Often, we are weighed down by our past mistakes, our shortcomings, the moments we fell short. But the glorious truth of the Gospel is that God's grace is infinitely greater than any sin we could ever commit. It's a grace that cleanses, restores, and empowers us to live anew. Come and experience this profound, life-changing grace...\" (Full transcript available on the sermons page).",
+            eventsPreviewTitle: "Upcoming Events & Gatherings",
+            eventsPreviewSubtitle: "Join us for fellowship, worship, and community engagement. There's always something happening at Nehemia Ministry!",
+            nextEventTitle: "Next Major Event:",
+            nextEventDate: "Date:",
+            nextEventDesc: "An inspiring overnight prayer meeting to usher in the new season with powerful worship, prophetic declarations, and thanksgiving. Theme: \"Crossing Over Victoriously!\"",
+            countdownTitle: "Countdown to Event:",
+            eventDetails: "View Event Details",
+            eventCalendarTitle: "Our Event Calendar",
+            calendarLoading: "Loading calendar preview...",
+            eventPrayerMeeting: "Prayer Meeting",
+            eventBibleStudy: "Bible Study",
+            calendarFull: "A full, interactive calendar is available on our events page.",
+            seeAllEvents: "See All Upcoming Events",
+            prayerWallPreviewTitle: "Community Prayer Wall",
+            prayerWallPreviewSubtitle: "\"For where two or three gather in my name, there am I with them.\" (Matthew 18:20). Share your requests and pray for others.",
+            latestPrayerRequest: "Latest Prayer Request:",
+            samplePrayerText: "\"Please pray for my family's health and for guidance in a difficult decision we are facing. We need wisdom and peace.\"",
+            samplePrayerAuthor: "A Member of our Community",
+            visitPrayerWall: "Visit the Prayer Wall & Submit Your Request",
+            galleryPreviewTitle: "Moments & Memories",
+            galleryPreviewSubtitle: "A glimpse into the life and activities of Nehemia Ministry Kenya. See the joy, fellowship, and impact of our community.",
+            imagePreview: "Image Preview",
+            viewFullGallery: "View Full Gallery",
+            testimonialsTitle: "Voices of Our Community",
+            testimonialsSubtitle: "Hear from those whose lives have been touched by Nehemia Ministry Kenya. Real stories, real impact.",
+            testimonial1Text: "\"Nehemia Ministry has been a true blessing to my family. The teachings are profound, the community is welcoming, and the support we received during a difficult time was overwhelming. I've grown so much in my faith here.\"",
+            testimonial1Author: "- Grace M. (Kakamega)",
+            testimonial2Text: "\"The Matco Bible School equipped me not just with knowledge, but with a passion for service. The leaders are inspiring, and I now feel confident to minister in my own community. Thank you, Nehemia Ministry!\"",
+            testimonial2Author: "- John K. (Malaha Graduate)",
+            testimonial3Text: "\"Finding New Promise Home was an answer to prayer. My children are safe, loved, and are receiving a good education and spiritual grounding. It's more than an orphanage; it's a family.\"",
+            testimonial3Author: "- A Guardian (Lwandeti)",
+            previous: "Previous",
+            next: "Next",
+            churchNetworkTitle: "Our Church Network Across Kenya",
+            churchNetworkSubtitle: "Extending God's kingdom, one community at a time. Nehemia Ministry is blessed to have a growing family of churches serving various regions in Kenya.",
+            branchNairobiTitle: "Nehemia Ministry Nairobi",
+            branchNairobiText: "Our vibrant urban center for worship, outreach, and community programs in the heart of Kenya's capital city. Reaching out with the love of Christ to city dwellers from all walks of life.",
+            branchMombasaTitle: "Nehemia Ministry Mombasa",
+            branchMombasaText: "A beacon of hope and faith on the coast. Our Mombasa branch is dedicated to serving the coastal communities with spiritual nourishment and social support programs.",
+            branchKisumuTitle: "Nehemia Ministry Kisumu",
+            branchKisumuText: "Serving the lakeside city and its environs, our Kisumu church focuses on discipleship, youth empowerment, and community development projects.",
+            branchNakuruTitle: "Nehemia Ministry Nakuru",
+            branchNakuruText: "Growing in faith in the Rift Valley. Our Nakuru assembly is a dynamic fellowship committed to evangelism and holistic ministry in the region.",
+            branchEldoretTitle: "Nehemia Ministry Eldoret",
+            branchEldoretText: "A thriving congregation in the North Rift, focused on family ministries, leadership training, and reaching out to surrounding communities with the Gospel.",
+            branchHQTitle: "Headquarters - Mukhonje, Kakamega",
+            branchHQText: "The heart from which our ministry began and continues to grow. Our mother church in Mukhonje remains a central hub for spiritual leadership and regional coordination.",
+            exploreFullNetwork: "Explore Our Full Church Network & Locations",
+            giveTitle: "Partner With Us in Ministry",
+            giveSubtitle: "Your generous support enables us to continue our vital work: spreading the Gospel, supporting our communities, and expanding our outreach programs. Every contribution, big or small, makes a difference.",
+            giveText: "Through your giving, you become an active partner in the Kingdom Faith-Based Mission Hospital's healing ministry, in equipping leaders at Matco Training Institute, and in providing a loving home for children at New Promise Home. You help us share the message of hope and transform lives.",
+            giveNow: "Give Generously Today",
+            contactPreviewTitle: "Get In Touch With Us",
+            contactPreviewSubtitle: "We'd love to hear from you! Whether you have a question, need prayer, or want to learn more about our ministry, please reach out.",
+            ourLocation: "Our Main Office",
+            addressLine1: "Nehemia Ministry Kenya",
+            addressLine2: "Mukhonje Village, Kakamega County",
+            addressLine3: "P.O. Box 123, Kakamega, Kenya",
+            phone: "Phone:",
+            email: "Email:",
+            officeHours: "Office Hours:",
+            officeHoursMonFri: "Monday - Friday: 9:00 AM - 5:00 PM",
+            officeHoursSat: "Saturday: 10:00 AM - 2:00 PM",
+            officeHoursSun: "Sunday: Closed (Join us for Worship!)",
+            fullContactPage: "Visit Our Full Contact Page",
+            adminPanelTitle: "Admin Panel (Simulated)",
+            adminPanelWelcome: "Welcome, Admin! This is a placeholder for admin functionalities.",
+            adminPanelInfo: "This section is visible because an 'admin' flag was found in your browser's local storage. In a real application, this would be protected by a proper login system.",
+            logoutAdmin: "Logout (Clear Admin Flag)",
+            footerAboutTitle: "Nehemia Ministry Kenya",
+            footerAboutText: "Transforming lives through faith, hope, and love. Serving communities in Western Kenya and beyond since 2006.",
+            footerQuickLinks: "Quick Links",
+            footerContactUs: "Contact Us",
+            footerAddress: "Mukhonje, Kakamega, Kenya",
+            footerPhone: "+254 700 000 000",
+            footerEmail: "info@nehemiaministry.or.ke",
+            footerFollowUs: "Follow Us",
+            footerDevNote: "This website is a demonstration project. Developed with passion and dedication.",
+            footerDesignedBy: "Designed by AI for Nehemia Ministry Kenya.",
+            onboardingModal1Title: "Welcome to Our Digital Sanctuary!",
+            onboardingModal1Text: "We are thrilled to have you visit the online home of Nehemia Ministry Kenya. Explore our site to learn about our mission, ministries, and how you can get involved. Karibu Sana!",
+            nextButton: "Next",
+            onboardingModal2Title: "Discover Our Features",
+            onboardingModal2Text: "You can switch languages (English/Swahili) and toggle dark mode using the controls in the top navigation bar. Don't miss our latest sermons, events, and prayer wall!",
+            onboardingModal3Title: "Join Our Community",
+            onboardingModal3Text: "We invite you to connect with us, partner in our mission, and grow in faith together. Feel free to explore, and may God bless you abundantly.",
+            getStartedButton: "Get Started!",
+        },
+        sw: {
+            home: "Nyumbani",
+            about: "Kutuhusu",
+            ministries: "Huduma Zetu",
+            hospital: "Hospitali ya Kimisheni ya Kingdom Faith",
+            bibleSchool: "Chuo cha Biblia cha Matco",
+            orphanage: "Makao ya New Promise",
+            allMinistries: "Huduma Zote",
+            sermons: "Mahubiri",
+            gallery: "Matunzio",
+            events: "Matukio",
+            prayerWall: "Ukuta wa Maombi",
+            blog: "Blogu",
+            leadership: "Uongozi",
+            give: "Toa Sadaka",
+            contact: "Wasiliana Nasi",
+            adminLogin: "Ingia Kama Msimamizi",
+            translatePage: "Tafsiri Ukurasa Huu",
+            translateBtnText: "Tafsiri",
+            heroTitle: "Karibu Nehemia Ministry Kenya",
+            heroSubtitle: "Mwanga wa imani, matumaini, na mabadiliko Magharibi mwa Kenya na kwingineko. Gundua safari yetu, dhamira yetu, na jamii yetu.",
+            learnMore: "Jifunze Zaidi",
+            wordOfTheDayTitle: "Neno la Siku:",
+            aboutPreviewTitle: "Safari Yetu ya Imani",
+            aboutPreviewText1: "Nehemia Ministry Kenya, iliyoanzishwa mwaka 2006 na Askofu David Walukhu na mkewe, Mchungaji Selina Walukhu, ilianza kama vuguvugu dogo la kiroho katika kijiji cha Mukhonje, Kaunti ya Kakamega. Tangu wakati huo imekua na kuwa nguvu kubwa ya kiroho, ikigusa maisha ya wengi Magharibi mwa Kenya na kwingineko.",
+            aboutPreviewText2: "Dhamira yetu kuu ni kueneza Injili, kulea waumini, na kuonyesha upendo wa Mungu kupitia huduma za kijamii zenye athari. Tumejitolea kwa ukuaji wa kiroho, ustawi kamili, na kuwawezesha watu kuishi maisha yenye kusudi na imani. Patakatifu hapa pa kidijitali ni upanuzi wa ahadi yetu ya kuungana, kushiriki, na kukua pamoja katika Kristo.",
+            readOurStory: "Soma Hadithi na Dira Yetu Kamili",
+            ministriesOverviewTitle: "Huduma Zetu Kuu na Ufikiaji",
+            ministriesOverviewSubtitle: "Kumtumikia Mungu, Kuwatumikia Wanadamu: Gundua moyo wa Nehemia Ministry Kenya kupitia programu zetu mbalimbali zenye athari zinazolenga kuinua, kuponya, na kuelimisha.",
+            hospitalCardTitle: "Hospitali ya Kimisheni ya Kingdom Faith",
+            hospitalCardText: "Kutoa huduma za afya zenye huruma, zinazozingatia jamii na kuunganisha imani na huduma za kitaalamu za kitabibu. Tumejitolea kuponya magonjwa ya kimwili na mahitaji ya kiroho kwa uangalifu mkubwa.",
+            bibleSchoolCardTitle: "Chuo cha Biblia cha Matco",
+            bibleSchoolCardText: "Kikiwa Malaha, chuo chetu cha Biblia chenye nguvu na taasisi ya mafunzo ya uongozi imejitolea kuwandaa viongozi wa baadaye wa kanisa, wafanyakazi wa kanisa, na viongozi wa kawaida kwa uelewa wa kina wa Biblia, teolojia, na ari ya kimisheni.",
+            orphanageCardTitle: "Makao ya New Promise – Kituo cha Yatima",
+            orphanageCardText: "Makao ya kulea watoto yatima na walio katika mazingira magumu huko Lwandeti. Tunatoa huduma kamili ikiwa ni pamoja na chakula, malazi, elimu, mwongozo wa kiroho, na ushauri katika mazingira ya upendo yanayomlenga Kristo.",
+            exploreAllMinistries: "Gundua Huduma Zetu Zote",
+            sermonsPreviewTitle: "Mahubiri na Mafundisho ya Hivi Karibuni",
+            sermonsPreviewSubtitle: "Inuliwa na kutiwa moyo na Neno la Mungu. Sikiliza jumbe za hivi karibuni kutoka kwa wachungaji wetu na wazungumzaji wageni, zikileta kweli zisizopitwa na wakati kwa maisha ya kisasa.",
+            sermonTitle1: "Nguvu ya Imani Isiyotetereka",
+            sermonSpeaker1: "Mzungumzaji: Askofu David Walukhu",
+            sermonDesc1: "Gundua nguvu ya ajabu inayotokana na imani isiyoyumba, hata katikati ya dhoruba kali za maisha. Ujumbe huu utakupa nguvu.",
+            sermonTitle2: "Kuishi Maisha Yenye Kusudi",
+            sermonSpeaker2: "Mzungumzaji: Mch. Selina Walukhu",
+            sermonDesc2: "Chunguza jinsi ya kutambua na kutembea katika kusudi la kipekee ambalo Mungu analo kwa maisha yako. Mafundisho ya mabadiliko kwa watafutaji wote wa maana.",
+            sermonTitle3: "Neema Kuu Kuliko Dhambi Zetu",
+            sermonSpeaker3: "Mzungumzaji: Mhudumu Mgeni",
+            sermonDesc3: "Kikumbusho chenye nguvu cha neema isiyo na mipaka na isiyo na masharti ya Mungu ambayo inapatikana kwa wote. Hubiri hili linaleta tumaini na urejesho.",
+            playPreview: "Sikiliza Hubiri Kamili / Soma Nakala",
+            viewAllSermons: "Tazama Mahubiri Yote",
+            closeButton: "Funga",
+            goToSermonPage: "Nenda Kwenye Hubiri Kamili",
+            sermonSpeaker1Modal: "Mzungumzaji: Askofu David Walukhu",
+            sermonDate1Modal: "Tarehe: Mei 12, 2025",
+            sermonTranscriptTitle: "Muhtasari wa Nakala:",
+            sermonTranscript1: "\"Ndugu zangu wapendwa, katika ulimwengu unaobadilika kila wakati, ambapo changamoto hujitokeza kama milima mbele yetu, kuna nanga moja inayoshikilia imara, nguvu moja inayoweza kuhamisha milima hiyo - na hiyo ni imani isiyotetereka. Sio imani ya kupita, bali ni tumaini la kina, la kudumu kwa Mungu Mwenyezi anayeahidi kuwa nasi, kututia nguvu, na kutuongoza kupitia kila bonde na juu ya kila kilele...\" (Nakala kamili inapatikana kwenye ukurasa wa mahubiri).",
+            sermonSpeaker2Modal: "Mzungumzaji: Mch. Selina Walukhu",
+            sermonDate2Modal: "Tarehe: Mei 5, 2025",
+            sermonTranscript2: "\"Kila mmoja wetu ameumbwa kwa njia ya kipekee na Mungu, akipewa vipawa, talanta, na wito wa kimungu. Safari ya maisha inakuwa na maana ya kweli tunapogundua na kukumbatia kusudi hili tulilopewa na Mungu. Sio tu kuhusu kuwepo; ni kuhusu kuishi kwa makusudi, kuleta athari, na kumtukuza Muumba wetu kupitia matendo yetu na utu wetu wenyewe...\" (Nakala kamili inapatikana kwenye ukurasa wa mahubiri).",
+            sermonSpeaker3Modal: "Mzungumzaji: Mhudumu Mgeni",
+            sermonDate3Modal: "Tarehe: Aprili 28, 2025",
+            sermonTranscript3: "\"Mara nyingi, tunalemewa na makosa yetu ya zamani, mapungufu yetu, nyakati tulipopungukiwa. Lakini ukweli mtukufu wa Injili ni kwamba neema ya Mungu ni kubwa sana kuliko dhambi yoyote tunayoweza kutenda. Ni neema inayotakasa, kurejesha, na kutuwezesha kuishi upya. Njoo upate uzoefu wa neema hii ya kina, inayobadilisha maisha...\" (Nakala kamili inapatikana kwenye ukurasa wa mahubiri).",
+            eventsPreviewTitle: "Matukio na Mikutano Ijayo",
+            eventsPreviewSubtitle: "Ungana nasi kwa ushirika, ibada, na ushiriki wa kijamii. Daima kuna kitu kinachoendelea Nehemia Ministry!",
+            nextEventTitle: "Tukio Kubwa Linalofuata:",
+            nextEventDate: "Tarehe:",
+            nextEventDesc: "Mkutano wa maombi wa usiku kucha wenye msukumo wa kuukaribisha msimu mpya kwa ibada yenye nguvu, matamko ya kinabii, na shukrani. Kaulimbiu: \"Kuvuka Kwa Ushindi!\"",
+            countdownTitle: "Muda Uliosalia Hadi Tukio:",
+            eventDetails: "Angalia Maelezo ya Tukio",
+            eventCalendarTitle: "Kalenda Yetu ya Matukio",
+            calendarLoading: "Inapakia muhtasari wa kalenda...",
+            eventPrayerMeeting: "Mkutano wa Maombi",
+            eventBibleStudy: "Funzo la Biblia",
+            calendarFull: "Kalenda kamili, yenye mwingiliano inapatikana kwenye ukurasa wetu wa matukio.",
+            seeAllEvents: "Tazama Matukio Yote Yajayo",
+            prayerWallPreviewTitle: "Ukuta wa Maombi ya Jamii",
+            prayerWallPreviewSubtitle: "\"Kwa kuwa walipo wawili watatu wamekusanyika kwa jina langu, nami nipo papo hapo katikati yao.\" (Mathayo 18:20). Shiriki maombi yako na uwaombee wengine.",
+            latestPrayerRequest: "Ombi la Hivi Karibuni:",
+            samplePrayerText: "\"Tafadhali ombeeni afya ya familia yangu na mwongozo katika uamuzi mgumu tunaokabiliana nao. Tunahitaji hekima na amani.\"",
+            samplePrayerAuthor: "Mwanajumuiya Mwenzetu",
+            visitPrayerWall: "Tembelea Ukuta wa Maombi na Uwasilishe Ombi Lako",
+            galleryPreviewTitle: "Nyakati na Kumbukumbu",
+            galleryPreviewSubtitle: "Mtazamo wa maisha na shughuli za Nehemia Ministry Kenya. Tazama furaha, ushirika, na athari za jamii yetu.",
+            imagePreview: "Muhtasari wa Picha",
+            viewFullGallery: "Tazama Matunzio Kamili",
+            testimonialsTitle: "Sauti za Jamii Yetu",
+            testimonialsSubtitle: "Sikia kutoka kwa wale ambao maisha yao yameguswa na Nehemia Ministry Kenya. Hadithi za kweli, athari za kweli.",
+            testimonial1Text: "\"Nehemia Ministry imekuwa baraka ya kweli kwa familia yangu. Mafundisho ni ya kina, jamii inakaribisha, na msaada tuliopokea wakati mgumu ulikuwa mwingi. Nimekua sana katika imani yangu hapa.\"",
+            testimonial1Author: "- Grace M. (Kakamega)",
+            testimonial2Text: "\"Chuo cha Biblia cha Matco kilinipa sio tu maarifa, bali na shauku ya huduma. Viongozi wanatia moyo, na sasa ninajisikia ujasiri kuhudumu katika jamii yangu. Asante, Nehemia Ministry!\"",
+            testimonial2Author: "- John K. (Mhitimu wa Malaha)",
+            testimonial3Text: "\"Kupata Makao ya New Promise ilikuwa jibu la maombi. Watoto wangu wako salama, wanapendwa, na wanapata elimu nzuri na msingi wa kiroho. Ni zaidi ya kituo cha watoto yatima; ni familia.\"",
+            testimonial3Author: "- Mlezi (Lwandeti)",
+            previous: "Previous",
+            next: "Next",
+            churchNetworkTitle: "Mtandao Wetu wa Makanisa Kote Nchini Kenya",
+            churchNetworkSubtitle: "Kupanua ufalme wa Mungu, jamii moja kwa wakati mmoja. Nehemia Ministry imebarikiwa kuwa na familia inayokua ya makanisa yanayohudumia maeneo mbalimbali nchini Kenya.",
+            branchNairobiTitle: "Nehemia Ministry Nairobi",
+            branchNairobiText: "Kituo chetu kikuu cha mijini kwa ibada, uinjilisti, na programu za kijamii katikati ya jiji kuu la Kenya. Kufikia wakazi wa jiji kutoka nyanja zote za maisha kwa upendo wa Kristo.",
+            branchMombasaTitle: "Nehemia Ministry Mombasa",
+            branchMombasaText: "Mwanga wa matumaini na imani pwani. Tawi letu la Mombasa limejitolea kuhudumia jamii za pwani kwa lishe ya kiroho na programu za msaada wa kijamii.",
+            branchKisumuTitle: "Nehemia Ministry Kisumu",
+            branchKisumuText: "Kuhudumia jiji la kando ya ziwa na viunga vyake, kanisa letu la Kisumu linalenga uanafunzi, uwezeshaji wa vijana, na miradi ya maendeleo ya jamii.",
+            branchNakuruTitle: "Nehemia Ministry Nakuru",
+            branchNakuruText: "Kukua katika imani katika Bonde la Ufa. Kusanyiko letu la Nakuru ni ushirika wenye nguvu uliojitolea kwa uinjilisti na huduma kamilifu katika eneo hilo.",
+            branchEldoretTitle: "Nehemia Ministry Eldoret",
+            branchEldoretText: "Kusanyiko linalostawi katika Bonde la Ufa Kaskazini, linalolenga huduma za familia, mafunzo ya uongozi, na kufikia jamii zinazozunguka na Injili.",
+            branchHQTitle: "Makao Makuu - Mukhonje, Kakamega",
+            branchHQText: "Moyo ambapo huduma yetu ilianzia na inaendelea kukua. Kanisa letu mama huko Mukhonje linabaki kuwa kitovu kikuu cha uongozi wa kiroho na uratibu wa kikanda.",
+            exploreFullNetwork: "Gundua Mtandao Wetu Kamili wa Makanisa na Maeneo",
+            giveTitle: "Shiriki Nasi Katika Huduma",
+            giveSubtitle: "Msaada wako wa ukarimu unatuwezesha kuendelea na kazi yetu muhimu: kueneza Injili, kusaidia jamii zetu, na kupanua programu zetu za ufikiaji. Kila mchango, mkubwa au mdogo, huleta tofauti.",
+            giveText: "Kupitia utoaji wako, unakuwa mshirika hai katika huduma ya uponyaji ya Hospitali ya Kimisheni ya Kingdom Faith, katika kuandaa viongozi katika Chuo cha Mafunzo cha Matco, na katika kutoa makazi ya upendo kwa watoto katika Makao ya New Promise. Unatusaidia kushiriki ujumbe wa matumaini na kubadilisha maisha.",
+            giveNow: "Toa Kwa Ukarimu Leo",
+            contactPreviewTitle: "Wasiliana Nasi",
+            contactPreviewSubtitle: "Tungependa kusikia kutoka kwako! Ikiwa una swali, unahitaji maombi, au unataka kujifunza zaidi kuhusu huduma yetu, tafadhali wasiliana nasi.",
+            ourLocation: "Ofisi Yetu Kuu",
+            addressLine1: "Nehemia Ministry Kenya",
+            addressLine2: "Kijiji cha Mukhonje, Kaunti ya Kakamega",
+            addressLine3: "S.L.P 123, Kakamega, Kenya",
+            phone: "Simu:",
+            email: "Barua Pepe:",
+            officeHours: "Saa za Ofisi:",
+            officeHoursMonFri: "Jumatatu - Ijumaa: 9:00 AM - 5:00 PM",
+            officeHoursSat: "Jumamosi: 10:00 AM - 2:00 PM",
+            officeHoursSun: "Jumapili: Imefungwa (Ungana nasi kwa Ibada!)",
+            fullContactPage: "Tembelea Ukurasa Wetu Kamili wa Mawasiliano",
+            adminPanelTitle: "Jopo la Msimamizi (Mfano)",
+            adminPanelWelcome: "Karibu, Msimamizi! Hii ni sehemu ya mfano kwa kazi za usimamizi.",
+            adminPanelInfo: "Sehemu hii inaonekana kwa sababu alama ya 'msimamizi' ilipatikana kwenye hifadhi ya kivinjari chako. Katika programu halisi, hii ingelindwa na mfumo sahihi wa kuingia.",
+            logoutAdmin: "Ondoka (Futa Alama ya Msimamizi)",
+            footerAboutTitle: "Nehemia Ministry Kenya",
+            footerAboutText: "Kubadilisha maisha kupitia imani, matumaini, na upendo. Kuhudumia jamii Magharibi mwa Kenya na kwingineko tangu 2006.",
+            footerQuickLinks: "Njia za Haraka",
+            footerContactUs: "Wasiliana Nasi",
+            footerAddress: "Mukhonje, Kakamega, Kenya",
+            footerPhone: "+254 700 000 000",
+            footerEmail: "info@nehemiaministry.or.ke",
+            footerFollowUs: "Tufuate",
+            footerDevNote: "Tovuti hii ni mradi wa maonyesho. Imetengenezwa kwa shauku na kujitolea.",
+            footerDesignedBy: "Imeundwa na AI kwa Nehemia Ministry Kenya.",
+            onboardingModal1Title: "Karibu Kwenye Patakatifu Petu pa Kidijitali!",
+            onboardingModal1Text: "Tumefurahi sana kukutembelea nyumbani kwetu mtandaoni pa Nehemia Ministry Kenya. Gundua tovuti yetu kujifunza kuhusu dhamira yetu, huduma, na jinsi unavyoweza kushiriki. Karibu Sana!",
+            nextButton: "Ifuatayo",
+            onboardingModal2Title: "Gundua Vipengele Vyetu",
+            onboardingModal2Text: "Unaweza kubadilisha lugha (Kiingereza/Kiswahili) na kuwasha/kuzima hali ya giza kwa kutumia vidhibiti kwenye upau wa juu wa urambazaji. Usikose mahubiri yetu ya hivi karibuni, matukio, na ukuta wa maombi!",
+            onboardingModal3Title: "Jiunge na Jamii Yetu",
+            onboardingModal3Text: "Tunakualika kuungana nasi, kushirikiana katika dhamira yetu, na kukua katika imani pamoja. Jisikie huru kuchunguza, na Mungu akubariki sana.",
+            getStartedButton: "Anza Sasa!",
+        }
+    };
+
+    function setLanguage(lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-lang]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-lang');
+            if (translations[lang] && translations[lang][key]) {
+                // For buttons with icons, only update the text part if a specific span exists
+                const textSpan = el.querySelector('span[data-lang="' + key + '"]');
+                if (textSpan) {
+                    textSpan.textContent = translations[lang][key];
+                } else if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
+                    el.textContent = translations[lang][key]; // Directly set text if it's the only child
+                } else if (el.dataset.lang === key) { // Fallback for elements that are just text
+                     el.textContent = translations[lang][key];
+                }
+            }
+        });
+        // Special handling for the translate button text itself
+        const translateButtonTextSpan = document.querySelector('#google-translate-button span[data-lang="translateBtnText"]');
+        if (translateButtonTextSpan) {
+            translateButtonTextSpan.textContent = translations[lang].translateBtnText || "Translate";
+        }
+
+
+        currentScriptureIndex = -1; 
+        showNextScripture();
+        currentWordIndex = -1; 
+        showNextWordOfTheDay();
+        updateEventDetails(); 
+        loadLatestPrayerRequest(); 
+    }
+
+    const languageSelector = document.getElementById('language-selector');
+    if(languageSelector) {
+        languageSelector.addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+        });
+    }
+    
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    const moonIcon = '<i class="fas fa-moon"></i>';
+    const sunIcon = '<i class="fas fa-sun"></i>';
+
+    function enableDarkMode() {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+        if(darkModeToggle) darkModeToggle.innerHTML = sunIcon;
+    }
+
+    function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'disabled');
+        if(darkModeToggle) darkModeToggle.innerHTML = moonIcon;
+    }
+
+    if(darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+    }
+
+    // Scripture Slider
+    const scriptures = {
+        en: [
+            { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", reference: "John 3:16" },
+            { text: "The Lord is my shepherd, I lack nothing.", reference: "Psalm 23:1" },
+            { text: "I can do all this through him who gives me strength.", reference: "Philippians 4:13" },
+            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", reference: "Proverbs 3:5" },
+            { text: "Be still, and know that I am God.", reference: "Psalm 46:10" },
+            { text: "The fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness.", reference: "Galatians 5:22-23a" },
+            { text: "Commit to the Lord whatever you do, and he will establish your plans.", reference: "Proverbs 16:3" },
+            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", reference: "Jeremiah 29:11" }
+        ],
+        sw: [
+            { text: "Kwa maana jinsi hii Mungu aliupenda ulimwengu, hata akamtoa Mwanawe pekee, ili kila mtu amwaminiye asipotee, bali awe na uzima wa milele.", reference: "Yohana 3:16" },
+            { text: "Bwana ndiye mchungaji wangu, Sitapungukiwa na kitu.", reference: "Zaburi 23:1" },
+            { text: "Nayaweza mambo yote katika yeye anitiaye nguvu.", reference: "Wafilipi 4:13" },
+            { text: "Mtumaini Bwana kwa moyo wako wote, Wala usizitegemee akili zako mwenyewe.", reference: "Mithali 3:5" },
+            { text: "Nyamazeni, mjue ya kuwa Mimi ni Mungu.", reference: "Zaburi 46:10" },
+            { text: "Lakini tunda la Roho ni upendo, furaha, amani, uvumilivu, utu wema, fadhili, uaminifu.", reference: "Wagalatia 5:22-23a" },
+            { text: "Mkabidhi Bwana kazi zako, Nayo mawazo yako yatathibitika.", reference: "Mithali 16:3" },
+            { text: "Maana nayajua mawazo ninayowawazia ninyi, asema Bwana, ni mawazo ya amani wala si ya mabaya, kuwapa ninyi tumaini siku zenu za mwisho.", reference: "Yeremia 29:11" }
+        ]
+    };
+    let currentScriptureIndex = -1; 
+    const scriptureSliderElement = document.getElementById('scripture-slider');
+
+    function showNextScripture() {
+        if (!scriptureSliderElement) return;
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const langScriptures = scriptures[currentLang];
+        
+        const activeScripture = scriptureSliderElement.querySelector('.scripture-text.active');
+
+        if (activeScripture) {
+            activeScripture.classList.remove('active');
+            activeScripture.classList.add('exiting'); // For slide-out animation
+            setTimeout(() => {
+                if (scriptureSliderElement.contains(activeScripture)) {
+                    scriptureSliderElement.removeChild(activeScripture);
+                }
+            }, 800); // Match CSS transition duration (0.8s)
+        }
+
+        currentScriptureIndex = (currentScriptureIndex + 1) % langScriptures.length;
+        const scripture = langScriptures[currentScriptureIndex];
+        
+        const p = document.createElement('p');
+        p.className = 'scripture-text';
+        p.innerHTML = `"${scripture.text}" <br><small class="fw-normal">- ${scripture.reference}</small>`;
+        scriptureSliderElement.appendChild(p);
+        
+        void p.offsetWidth; // Force reflow
+        
+        setTimeout(() => p.classList.add('active'), 50); // Add active class to trigger slide-in
+    }
+
+    // Word of the Day
+    const wordsOfTheDay = {
+        en: [
+            { word: "Faith", definition: "Complete trust or confidence in someone or something." },
+            { word: "Hope", definition: "A feeling of expectation and desire for a certain thing to happen." },
+            { word: "Love", definition: "An intense feeling of deep affection; the greatest commandment." },
+            { word: "Grace", definition: "The free and unmerited favor of God." },
+            { word: "Peace", definition: "Freedom from disturbance; tranquility that surpasses understanding." }
+        ],
+        sw: [
+            { word: "Imani", definition: "Kuwa na uhakika kamili au uaminifu kwa mtu au kitu." },
+            { word: "Matumaini", definition: "Hisia ya kutarajia na kutamani jambo fulani litokee." },
+            { word: "Upendo", definition: "Hisia kali ya mapenzi ya dhati; amri kuu." },
+            { word: "Neema", definition: "Upendeleo wa bure na usiofaa wa Mungu." },
+            { word: "Amani", definition: "Hali ya kutokuwepo na usumbufu; utulivu unaopita ufahamu." }
+        ]
+    };
+    let currentWordIndex = -1; 
+    const wordOfTheDayTextElement = document.getElementById('word-of-the-day-text');
+
+    function showNextWordOfTheDay() {
+        if (!wordOfTheDayTextElement) return;
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const langWords = wordsOfTheDay[currentLang];
+        currentWordIndex = (currentWordIndex + 1) % langWords.length;
+        const word = langWords[currentWordIndex];
+        wordOfTheDayTextElement.textContent = `${word.word} - ${word.definition}`;
+    }
+
+
+    // Animate on Scroll
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 }); 
+
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    // Event Countdown Timer
+    const eventCountdownElement = document.getElementById('event-countdown');
+    const nextEventDateElement = document.getElementById('next-event-date');
+    const nextEventNameElement = document.getElementById('next-event-name');
+    const nextEventDescElement = document.getElementById('next-event-description-text');
+
+
+    const nextEvent = {
+        name: { en: "End Year Kesha", sw: "Kesha la Mwisho wa Mwaka" },
+        date: new Date("December 9, 2025 18:00:00").getTime(), // Set to Dec 9, 2025, 6 PM
+        description: { 
+            en: "An inspiring overnight prayer meeting to usher in the new season with powerful worship, prophetic declarations, and thanksgiving. Theme: \"Crossing Over Victoriously!\"",
+            sw: "Mkutano wa maombi wa usiku kucha wenye msukumo wa kuukaribisha msimu mpya kwa ibada yenye nguvu, matamko ya kinabii, na shukrani. Kaulimbiu: \"Kuvuka Kwa Ushindi!\""
+        }
+    };
+
+    function updateEventDetails() {
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        if(nextEventNameElement) nextEventNameElement.textContent = nextEvent.name[currentLang];
+        
+        const eventDate = new Date(nextEvent.date);
+        if(nextEventDateElement) {
+            nextEventDateElement.textContent = eventDate.toLocaleDateString(currentLang === 'sw' ? 'sw-KE' : 'en-US', {
+                year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'
+            });
+        }
+        if(nextEventDescElement) nextEventDescElement.textContent = nextEvent.description[currentLang];
+    }
+
+
+    function updateCountdown() {
+        if (!eventCountdownElement) return; 
+        const now = new Date().getTime();
+        const distance = nextEvent.date - now;
+
+        if (distance < 0) {
+            const passedText = (localStorage.getItem('preferredLanguage') || 'en') === 'sw' ? 'Tukio limepita' : 'Event has passed';
+            eventCountdownElement.innerHTML = `<span>${passedText}</span>`;
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const daysText = currentLang === 'sw' ? 'Siku' : 'Days';
+        const hoursText = currentLang === 'sw' ? 'Saa' : 'Hours';
+        const minutesText = currentLang === 'sw' ? 'Dak' : 'Mins';
+        const secondsText = currentLang === 'sw' ? 'Sek' : 'Secs';
+
+        eventCountdownElement.innerHTML = `
+            <span>${days} <small>${daysText}</small></span>
+            <span>${hours} <small>${hoursText}</small></span>
+            <span>${minutes} <small>${minutesText}</small></span>
+            <span>${seconds} <small>${secondsText}</small></span>
+        `;
+    }
+    
+    // Image Lightbox Modal
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget; 
+            const imageSrc = button.getAttribute('data-image-src'); 
+            const modalImage = imageModal.querySelector('#lightboxImage');
+            modalImage.src = imageSrc;
+        });
+    }
+
+    // Admin Login Simulation
+    const adminLoginButton = document.getElementById('admin-login-button');
+    const adminSection = document.getElementById('admin-section');
+    const clearAdminFlagButton = document.getElementById('clear-admin-flag');
+
+     if(adminLoginButton) {
+        if (localStorage.getItem('isAdmin') === 'true') {
+            if (adminLoginButton.parentElement.tagName === 'LI') {
+                 adminLoginButton.parentElement.style.display = 'list-item';
+            } else {
+                adminLoginButton.style.display = 'inline-block'; 
+            }
+            if(adminSection) adminSection.style.display = 'block';
+        }
+
+
+        adminLoginButton.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            if (localStorage.getItem('isAdmin') !== 'true') {
+                 localStorage.setItem('isAdmin', 'true');
+                 alert('Admin mode activated (simulated). Refresh to see admin section/link.');
+                 window.location.reload();
+            } else {
+                if(adminSection) adminSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    
+    if(clearAdminFlagButton) {
+        clearAdminFlagButton.addEventListener('click', () => {
+            localStorage.removeItem('isAdmin');
+            alert('Admin flag cleared. You are now logged out (simulated). Refresh the page.');
+            window.location.reload();
+        });
+    }
+    
+    // Onboarding Modals
+    const onboardingModalElement1 = document.getElementById('onboardingModal1');
+    if (onboardingModalElement1) {
+        const onboardingModal1Bootstrap = new bootstrap.Modal(onboardingModalElement1);
+        const hasSeenOnboarding = localStorage.getItem('hasSeenOnboardingNMK');
+
+        if (!hasSeenOnboarding) {
+            onboardingModal1Bootstrap.show();
+            localStorage.setItem('hasSeenOnboardingNMK', 'true');
+        }
+    }
+    
+    // Prayer Wall Preview
+    const latestPrayerRequestTextElement = document.getElementById('latest-prayer-request-text');
+    const latestPrayerAuthorElement = document.querySelector('#prayer-wall-preview .blockquote-footer');
+    
+    function loadLatestPrayerRequest() {
+        if (!latestPrayerRequestTextElement || !latestPrayerAuthorElement) return;
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const prayerRequests = JSON.parse(localStorage.getItem('prayerRequestsNMK')) || [];
+        
+        if (prayerRequests.length > 0) {
+            const latestRequest = prayerRequests[prayerRequests.length - 1];
+            latestPrayerRequestTextElement.textContent = `"${latestRequest.request}"`;
+            latestPrayerAuthorElement.textContent = latestRequest.name || (translations[currentLang].samplePrayerAuthor);
+        } else {
+            latestPrayerRequestTextElement.textContent = translations[currentLang].samplePrayerText;
+            latestPrayerAuthorElement.textContent = translations[currentLang].samplePrayerAuthor;
+        }
+    }
+
+    // Google Translate Button
+    const googleTranslateButton = document.getElementById('google-translate-button');
+    if (googleTranslateButton) {
+        googleTranslateButton.addEventListener('click', () => {
+            const currentPageUrl = window.location.href;
+            const currentLang = document.documentElement.lang || 'en';
+            const targetLang = currentLang === 'en' ? 'sw' : 'en'; 
+            const googleTranslateUrl = `https://translate.google.com/translate?sl=auto&tl=${targetLang}&u=${encodeURIComponent(currentPageUrl)}`;
+            window.open(googleTranslateUrl, '_blank');
+        });
+    }
+
+    // Update WhatsApp link
+    const floatingWhatsAppLink = document.querySelector('a.floating-whatsapp');
+    if (floatingWhatsAppLink) {
+        floatingWhatsAppLink.href = "https://wa.me/254742007277?text=Hello%20Nehemia%20Ministry%20Kenya%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about...";
+    }
+
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        if (languageSelector) languageSelector.value = preferredLanguage;
+        // setLanguage must be called after all elements are in DOM, especially for dynamic text in buttons
+        
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            enableDarkMode();
+        } else {
+            disableDarkMode(); 
+        }
+        
+        setLanguage(preferredLanguage); // Call setLanguage after dark mode is set and all elements are surely in DOM.
+
+        currentScriptureIndex = -1; 
+        showNextScripture(); 
+        setInterval(showNextScripture, 7000); 
+
+        currentWordIndex = -1; 
+        showNextWordOfTheDay(); 
+        setInterval(showNextWordOfTheDay, 5000);
+
+        updateEventDetails(); 
+        updateCountdown(); 
+        setInterval(updateCountdown, 1000); 
+
+        loadLatestPrayerRequest();
+
+        const testimonialCarouselElement = document.getElementById('testimonialCarousel');
+        if (testimonialCarouselElement) {
+            new bootstrap.Carousel(testimonialCarouselElement, {
+                interval: 5000, 
+                wrap: true
+            });
+        }
+    });
+
+    </script>
+</body>
+</html>
