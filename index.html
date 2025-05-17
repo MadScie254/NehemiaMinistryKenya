@@ -498,6 +498,34 @@
             margin-bottom: 0;
         }
 
+        /* Scroll to Top Button Styles */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 85px; /* Adjusted to be above WhatsApp icon */
+            right: 20px;
+            z-index: 999; /* Below WhatsApp (1000) and Navbar (1055) but above most content */
+            font-size: 1.2rem;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .dark-mode #scrollToTopBtn {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg); /* Ensure contrast with amber */
+        }
+        #scrollToTopBtn:hover {
+            background-color: #0B3A82; /* Darker primary */
+        }
+        .dark-mode #scrollToTopBtn:hover {
+            background-color: #FFB300; /* Darker secondary */
+        }
 
     </style>
 </head>
@@ -1119,6 +1147,8 @@
     <a href="https://wa.me/254700000000?text=Hello%20Nehemia%20Ministry%20Kenya%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about..." target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <div class="modal fade" id="onboardingModal1" tabindex="-1" aria-labelledby="onboardingModal1Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -1829,6 +1859,22 @@
         floatingWhatsAppLink.href = "https://wa.me/254742007277?text=Hello%20Nehemia%20Ministry%20Kenya%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about...";
     }
 
+    // Scroll to Top Button Logic
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    }
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', () => {
