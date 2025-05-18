@@ -590,7 +590,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container text-center">
-            <h1 class="display-3 font-bold mb-4 animate-on-scroll" data-lang="heroTitle">Welcome to Nehemia Ministry Kenya</h1>
+            <h1 class="display-3 font-bold mb-4 animate-on-scroll" data-lang="heroTitle"><span id="dynamic-greeting"></span> Welcome to Nehemia Ministry Kenya</h1>
             <p class="lead mb-4 animate-on-scroll" data-lang="heroSubtitle">A beacon of faith, hope, and transformation in Western Kenya and beyond. Discover our journey, our mission, and our community.</p>
             <div id="scripture-slider" class="my-5 animate-on-scroll">
                 </div>
@@ -1386,6 +1386,9 @@
             onboardingModal3Title: "Join Our Community",
             onboardingModal3Text: "We invite you to connect with us, partner in our mission, and grow in faith together. Feel free to explore, and may God bless you abundantly.",
             getStartedButton: "Get Started!",
+            goodMorning: "Good Morning!",
+            goodAfternoon: "Good Afternoon!",
+            goodEvening: "Good Evening!",
         },
         sw: {
             home: "Nyumbani",
@@ -1535,6 +1538,9 @@
             onboardingModal3Title: "Jiunge na Jamii Yetu",
             onboardingModal3Text: "Tunakualika kuungana nasi, kushirikiana katika dhamira yetu, na kukua katika imani pamoja. Jisikie huru kuchunguza, na Mungu akubariki sana.",
             getStartedButton: "Anza Sasa!",
+            goodMorning: "Habari ya Asubuhi!",
+            goodAfternoon: "Habari ya Mchana!",
+            goodEvening: "Habari ya Jioni!",
         }
     };
 
@@ -1569,6 +1575,7 @@
         showNextWordOfTheDay();
         updateEventDetails(); 
         loadLatestPrayerRequest(); 
+        updateDynamicGreeting(); // Add this line
     }
 
     const languageSelector = document.getElementById('language-selector');
@@ -1915,6 +1922,7 @@
         }
         
         setLanguage(preferredLanguage); // Call setLanguage after dark mode is set and all elements are surely in DOM.
+        updateDynamicGreeting(); // Also call it here for initial load
 
         currentScriptureIndex = -1; 
         showNextScripture(); 
@@ -1938,6 +1946,28 @@
             });
         }
     });
+
+    // Dynamic Greeting
+    function updateDynamicGreeting() {
+        const greetingElement = document.getElementById('dynamic-greeting');
+        if (!greetingElement) return;
+
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const hour = new Date().getHours();
+        let greetingKey;
+
+        if (hour < 12) {
+            greetingKey = 'goodMorning';
+        } else if (hour < 18) {
+            greetingKey = 'goodAfternoon';
+        } else {
+            greetingKey = 'goodEvening';
+        }
+        
+        const greetingText = translations[currentLang][greetingKey] || ""; // Get translated greeting
+        greetingElement.textContent = greetingText + (greetingText ? " " : ""); // Add a space if greeting exists
+    }
+    // END Dynamic Greeting
 
     </script>
 </body>
