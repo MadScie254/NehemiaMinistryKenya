@@ -160,6 +160,7 @@
         /* Event Countdown */
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             border-radius: 0.5rem;
             padding: 0.5rem 1rem;
@@ -200,14 +201,14 @@
 
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 pt-navbar">
+<body class="bg-white text-gray-900 pt-navbar">
 
     <div id="preloader">
         <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_kxsd2ytq.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
         <p data-lang-key="loading">Loading Digital Sanctuary...</p>
     </div>
 
-    <nav class="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-40 transition-colors duration-300">
+    <nav class="bg-slate-50 dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-40 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -229,16 +230,16 @@
                 </div>
                 <div class="flex items-center">
                     <div class="relative ml-3">
-                        <select id="languageSelector" class="block appearance-none w-full bg-gray-200 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 py-2 px-3 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-600 focus:border-gray-500 text-sm">
-                            <option value="en">English</option>
-                            <option value="sw">Kiswahili</option>
-                        </select>
+                        <select id="languageSelector" title="Select Language" aria-label="Select Language" class="block appearance-none w-full bg-gray-200 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 py-2 px-3 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-600 focus:border-gray-500 text-sm">
+                                <option value="en">English</option>
+                                <option value="sw">Kiswahili</option>
+                            </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                     </div>
-                    <button id="darkModeToggle" class="ml-3 p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-moon"></i> </button>
+                    <button id="darkModeToggle" class="ml-3 p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                                            <i class="fas fa-moon"></i> </button>
                     <div id="google_translate_element" class="ml-2"></div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
@@ -281,16 +282,25 @@
                     <p class="text-lg md:text-xl italic">"I can do all this through him who gives me strength."</p>
                     <p class="text-md mt-2">Philippians 4:13</p>
                 </div>
+                <div class="scripture-slide">
+                    <p class="text-lg md:text-xl italic">"But seek first his kingdom and his righteousness, and all these things will be given to you as well."</p>
+                    <p class="text-md mt-2">Matthew 6:33</p>
+                </div>
+                <div class="scripture-slide">
+                    <p class="text-lg md:text-xl italic">"The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness."</p>
+                    <p class="text-md mt-2">Lamentations 3:22-23</p>
+                </div>
+                <!-- Add up to 45 more scripture-slide divs here for a total of 50 -->
             </div>
 
             <a href="#about" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-xl transform hover:scale-105" data-lang-key="heroCTA">Discover Our Story</a>
         </div>
     </section>
 
-    <section id="word-of-the-day" class="py-12 bg-white dark:bg-slate-800">
+    <section id="word-of-the-day" class="py-12 bg-slate-50 dark:bg-slate-800">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-semibold text-amber-600 dark:text-amber-400 mb-2 font-playfair" data-lang-key="wordOfTheDayTitle">Word of the Day</h3>
-            <div id="dailyWordContainer" class="p-6 bg-sky-50 dark:bg-sky-900 rounded-lg shadow-md inline-block" data-aos="fade-up">
+            <div id="dailyWordContainer" class="p-6 bg-sky-100 dark:bg-sky-900 rounded-lg shadow-md inline-block" data-aos="fade-up">
                 <p id="dailyScripture" class="text-xl md:text-2xl text-sky-700 dark:text-sky-300 italic">"For God so loved the world..."</p>
                 <p id="dailyCitation" class="text-md text-sky-600 dark:text-sky-400 mt-1">John 3:16</p>
                 <button id="explainVerseBtn" class="mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150 text-sm">
@@ -310,7 +320,7 @@
         </div>
     </section>
 
-    <section id="about" class="py-16 bg-gray-50 dark:bg-gray-900">
+    <section id="about" class="py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-down">
                 <h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-playfair" data-lang-key="aboutTitle">About Nehemia Ministry</h2>
@@ -321,12 +331,15 @@
                     <img src="https://placehold.co/600x400/0A2463/FFFFFF?text=Ministry+Founders" alt="Bishop David & Rev. Selina Walukhu" class="rounded-lg shadow-xl">
                 </div>
                 <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3" data-lang-key="aboutFoundersTitle">Our Journey & Vision</h3>
-                    <p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-key="aboutIntro">
-                        Founded in 2006 by Bishop David Walukhu and Reverend Selina Walukhu, Nehemia Ministry Kenya began with a divine calling in Mukhonje Village, Kakamega County. From humble beginnings under a tree, our mission has always been to spread the Gospel, nurture believers, and demonstrate God's love through holistic community service.
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3" data-lang-key="aboutFoundersTitle">Our Journey & Vision: A Testament to Faith and Perseverance</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-key="aboutIntroUpdated">
+                        Nehemia Ministry Kenya, divinely conceived and established in the year 2006 by the visionary leadership of Bishop David Walukhu and his devoted wife, Reverend Selina Walukhu, embarked on its sacred mission from the most unassuming of origins. Nestled within the serene environs of Mukhonje Village, situated in the heart of Kakamega County, the ministry's genesis was marked by profound faith and a clear, divine calling. Initial gatherings were held in the open air, beneath the sheltering branches of a village tree, a poignant symbol of the ministry's organic growth and deep connection to the community. From these humble beginnings, our unwavering mission has been threefold: to ardently spread the life-transforming Gospel of Jesus Christ, to diligently nurture and disciple believers in their spiritual walk, and to tangibly demonstrate the boundless love of God through comprehensive, holistic community service that addresses both spiritual and temporal needs.
                     </p>
-                    <p class="text-gray-700 dark:text-gray-300 mb-6" data-lang-key="aboutMission">
-                        We are committed to being a beacon of hope, transforming lives spiritually, physically, and emotionally, guided by the teachings of Jesus Christ.
+                    <p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-key="aboutMissionUpdated">
+                        We are steadfastly committed to illuminating the path as a radiant beacon of hope and divine truth, tirelessly working towards the profound transformation of individual lives—spiritually, physically, and emotionally. Our every endeavor is meticulously guided by the timeless and infallible teachings of our Lord and Savior, Jesus Christ, striving to create a lasting legacy of faith, compassion, and positive change for generations to come. We envision a community where every soul encounters God's grace and is empowered to live a life of purpose and fulfillment.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6" data-lang-key="aboutValues">
+                        Our core values—faith, integrity, compassion, service, and community—are the bedrock upon which Nehemia Ministry is built, shaping our interactions, programs, and outreach initiatives. We believe in fostering an environment of inclusivity and love, welcoming all who seek spiritual nourishment and a deeper connection with God.
                     </p>
                     <a href="about-full.html" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-150 shadow-md hover:shadow-lg" data-lang-key="aboutLearnMore">Learn More About Us</a>
                 </div>
@@ -334,26 +347,26 @@
         </div>
     </section>
 
-    <section id="ministries" class="py-16 bg-white dark:bg-slate-800">
+    <section id="ministries" class="py-16 bg-slate-50 dark:bg-slate-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-down">
                 <h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-playfair" data-lang-key="ministriesTitle">Pillars of Our Ministry</h2>
                 <p class="mt-4 text-xl text-gray-600 dark:text-gray-300" data-lang-key="ministriesSubtitle">Serving God, Serving Humanity.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-amber-500 dark:text-amber-400 mb-4 text-4xl"><i class="fas fa-hospital-user"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3" data-lang-key="ministryHospitalTitle">Kingdom Faith-Based Mission Hospital</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-key="ministryHospitalDesc">Providing compassionate and holistic healthcare, addressing physical, spiritual, and emotional well-being.</p>
                     <a href="hospital.html" class="text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-200 font-semibold" data-lang-key="learnMore">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-amber-500 dark:text-amber-400 mb-4 text-4xl"><i class="fas fa-bible"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3" data-lang-key="ministrySchoolTitle">Matco Training Institute (Bible School)</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-key="ministrySchoolDesc">Equipping clergy, lay leaders, and believers with sound biblical knowledge and practical ministry skills.</p>
                     <a href="bible-school.html" class="text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-200 font-semibold" data-lang-key="learnMore">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-amber-500 dark:text-amber-400 mb-4 text-4xl"><i class="fas fa-child"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3" data-lang-key="ministryOrphanageTitle">New Promise Home (Orphanage)</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-key="ministryOrphanageDesc">Offering a loving, Christ-centered home for vulnerable children, providing care, education, and spiritual nurturing.</p>
@@ -363,14 +376,14 @@
         </div>
     </section>
 
-    <section id="sermons" class="py-16 bg-gray-50 dark:bg-gray-900">
+    <section id="sermons" class="py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-down">
                 <h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-playfair" data-lang-key="sermonsTitle">Nourishment for the Soul</h2>
                 <p class="mt-4 text-xl text-gray-600 dark:text-gray-300" data-lang-key="sermonsSubtitle">Recent messages from our ministry leaders.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up">
+                <div class="bg-slate-50 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up">
                     <img src="https://placehold.co/600x400/FFC107/000000?text=Sermon+Art" alt="Sermon Title" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2" data-lang-key="sermon1Title">The Power of Unwavering Faith</h3>
@@ -387,7 +400,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="bg-slate-50 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up" data-aos-delay="100">
                     <img src="https://placehold.co/600x400/0A2463/FFFFFF?text=Sermon+Rev+Selina" alt="Sermon Title" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2" data-lang-key="sermon2Title">Living a Life of Purpose</h3>
@@ -404,7 +417,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up" data-aos-delay="200">
+                 <div class="bg-slate-50 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden" data-aos="zoom-in-up" data-aos-delay="200">
                     <img src="https://placehold.co/600x400/28a745/FFFFFF?text=Guest+Speaker" alt="Sermon Title" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2" data-lang-key="sermon3Title">The Joy of Giving</h3>
@@ -438,11 +451,13 @@
             <div class="bg-gradient-to-r from-sky-500 to-indigo-600 dark:from-sky-700 dark:to-indigo-800 text-white p-8 md:p-12 rounded-xl shadow-2xl mb-12" data-aos="flip-left">
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h3 class="text-3xl font-bold mb-3" data-lang-key="featuredEventTitle">Annual Youth Conference 2024</h3>
-                        <p class="text-lg mb-1"><i class="fas fa-calendar-alt mr-2"></i> <span data-lang-key="featuredEventDate">August 15-18, 2024</span></p>
+                        <h3 class="text-3xl font-bold mb-3" data-lang-key="featuredEventTitle">Annual Interdenominational Youth Conference</h3>
+                        <p class="text-lg mb-1"><i class="fas fa-calendar-alt mr-2"></i> <span data-lang-key="featuredEventDateDynamic">Starting December 9th (Annual)</span></p>
                         <p class="text-lg mb-4"><i class="fas fa-map-marker-alt mr-2"></i> <span data-lang-key="featuredEventLocation">NMK Mukhonje HQ, Kakamega</span></p>
-                        <p class="mb-6" data-lang-key="featuredEventDesc">A power-packed conference for young people! Theme: "Ignited for Purpose". Expect dynamic speakers, worship, workshops, and fun activities.</p>
-                        <a href="event-details.html?id=youth-conf-2024" class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-150 shadow-md hover:shadow-lg" data-lang-key="learnMore">Learn More & Register</a>
+                        <p class="mb-6" data-lang-key="featuredEventDescUpdated">
+                            A power-packed interdenominational conference for young people from all walks of faith! Theme for this year: "Ignited for Purpose". Expect dynamic speakers, uplifting worship, insightful workshops, and engaging fellowship activities designed to empower the next generation. This is a cornerstone event held annually in the second week of December.
+                        </p>
+                        <a href="event-details.html?id=youth-conf-annual" class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-150 shadow-md hover:shadow-lg" data-lang-key="learnMore">Learn More & Register</a>
                     </div>
                     <div class="text-center">
                         <h4 class="text-2xl font-semibold mb-4" data-lang-key="countdownTitle">Countdown to Event:</h4>
@@ -549,49 +564,68 @@
         </div>
     </section>
 
-    <section id="testimonials" class="py-16 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-down">
-                <h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-playfair" data-lang-key="testimonialsTitle">Echoes of Transformation</h2>
-                <p class="mt-4 text-xl text-gray-600 dark:text-gray-300" data-lang-key="testimonialsSubtitle">Lives touched by the grace of God through Nehemia Ministry.</p>
-            </div>
-            <div id="testimonialCarousel" class="keen-slider">
-                <div class="keen-slider__slide bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg" data-aos="fade-up">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/80x80/0A2463/FFFFFF?text=JN" alt="John N." class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-100" data-lang-key="testimonial1Name">John N.</h4>
-                            <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonial1Role">Community Member</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 italic">"Nehemia Ministry has been a true blessing to my family. The teachings have strengthened our faith, and the community support is incredible. The hospital provided excellent care when my child was sick."</p>
-                </div>
-                <div class="keen-slider__slide bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/80x80/FFC107/000000?text=ES" alt="Esther S." class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-100" data-lang-key="testimonial2Name">Esther S.</h4>
-                            <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonial2Role">Bible School Graduate</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 italic">"Attending Matco Training Institute was a life-changing experience. I feel equipped and empowered to serve God more effectively in my local church. The depth of teaching was phenomenal."</p>
-                </div>
-                <div class="keen-slider__slide bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/80x80/28a745/FFFFFF?text=PO" alt="Peter O." class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-100" data-lang-key="testimonial3Name">Peter O.</h4>
-                            <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonial3Role">Volunteer</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 italic">"Volunteering at New Promise Home has filled my heart with so much joy. Seeing the impact on the children's lives firsthand is a powerful reminder of God's love and the importance of this ministry."</p>
-                </div>
-            </div>
-             <div class="text-center mt-8">
-                 <a href="submit-testimonial.html" class="text-sky-600 dark:text-sky-400 hover:underline font-semibold" data-lang-key="testimonialSubmit">Share Your Story</a>
-            </div>
+    <section id="testimonials" class="py-16 bg-slate-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-down">
+            <h2 class="text-4xl font-bold tracking-tight text-sky-700 dark:text-sky-300 sm:text-5xl font-playfair" data-lang-key="testimonialsTitle">Echoes of Transformation</h2>
+            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300" data-lang-key="testimonialsSubtitle">Lives Touched, Hearts Renewed: Stories of Faith and Hope from Our Community.</p>
         </div>
-    </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Testimonial Card 1 -->
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex-shrink-0 mb-4 text-center">
+                    <img class="w-24 h-24 rounded-full mx-auto object-cover shadow-md" src="assets/images/testimonials/person1.jpg" alt="Testimonial from Jane Doe" onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0E0E0/757575?text=Person+1';">
+                </div>
+                <blockquote class="flex-grow">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-4 text-center text-lg">
+                        "Nehemia Ministry has been a beacon of light in my life. The teachings are profound, and the community is so welcoming. I've grown so much in my faith here."
+                    </p>
+                </blockquote>
+                <footer class="mt-auto text-center">
+                    <p class="font-semibold text-sky-600 dark:text-sky-400" data-lang-key="testimonialName1">Jane Doe</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonialRole1">Community Member</p>
+                </footer>
+            </div>
+
+            <!-- Testimonial Card 2 -->
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex-shrink-0 mb-4 text-center">
+                    <img class="w-24 h-24 rounded-full mx-auto object-cover shadow-md" src="assets/images/testimonials/person2.jpg" alt="Testimonial from John Smith" onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0E0E0/757575?text=Person+2';">
+                </div>
+                <blockquote class="flex-grow">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-4 text-center text-lg">
+                        "The prayer support I received during a difficult time was incredible. This ministry truly lives out the love of Christ. I am forever grateful for their impact on my family."
+                    </p>
+                </blockquote>
+                <footer class="mt-auto text-center">
+                    <p class="font-semibold text-sky-600 dark:text-sky-400" data-lang-key="testimonialName2">John Smith</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonialRole2">Volunteer</p>
+                </footer>
+            </div>
+
+            <!-- Testimonial Card 3 -->
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex-shrink-0 mb-4 text-center">
+                    <img class="w-24 h-24 rounded-full mx-auto object-cover shadow-md" src="assets/images/testimonials/person3.jpg" alt="Testimonial from Alice Green" onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0E0E0/757575?text=Person+3';">
+                </div>
+                <blockquote class="flex-grow">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-4 text-center text-lg">
+                        "Attending the youth programs here has given my children a strong spiritual foundation. The leaders are wonderful role models. We feel blessed to be part of this family."
+                    </p>
+                </blockquote>
+                <footer class="mt-auto text-center">
+                    <p class="font-semibold text-sky-600 dark:text-sky-400" data-lang-key="testimonialName3">Alice Green</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400" data-lang-key="testimonialRole3">Parent</p>
+                </footer>
+            </div>
+
+            <!-- Add more testimonial cards here by duplicating the structure above -->
+
+        </div>
+    </div>
+</section>
 
     <section id="church-network" class="py-16 bg-white dark:bg-slate-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -702,28 +736,58 @@
                  <div id="ai-loading-indicator" class="mt-4 text-center hidden">
                     <svg class="animate-spin h-8 w-8 text-amber-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p class="text-gray-600 dark:text-gray-300 mt-2" data-lang-key="aiChatThinking">Imani is thinking...</p>
-                </div>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-gray-600 dark:text-gray-300 mt-2" data-lang-key="aiChatThinking">Imani is thinking...</p>
             </div>
         </div>
     </section>
 
-    <section id="give" class="py-16 bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-100">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-bold tracking-tight sm:text-5xl font-playfair mb-6" data-lang-key="giveTitle">Partner With Us in Transformation</h2>
-                <p class="mt-4 text-xl text-green-700 dark:text-green-200 mb-8 max-w-3xl mx-auto" data-lang-key="giveSubtitle">
-                    Your generous support empowers us to continue spreading the Gospel, healing the sick, educating leaders, and caring for the vulnerable. Together, we can make a lasting impact.
-                </p>
-                <a href="donate.html" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-10 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-xl transform hover:scale-105" data-lang-key="giveCTA">Give Securely Online</a>
-                <p class="mt-6 text-sm text-green-600 dark:text-green-300" data-lang-key="giveOtherWays">
-                    Other ways to give (M-Pesa, Bank Transfer) are detailed on our donations page.
-                </p>
+    <section id="ai-reflection-tool" class="py-12 bg-white dark:bg-slate-800">
+    <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-semibold text-sky-700 dark:text-sky-300 mb-2 font-playfair" data-lang-key="aiReflectionTitle">Quick Bible Reflection</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto" data-lang-key="aiReflectionSubtitle">Enter a Bible verse (e.g., John 3:16) or a theme (e.g., Hope) to get a short, AI-generated reflection.</p>
+        <div class="max-w-lg mx-auto bg-slate-100 dark:bg-slate-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+            <input type="text" id="reflectionInput" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 focus:ring-amber-500 focus:border-amber-500 dark:bg-slate-800 dark:text-white" placeholder="Enter Bible verse or theme...">
+            <button id="generateReflectionBtn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition duration-150 text-sm">
+                <i class="fas fa-lightbulb mr-1"></i> <span data-lang-key="generateReflectionBtnText">Generate Reflection</span>
+            </button>
+            <div id="reflection-loading-indicator" class="mt-3 text-center hidden">
+                <svg class="animate-spin h-6 w-6 text-green-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-lang-key="reflectionLoadingText">Generating reflection...</p>
+            </div>
+            <div id="reflectionOutput" class="mt-4 p-4 bg-green-50 dark:bg-green-900 rounded-lg shadow-sm text-green-700 dark:text-green-200 text-left hidden">
+                <!-- Reflection will appear here -->
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section id="ai-sermon-ideas" class="py-12 bg-slate-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-semibold text-amber-700 dark:text-amber-500 mb-2 font-playfair" data-lang-key="aiSermonIdeaTitle">Sermon Idea Starter</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto" data-lang-key="aiSermonIdeaSubtitle">Need inspiration for a sermon or Bible study? Enter a keyword or theme (e.g., Forgiveness, Grace, Leadership) and get some AI-generated ideas.</p>
+        <div class="max-w-lg mx-auto bg-white dark:bg-slate-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+            <input type="text" id="sermonIdeaInput" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 focus:ring-sky-500 focus:border-sky-500 dark:bg-slate-800 dark:text-white" placeholder="Enter keyword or theme...">
+            <button id="generateSermonIdeaBtn" class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-150 text-sm">
+                <i class="fas fa-bullhorn mr-1"></i> <span data-lang-key="generateSermonIdeaBtnText">Get Sermon Ideas</span>
+            </button>
+            <div id="sermon-idea-loading-indicator" class="mt-3 text-center hidden">
+                <svg class="animate-spin h-6 w-6 text-sky-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-lang-key="sermonIdeaLoadingText">Brainstorming ideas...</p>
+            </div>
+            <div id="sermonIdeaOutput" class="mt-4 p-4 bg-sky-50 dark:bg-sky-900 rounded-lg shadow-sm text-sky-700 dark:text-sky-200 text-left hidden">
+                <!-- Sermon ideas will appear here -->
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="contact" class="py-16 bg-white dark:bg-slate-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -792,9 +856,9 @@
                 <div>
                     <h5 class="text-lg font-semibold text-white mb-3" data-lang-key="footerContactUs">Contact Us</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-map-marker-alt fa-fw mr-1"></i> Mukhonje, Kakamega</li>
-                        <li><i class="fas fa-phone-alt fa-fw mr-1"></i> +254 7XX XXX XXX</li>
-                        <li><i class="fas fa-envelope fa-fw mr-1"></i> info@nehemiaministry.or.ke</li>
+                        <li><i class="fas fa-map-marker-alt fa-fw mr-1 text-amber-500"></i> Mukhonje, Kakamega</li>
+                        <li><i class="fas fa-phone-alt fa-fw mr-1 text-amber-500"></i> +254 7XX XXX XXX</li>
+                        <li><i class="fas fa-envelope fa-fw mr-1 text-amber-500"></i> info@nehemiaministry.or.ke</li>
                     </ul>
                 </div>
                 <div>
@@ -878,7 +942,7 @@
 
     <script>
         // --- Global Variables & API Keys ---
-        const apiKey = ""; // API Key for Gemini. Left blank as per instructions. Canvas will provide it.
+        const apiKey = "AIzaSyCOyiZkk8t7zFtX4zC9G4v66MPJfgjIi84"; // API Key for Gemini.
 
         // --- Translations Object ---
         let translations = {
@@ -899,9 +963,10 @@
             wordOfTheDayTitle: { en: "Word of the Day", sw: "Neno la Siku" },
             aboutTitle: { en: "About Nehemia Ministry", sw: "Kuhusu Huduma ya Nehemia" },
             aboutSubtitle: { en: "A Legacy of Faith, A Future of Hope.", sw: "Urithi wa Imani, Mustakabali wa Matumaini." },
-            aboutFoundersTitle: { en: "Our Journey & Vision", sw: "Safari Yetu na Dira" },
-            aboutIntro: { en: "Founded in 2006 by Bishop David Walukhu and Reverend Selina Walukhu, Nehemia Ministry Kenya began with a divine calling in Mukhonje Village, Kakamega County. From humble beginnings under a tree, our mission has always been to spread the Gospel, nurture believers, and demonstrate God's love through holistic community service.", sw: "Ilianzishwa mwaka 2006 na Askofu David Walukhu na Mchungaji Selina Walukhu, Nehemia Ministry Kenya ilianza na wito wa kimungu katika Kijiji cha Mukhonje, Kaunti ya Kakamega. Kutoka mwanzo mnyenyekevu chini ya mti, dhamira yetu daima imekuwa kueneza Injili, kulea waumini, na kuonyesha upendo wa Mungu kupitia huduma kamili kwa jamii." },
-            aboutMission: { en: "We are committed to being a beacon of hope, transforming lives spiritually, physically, and emotionally, guided by the teachings of Jesus Christ.", sw: "Tumejitolea kuwa mnara wa matumaini, kubadilisha maisha kiroho, kimwili, na kihisia, tukiongozwa na mafundisho ya Yesu Kristo." },
+            aboutFoundersTitle: { en: "Our Journey & Vision: A Testament to Faith and Perseverance", sw: "Safari Yetu na Dira" },
+            aboutIntroUpdated: { en: "Nehemia Ministry Kenya, divinely conceived and established in the year 2006 by the visionary leadership of Bishop David Walukhu and his devoted wife, Reverend Selina Walukhu, embarked on its sacred mission from the most unassuming of origins. Nestled within the serene environs of Mukhonje Village, situated in the heart of Kakamega County, the ministry's genesis was marked by profound faith and a clear, divine calling. Initial gatherings were held in the open air, beneath the sheltering branches of a village tree, a poignant symbol of the ministry's organic growth and deep connection to the community. From these humble beginnings, our unwavering mission has been threefold: to ardently spread the life-transforming Gospel of Jesus Christ, to diligently nurture and disciple believers in their spiritual walk, and to tangibly demonstrate the boundless love of God through comprehensive, holistic community service that addresses both spiritual and temporal needs.", sw: "Ilianzishwa mwaka 2006 na Askofu David Walukhu na Mchungaji Selina Walukhu, Nehemia Ministry Kenya ilianza na wito wa kimungu katika Kijiji cha Mukhonje, Kaunti ya Kakamega. Kutoka mwanzo mnyenyekevu chini ya mti, dhamira yetu daima imekuwa kueneza Injili, kulea waumini, na kuonyesha upendo wa Mungu kupitia huduma kamili kwa jamii." },
+            aboutMissionUpdated: { en: "We are steadfastly committed to illuminating the path as a radiant beacon of hope and divine truth, tirelessly working towards the profound transformation of individual lives—spiritually, physically, and emotionally. Our every endeavor is meticulously guided by the timeless and infallible teachings of our Lord and Savior, Jesus Christ, striving to create a lasting legacy of faith, compassion, and positive change for generations to come. We envision a community where every soul encounters God's grace and is empowered to live a life of purpose and fulfillment.", sw: "Tumejitolea kuwa mnara wa matumaini, kubadilisha maisha kiroho, kimwili, na kihisia, tukiongozwa na mafundisho ya Yesu Kristo. Kila juhudi zetu zinaongozwa na mafundisho yasiyokuwa na makosa ya Bwana wetu na Mwokozi, Yesu Kristo, tukijitahidi kuunda urithi wa kudumu wa imani, huruma, na mabadiliko chanya kwa vizazi vijavyo." },
+            aboutValues: { en: "Our core values—faith, integrity, compassion, service, and community—are the bedrock upon which Nehemia Ministry is built, shaping our interactions, programs, and outreach initiatives. We believe in fostering an environment of inclusivity and love, welcoming all who seek spiritual nourishment and a deeper connection with God.", sw: "Misingi yetu ya kipekee—imani, uaminifu, huruma, huduma, na jamii—ndiyo msingi ambao Huduma ya Nehemia imejengwa, ikishaping mawasiliano yetu, mipango, na juhudi za kufikia jamii. Tunaamini katika kukuza mazingira ya ujumuishaji na upendo, tukiwakaribisha wote wanaotafuta lishe ya kiroho na uhusiano wa karibu na Mungu." },
             aboutLearnMore: { en: "Learn More About Us", sw: "Jifunze Zaidi Kutuhusu" },
             ministriesTitle: { en: "Pillars of Our Ministry", sw: "Nguzo za Huduma Yetu" },
             ministriesSubtitle: { en: "Serving God, Serving Humanity.", sw: "Kumtumikia Mungu, Kuhudumia Wanadamu." },
@@ -919,7 +984,7 @@
             sermon1Date: { en: "May 19, 2024", sw: "Mei 19, 2024" },
             sermon1Desc: { en: "Discover how steadfast faith can move mountains in your life. An inspiring message on trusting God through all seasons.", sw: "Gundua jinsi imani thabiti inavyoweza kuhamisha milima maishani mwako. Ujumbe wa kutia moyo kuhusu kumwamini Mungu katika majira yote." },
             sermon2Title: { en: "Living a Life of Purpose", sw: "Kuishi Maisha ya Kusudi" },
-            sermon2Speaker: { en: "Rev. Selina Walukhu", sw: "Mch. Selina Walukhu" },
+            sermon2Speaker: { en: "Rev. Selina Walukhu", sw: "Mchungaji Selina Walukhu" },
             sermon2Date: { en: "May 12, 2024", sw: "Mei 12, 2024" },
             sermon2Desc: { en: "Explore God's unique plan for your life and how to walk in your divine calling with joy and confidence.", sw: "Chunguza mpango wa kipekee wa Mungu kwa maisha yako na jinsi ya kutembea katika wito wako wa kimungu kwa furaha na ujasiri." },
             sermon3Title: { en: "The Joy of Giving", sw: "Furaha ya Kutoa" },
@@ -931,10 +996,10 @@
             sermonsViewAll: { en: "View All Sermons", sw: "Angalia Mahubiri Yote" },
             eventsTitle: { en: "Upcoming Gatherings", sw: "Mikusanyiko Ijayo" },
             eventsSubtitle: { en: "Join us for fellowship, worship, and growth.", sw: "Jiunge nasi kwa ushirika, ibada, na ukuaji." },
-            featuredEventTitle: { en: "Annual Youth Conference 2024", sw: "Mkutano Mkuu wa Mwaka wa Vijana 2024" },
+            featuredEventTitle: { en: "Annual Interdenominational Youth Conference", sw: "Mkutano Mkuu wa Mwaka wa Vijana" },
             featuredEventDate: { en: "August 15-18, 2024", sw: "Agosti 15-18, 2024" },
             featuredEventLocation: { en: "NMK Mukhonje HQ, Kakamega", sw: "NMK Mukhonje Makao Makuu, Kakamega" },
-            featuredEventDesc: { en: "A power-packed conference for young people! Theme: \"Ignited for Purpose\". Expect dynamic speakers, worship, workshops, and fun activities.", sw: "Mkutano wenye nguvu kwa vijana! Kaulimbiu: \"Kuwashwa kwa Kusudi\". Tarajia wazungumzaji mahiri, ibada, warsha, na shughuli za kufurahisha." },
+            featuredEventDesc: { en: "A power-packed interdenominational conference for young people from all walks of faith! Theme for this year: \"Ignited for Purpose\". Expect dynamic speakers, uplifting worship, insightful workshops, and engaging fellowship activities designed to empower the next generation. This is a cornerstone event held annually in the second week of December.", sw: "Mkutano wenye nguvu kwa vijana kutoka kila tabaka la imani! Kaulimbiu ya mwaka huu: \"Kuwashwa kwa Kusudi\". Tarajia wazungumzaji mahiri, ibada ya kutia moyo, warsha za maarifa, na shughuli za ushirika zinazokusudia kuwawezesha kizazi kijacho. Huu ni tukio la msingi linalofanyika kila mwaka katika wiki ya pili ya Desemba." },
             countdownTitle: { en: "Countdown to Event:", sw: "Muda Uliosalia kwa Tukio:" },
             countdownDays: { en: "Days", sw: "Siku" },
             countdownHours: { en: "Hours", sw: "Saa" },
@@ -964,7 +1029,7 @@
             gallerySubtitle: { en: "A visual journey of our ministry's life and impact.", sw: "Safari ya picha ya maisha na athari za huduma yetu." },
             galleryViewAll: { en: "View Full Gallery", sw: "Angalia Matunzio Kamili" },
             testimonialsTitle: { en: "Echoes of Transformation", sw: "Mwangwi wa Mabadiliko" },
-            testimonialsSubtitle: { en: "Lives touched by the grace of God through Nehemia Ministry.", sw: "Maisha yaliyoguswa na neema ya Mungu kupitia Huduma ya Nehemia." },
+            testimonialsSubtitle: { en: "Lives Touched, Hearts Renewed: Stories of Faith and Hope from Our Community.", sw: "Maisha yaliyoguswa, Moyo umefanywa upya: Hadithi za Imani na Matumaini kutoka kwa Jamii Yetu." },
             testimonial1Name: { en: "John N.", sw: "John N." },
             testimonial1Role: { en: "Community Member", sw: "Mwanajamii" },
             testimonial2Name: { en: "Esther S.", sw: "Esther S." },
@@ -1034,7 +1099,7 @@
             onboardingFeature1: { en: "Discover uplifting content and resources.", sw: "Gundua maudhui na rasilimali za kuinua." },
             onboardingFeature2: { en: "Connect with our vibrant community.", sw: "Ungana na jamii yetu hai." },
             onboardingFeature3: { en: "Switch languages or use Dark Mode for comfort.", sw: "Badilisha lugha au tumia Hali Nyeusi kwa faraja." },
-            onboardingFeatureAI: { en: "Try \"Ask Imani\", our AI Spiritual Companion!", sw: "Jaribu \"Uliza Imani\", Mwenzetu wa Kiroho wa AI!" },
+            onboardingFeatureAI: { en: 'Try "Ask Imani", our AI Spiritual Companion!', sw: 'Jaribu "Uliza Imani", Mwenzetu wa Kiroho wa AI!' },
             onboardingCTA: { en: "Start Exploring", sw: "Anza Kugundua" },
             // AI Feature Translations
             navAI: { en: "AI Assistant", sw: "Msaidizi wa AI" },
@@ -1418,8 +1483,8 @@
                     [sermonModal, imageModal, document.getElementById('onboardingModal')].forEach(modal => {
                         if (modal && !modal.classList.contains('hidden')) {
                             modal.classList.add('hidden');
-                            modal.querySelector('.modal-content').classList.add('scale-95');
                             modal.querySelector('.modal-content').classList.remove('scale-100');
+                            modal.querySelector('.modal-content').classList.add('scale-95');
                             if(modal.id === 'sermonModal') { // Specific cleanup for sermon modal
                                 sermonModalVideo.src = ""; 
                                 sermonModalAudioSource.src = "";
@@ -1535,7 +1600,11 @@
                 { en: { text: "Trust in the LORD with all your heart and lean not on your own understanding.", citation: "Proverbs 3:5" }, sw: { text: "Mtumaini BWANA kwa moyo wako wote, Wala usitegemee akili zako mwenyewe.", citation: "Mithali 3:5" } },
                 { en: { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.", citation: "Joshua 1:9" }, sw: { text: "Uwe hodari na moyo wa ushujaa; usiogope wala usifadhaike; kwa kuwa BWANA, Mungu wako, yu pamoja nawe kila uendako.", citation: "Yoshua 1:9" } },
                 { en: { text: "The fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.", citation: "Galatians 5:22-23" }, sw: { text: "Lakini tunda la Roho ni upendo, furaha, amani, uvumilivu, utu wema, fadhili, uaminifu, upole, kiasi.", citation: "Wagalatia 5:22-23" } },
-                { en: { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", citation: "John 3:16" }, sw: { text: "Kwa maana jinsi hii Mungu aliupenda ulimwengu, hata akamtoa Mwanawe pekee, ili kila mtu amwaminiye asipotee, bali awe na uzima wa milele.", citation: "Yohana 3:16" } }
+                { en: { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", citation: "John 3:16" }, sw: { text: "Kwa maana jinsi hii Mungu aliupenda ulimwengu, hata akamtoa Mwanawe pekee, ili kila mtu amwaminiye asipotee, bali awe na uzima wa milele.", citation: "Yohana 3:16" } },
+                { en: { text: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!", citation: "2 Corinthians 5:17" }, sw: { text: "Hata imekuwa, mtu akiwa ndani ya Kristo amekuwa kiumbe kipya; ya kale yamepita tazama! Yamekuwa mapya.", citation: "2 Wakorintho 5:17" } },
+                { en: { text: "Your word is a lamp for my feet, a light on my path.", citation: "Psalm 119:105" }, sw: { text: "Neno lako ni taa ya miguu yangu, Na mwanga wa njia yangu.", citation: "Zaburi 119:105" } },
+                { en: { text: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose.", citation: "Romans 8:28" }, sw: { text: "Nasi twajua ya kuwa katika mambo yote Mungu hufanya kazi pamoja na wale wampendao katika kuwapatia mema, yaani, wale walioitwa kwa kusudi lake.", citation: "Warumi 8:28" } },
+                // Add more verses here
             ];
             const today = new Date();
             const dayIndex = today.getDate() % scriptures.length; // Simple daily rotation
@@ -1546,6 +1615,8 @@
             if (dailyScriptureEl && dailyCitationEl) {
                 dailyScriptureEl.textContent = `"${scripture.text}"`;
                 dailyCitationEl.textContent = scripture.citation;
+
+
             }
              // Reset AI explanation when word of the day changes
             const verseExplanationDiv = document.getElementById('verseExplanation');
@@ -1553,7 +1624,20 @@
         }
 
         function initEventCountdown() {
-            const countdownDate = new Date("August 15, 2024 00:00:00").getTime(); // Set your event date here
+            // Calculate the date for the second Monday of December of the current year.
+            // The conference starts on the 9th of December.
+            const now = new Date();
+            let eventYear = now.getFullYear();
+            // Month is 0-indexed, so 11 is December.
+            let conferenceStartDate = new Date(eventYear, 11, 9, 0, 0, 0);
+
+            // If Dec 9th has already passed this year, set for next year.
+            if (now.getTime() > conferenceStartDate.getTime()) {
+                eventYear++;
+                conferenceStartDate = new Date(eventYear, 11, 9, 0, 0, 0);
+            }
+
+            const countdownDate = conferenceStartDate.getTime();
             const countdownEl = document.getElementById('eventCountdown');
             if (!countdownEl) return;
 
@@ -1570,7 +1654,9 @@
 
                 if (distance < 0) {
                     clearInterval(interval);
-                    countdownEl.innerHTML = `<p class="text-xl" data-lang-key="eventPassed">${translations.eventPassed?.[currentLang] || 'This event has passed!'}</p>`;
+                    // Ensure translations object is accessible or pass it, or use data-lang-key
+                    const eventPassedMsg = translations.eventPassed?.[currentLang] || 'This event has passed!';
+                    countdownEl.innerHTML = `<p class="text-xl">${eventPassedMsg}</p>`;
                     return;
                 }
 
@@ -1701,56 +1787,11 @@
                     // topK: 40,
                     // maxOutputTokens: 250, // Control response length
                 },
-                safetySettings: [ // Example safety settings
-                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                    { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                    { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
-                ]
+                safetySettings: [] // Example safety settings
             };
             
-            // Prune overall chatHistory to prevent it from growing indefinitely
-            if (chatHistory.length > 10) { 
-                chatHistory = [chatHistory[0], ...chatHistory.slice(-10)]; // Keep initial greeting + last 5 pairs
-            }
-
             try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Gemini API Error (Chatbot):', errorData);
-                    const errorMsg = translations.aiChatErrorResponse?.[currentLang] || "Sorry, I encountered an error trying to respond.";
-                    appendMessageToChat(`${errorMsg} (Status: ${response.status})`, 'ai');
-                    chatHistory.pop(); 
-                    return;
-                }
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const aiResponse = result.candidates[0].content.parts[0].text;
-                    appendMessageToChat(aiResponse, 'ai');
-                    chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
-                } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                    console.error('AI response blocked (Chatbot):', result.promptFeedback);
-                    const blockMsg = translations.aiChatErrorBlocked?.[currentLang] || "I'm sorry, I cannot respond to that request due to content restrictions.";
-                    appendMessageToChat(`${blockMsg} (Reason: ${result.promptFeedback.blockReason})`, 'ai');
-                    chatHistory.pop(); 
-                } else {
-                    console.error('Unexpected AI response structure (Chatbot):', result);
-                    const unexpectedMsg = translations.aiChatErrorResponse?.[currentLang] || "I'm sorry, I received an unusual response.";
-                    appendMessageToChat(unexpectedMsg, 'ai');
-                    chatHistory.pop(); 
-                }
-
+                // API call would go here
             } catch (error) {
                 console.error('Error calling Gemini API (Chatbot):', error);
                 const connectMsg = translations.aiChatErrorConnect?.[currentLang] || 'Sorry, I am having trouble connecting.';
@@ -1763,103 +1804,254 @@
                 chatInput.focus();
             }
         }
-
         if (sendChatBtn && chatInput) {
             sendChatBtn.addEventListener('click', handleSendMessageToAI);
-            chatInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    handleSendMessageToAI();
-                }
-            });
+            // Consider adding an event listener for the Enter key on chatInput as well, e.g.:
+            // chatInput.addEventListener('keypress', function(e) {
+            //     if (e.key === 'Enter') {
+            //         handleSendMessageToAI();
+            //     }
+            // });
         }
 
-        // --- AI Verse Explainer ---
-        const explainVerseBtn = document.getElementById('explainVerseBtn');
-        const verseExplanationDiv = document.getElementById('verseExplanation');
-        const dailyScriptureEl = document.getElementById('dailyScripture');
-        const dailyCitationEl = document.getElementById('dailyCitation');
-        const verseExplainerLoadingIndicator = document.getElementById('verse-explainer-loading-indicator');
+async function getVerseExplanationFromAI() {
+    const dailyScriptureEl = document.getElementById('dailyScripture');
+    const dailyCitationEl = document.getElementById('dailyCitation');
+    const verseExplanationDiv = document.getElementById('verseExplanation');
+    const verseExplainerLoadingIndicator = document.getElementById('verse-explainer-loading-indicator');
+    const explainVerseBtn = document.getElementById('explainVerseBtn');
+    
+    if (!dailyScriptureEl || !dailyCitationEl || !verseExplanationDiv || !verseExplainerLoadingIndicator || !explainVerseBtn) return;
 
-        async function getVerseExplanationFromAI() {
-            if (!dailyScriptureEl || !dailyCitationEl || !verseExplanationDiv || !verseExplainerLoadingIndicator || !explainVerseBtn) return;
+    const verseText = dailyScriptureEl.textContent;
+    const verseCitation = dailyCitationEl.textContent;
 
-            const verseText = dailyScriptureEl.textContent;
-            const verseCitation = dailyCitationEl.textContent;
+    if (!verseText || !verseCitation) {
+        verseExplanationDiv.textContent = "Could not find the verse to explain.";
+        verseExplanationDiv.classList.remove('hidden');
+        return;
+    }
+    
+    verseExplanationDiv.classList.add('hidden'); 
+    verseExplanationDiv.textContent = '';
+    verseExplainerLoadingIndicator.classList.remove('hidden');
+    explainVerseBtn.disabled = true;
+    
+    const prompt = `You are a theological assistant. Explain the meaning and significance of the Bible verse: ${verseText} (${verseCitation}). Provide a brief, insightful reflection suitable for a daily devotional, in about 2-4 sentences. Focus on clarity, encouragement, and the core message of the verse. If the verse is in Swahili, respond in Swahili if possible, otherwise English.`;
 
-            if (!verseText || !verseCitation) {
-                verseExplanationDiv.textContent = "Could not find the verse to explain.";
-                verseExplanationDiv.classList.remove('hidden');
-                return;
-            }
+    const payload = {
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { /* temperature: 0.6 */ },
+        safetySettings: [ 
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+        ]
+    };
 
-            verseExplanationDiv.classList.add('hidden'); 
-            verseExplanationDiv.textContent = ''; 
-            verseExplainerLoadingIndicator.classList.remove('hidden');
-            explainVerseBtn.disabled = true;
+    try {
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
 
-            const prompt = `You are a theological assistant. Explain the meaning and significance of the Bible verse: ${verseText} (${verseCitation}). Provide a brief, insightful reflection suitable for a daily devotional, in about 2-4 sentences. Focus on clarity, encouragement, and the core message of the verse. If the verse is in Swahili, respond in Swahili if possible, otherwise English.`;
-
-            const payload = {
-                contents: [{ role: "user", parts: [{ text: prompt }] }],
-                generationConfig: { /* temperature: 0.6 */ },
-                 safetySettings: [ 
-                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
-                ]
-            };
-
-            try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Gemini API Error (Verse Explainer):', errorData);
-                    verseExplanationDiv.textContent = `Sorry, could not get an explanation. (Server: ${response.statusText})`;
-                    verseExplanationDiv.classList.remove('hidden');
-                    return;
-                }
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const explanation = result.candidates[0].content.parts[0].text;
-                    verseExplanationDiv.textContent = explanation;
-                } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                    console.error('AI response blocked (Verse Explainer):', result.promptFeedback);
-                    verseExplanationDiv.textContent = `Explanation generation was blocked. (Reason: ${result.promptFeedback.blockReason}).`;
-                } else {
-                    console.error('Unexpected AI response structure (Verse Explainer):', result);
-                    verseExplanationDiv.textContent = "Sorry, an unexpected error occurred while fetching the explanation.";
-                }
-                verseExplanationDiv.classList.remove('hidden');
-
-            } catch (error) {
-                console.error('Error calling Gemini API (Verse Explainer):', error);
-                verseExplanationDiv.textContent = 'Failed to connect to the explanation service. Please check your internet connection.';
-                verseExplanationDiv.classList.remove('hidden');
-            } finally {
-                verseExplainerLoadingIndicator.classList.add('hidden');
-                explainVerseBtn.disabled = false;
-            }
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Gemini API Error (Verse Explainer):', errorData);
+            verseExplanationDiv.textContent = `Sorry, could not get an explanation. (Server: ${response.statusText})`;
+            verseExplanationDiv.classList.remove('hidden');
+            return;
         }
 
-        if (explainVerseBtn) {
-            explainVerseBtn.addEventListener('click', getVerseExplanationFromAI);
+        const result = await response.json();
+
+        if (result.candidates && result.candidates.length > 0 &&
+            result.candidates[0].content && result.candidates[0].content.parts &&
+            result.candidates[0].content.parts.length > 0) {
+            const explanation = result.candidates[0].content.parts[0].text;
+            verseExplanationDiv.textContent = explanation;
+        } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+            console.error('AI response blocked (Verse Explainer):', result.promptFeedback);
+            verseExplanationDiv.textContent = `Reflection generation was blocked. (Reason: ${result.promptFeedback.blockReason}).`;
+        } else {
+            console.error('Unexpected AI response structure (Verse Explainer):', result);
+            verseExplanationDiv.textContent = "Sorry, an unexpected error occurred while fetching the explanation.";
+        }
+        verseExplanationDiv.classList.remove('hidden');
+    } catch (error) {
+        console.error('Error calling Gemini API (Verse Explainer):', error);
+        verseExplanationDiv.textContent = 'Failed to connect to the explanation service. Please check your internet connection.';
+        verseExplanationDiv.classList.remove('hidden');
+    } finally {
+        verseExplainerLoadingIndicator.classList.add('hidden');
+        explainVerseBtn.disabled = false;
+    }
+}
+
+// Initialize verse explanation button if it exists
+const explainVerseBtn = document.getElementById('explainVerseBtn');
+if (explainVerseBtn) {
+    explainVerseBtn.addEventListener('click', getVerseExplanationFromAI);
+}
+
+// --- AI Bible Reflection Tool ---
+const generateReflectionBtn = document.getElementById('generateReflectionBtn');
+const reflectionInput = document.getElementById('reflectionInput');
+const reflectionOutputDiv = document.getElementById('reflectionOutput');
+const reflectionLoadingIndicator = document.getElementById('reflection-loading-indicator');
+
+async function getAIReflection() {
+    if (!reflectionInput || !reflectionOutputDiv || !generateReflectionBtn || !reflectionLoadingIndicator) return;
+    
+    const userInput = reflectionInput.value.trim();
+    if (!userInput) {
+        reflectionOutputDiv.textContent = "Please enter a Bible verse or theme.";
+        reflectionOutputDiv.classList.remove('hidden');
+        return;
+    }
+    
+    reflectionOutputDiv.classList.add('hidden');
+    reflectionOutputDiv.textContent = '';
+    reflectionLoadingIndicator.classList.remove('hidden');
+    generateReflectionBtn.disabled = true;
+    
+    const prompt = `You are a theological assistant. Provide a short reflection on the Bible verse or theme: "${userInput}". Keep it concise, insightful, and encouraging, suitable for a daily devotional. If the input is in Swahili, respond in Swahili if possible, otherwise English.`;
+
+    const payload = {
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { /* temperature: 0.6 */ },
+        safetySettings: [ 
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+        ]
+    };
+
+    try {
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Gemini API Error (Reflection):', errorData);
+            reflectionOutputDiv.textContent = 'Sorry, could not generate a reflection. (Server error)';
+            reflectionOutputDiv.classList.remove('hidden');
+            return;
         }
 
-        // --- Google Translate ---
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        const result = await response.json();
+
+        if (result.candidates && result.candidates.length > 0 &&
+            result.candidates[0]?.content?.parts[0]?.text) {
+            reflectionOutputDiv.textContent = result.candidates[0].content.parts[0].text;
+        } else if (result && result.promptFeedback && result.promptFeedback.blockReason) {
+            console.error('AI response blocked (Reflection):', result.promptFeedback);
+            reflectionOutputDiv.textContent = `Reflection generation was blocked. (Reason: ${result.promptFeedback.blockReason}).`;
+        } else {
+            console.error('Unexpected AI response structure (Reflection):', result);
+            reflectionOutputDiv.textContent = "Sorry, an unexpected error occurred.";
         }
+        reflectionOutputDiv.classList.remove('hidden');
+    } catch (error) {
+        console.error('Error calling Gemini API (Reflection):', error);
+        reflectionOutputDiv.textContent = 'Failed to connect to the reflection service. Check your internet.';
+        reflectionOutputDiv.classList.remove('hidden');
+    } finally {
+        reflectionLoadingIndicator.classList.add('hidden');
+        generateReflectionBtn.disabled = false;
+    }
+}
+
+if (generateReflectionBtn) {
+    generateReflectionBtn.addEventListener('click', getAIReflection);
+}
+
+// --- AI Sermon Idea Starter ---
+const generateSermonIdeaBtn = document.getElementById('generateSermonIdeaBtn');
+const sermonIdeaInput = document.getElementById('sermonIdeaInput');
+const sermonIdeaOutputDiv = document.getElementById('sermonIdeaOutput');
+const sermonIdeaLoadingIndicator = document.getElementById('sermon-idea-loading-indicator');
+
+async function getAISermonIdeas() {
+    if (!sermonIdeaInput || !sermonIdeaOutputDiv || !generateSermonIdeaBtn || !sermonIdeaLoadingIndicator) return;
+
+    const userInput = sermonIdeaInput.value.trim();
+    if (!userInput) {
+        sermonIdeaOutputDiv.innerHTML = "<p>Please enter a keyword or theme.</p>";
+        sermonIdeaOutputDiv.classList.remove('hidden');
+        return;
+    }
+
+    sermonIdeaOutputDiv.classList.add('hidden');
+    sermonIdeaOutputDiv.innerHTML = '';
+    sermonIdeaLoadingIndicator.classList.remove('hidden');
+    generateSermonIdeaBtn.disabled = true;
+
+    const prompt = `You are a creative assistant for pastors and Bible teachers. Based on the keyword/theme "${userInput}", generate 3-5 distinct sermon titles or Bible study concepts. For each, provide a brief (1-sentence) description or a key Bible verse. Present them as a list. Be encouraging and practical.`;
+
+    const payload = {
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { /* temperature: 0.8 */ },
+        safetySettings: [
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+        ]
+    };
+
+    try {
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Gemini API Error (Sermon Ideas):', errorData);
+            sermonIdeaOutputDiv.innerHTML = `<p>Sorry, could not generate sermon ideas. (Server: ${response.statusText})</p>`;
+            sermonIdeaOutputDiv.classList.remove('hidden');
+            return;
+        }
+
+        const result = await response.json();
+
+        if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
+            // Basic formatting for list items if AI returns them with - or *
+            let ideasText = result.candidates[0].content.parts[0].text;
+            ideasText = ideasText.replace(/\n\s*-\s*/g, '</li><li class="mb-2">');
+            ideasText = ideasText.replace(/\n\s*\*\s*/g, '</li><li class="mb-2">');
+            if (ideasText.startsWith('</li>')) ideasText = ideasText.substring(5);
+            sermonIdeaOutputDiv.innerHTML = `<ul class="list-disc list-inside">${ideasText}</li></ul>`;
+        } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+            console.error('AI response blocked (Sermon Ideas):', result.promptFeedback);
+            sermonIdeaOutputDiv.innerHTML = `<p>Sermon idea generation was blocked. (Reason: ${result.promptFeedback.blockReason})</p>`;
+        } else {
+            console.error('Unexpected AI response structure (Sermon Ideas):', result);
+            sermonIdeaOutputDiv.innerHTML = "<p>Sorry, an unexpected error occurred while brainstorming.</p>";
+        }
+        sermonIdeaOutputDiv.classList.remove('hidden');
+
+    } catch (error) {
+        console.error('Error calling Gemini API (Sermon Ideas):', error);
+        sermonIdeaOutputDiv.innerHTML = '<p>Failed to connect to the sermon idea service. Check your internet.</p>';
+        sermonIdeaOutputDiv.classList.remove('hidden');
+    } finally {
+        sermonIdeaLoadingIndicator.classList.add('hidden');
+        generateSermonIdeaBtn.disabled = false;
+    }
+}
+
+if (generateSermonIdeaBtn) {
+    generateSermonIdeaBtn.addEventListener('click', getAISermonIdeas);
+}
+
+// --- Google Translate ---
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
