@@ -1,1 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Sacred Journey | About Nehemia Ministry Kenya</title>
+    <meta name="description" content="Delve into the profound history and divine calling of Nehemia Ministry Kenya. Learn about our founders, Bishop David and Reverend Selina Walukhu, our core beliefs, our historical milestones, and the dedicated team that serves our community with unwavering faith and love.">
+    <meta name="keywords" content="About Nehemia Ministry, Our Story, Church History Kenya, Bishop David Walukhu Biography, Statement of Faith, Christian Leadership Kenya, Mukhonje Church, Kakamega Ministry, Our Mission, Church Team">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <style>
+        /* All styles from index.html are copied here for consistency */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6, .font-lora {
+            font-family: 'Lora', serif;
+        }
+        .font-dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        .font-eb-garamond {
+            font-family: 'EB Garamond', serif;
+        }
+
+        /* Preloader styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.75s ease-out, visibility 0.75s ease-out;
+            visibility: visible;
+            opacity: 1;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        /* Navbar styles */
+        .navbar-custom-bg {
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .navbar-scrolled {
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1), 0 3px 7px -3px rgba(0, 0, 0, 0.07);
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.75rem 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #dd6b20;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover,
+        .nav-link-active {
+            color: #dd6b20 !important;
+        }
+        .nav-link:hover::after,
+        .nav-link-active::after {
+            width: 70%;
+        }
+        @media (max-width: 1023px) {
+            .mobile-menu {
+                background-color: white;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+                border-radius: 0.5rem;
+                padding: 1rem;
+                margin-top: 0.5rem;
+            }
+            .mobile-menu .nav-link {
+                padding: 0.75rem 0.5rem;
+                display: block;
+                border-radius: 0.375rem;
+            }
+            .mobile-menu .nav-link:hover { background-color: #fff5eb; }
+            .mobile-menu .nav-link-active { background-color: #feebc8; color: #c05621 !important; }
+            .mobile-menu .nav-link::after { display: none; }
+        }
+
+        /* Section title styling */
+        .section-title-script {
+            font-family: 'Dancing Script', cursive;
+            color: #c05621;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-title-main {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: #1a202c;
+            font-size: 2.25rem;
+            line-height: 1.25;
+        }
+        @media (min-width: 768px) {
+            .section-title-main { font-size: 2.75rem; }
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background-color: #dd6b20;
+            color: white;
+            box-shadow: 0 4px 6px rgba(221, 107, 32, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #c05621;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 10px rgba(192, 86, 33, 0.3);
+        }
+
+        /* Footer styling */
+        .footer-bg {
+            background-color: #1a202c;
+            color: #a0aec0;
+        }
+        .footer-link:hover {
+            color: #f59e0b;
+            text-decoration: underline;
+        }
+        
+        /* Scroll-based animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #f59e0b;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left { left: 0; }
+        .timeline-container.right { left: 50%; }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #dd6b20;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after { left: -16px; }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #fff5eb;
+            position: relative;
+            border-radius: 8px;
+            border-left: 5px solid #dd6b20;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-container.right { left: 0%; }
+            .timeline-container.left::after, .timeline-container.right::after { left: 15px; }
+        }
+
+        /* Beliefs Section Styles */
+        .belief-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #f59e0b;
+        }
+        .belief-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .belief-icon {
+            font-size: 3rem;
+            color: #c05621;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section Styles */
+        .team-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        .team-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+        }
+        .team-card-content {
+            padding: 1.5rem;
+        }
+        
+        /* Gallery Styles */
+        .gallery-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) { .gallery-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .gallery-grid { column-count: 3; } }
+        .gallery-item {
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Fixed Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white">
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_LpD4mm.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+    </div>
+
+    <!-- Fixed Navigation -->
+    <header id="main-navbar" class="fixed top-0 z-50 w-full navbar-custom-bg">
+        <nav class="container mx-auto px-4 lg:px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex-shrink-0">
+                    <img src="https://placehold.co/180x60/f97316/ffffff?text=Nehemia+Ministry&font=lora" alt="Nehemia Ministry Logo" class="h-10 md:h-12 transition-opacity duration-300 hover:opacity-80">
+                </a>
+
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu" class="text-gray-700 hover:text-orange-600 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                        <span class="sr-only">Open menu</span>
+                    </button>
+                </div>
+
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="nav-link px-3 py-2">Home</a>
+                    <a href="about.html" class="nav-link px-3 py-2 nav-link-active">About Us</a>
+                    <a href="ministries.html" class="nav-link px-3 py-2">Ministries</a>
+                    <a href="sermons.html" class="nav-link px-3 py-2">Sermons</a>
+                    <a href="events.html" class="nav-link px-3 py-2">Events</a>
+                    <a href="index.html#ai-tools-home" class="nav-link px-3 py-2">AI Tools</a>
+                    <a href="prayer-wall.html" class="nav-link px-3 py-2">Prayer Wall</a>
+                    <a href="contact.html" class="nav-link px-3 py-2">Contact</a>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="lg:hidden hidden mobile-menu mt-2">
+                <a href="index.html" class="nav-link block">Home</a>
+                <a href="about.html" class="nav-link block nav-link-active">About Us</a>
+                <a href="ministries.html" class="nav-link block">Ministries</a>
+                <a href="sermons.html" class="nav-link block">Sermons</a>
+                <a href="events.html" class="nav-link block">Events</a>
+                <a href="index.html#ai-tools-home" class="nav-link block">AI Tools</a>
+                <a href="prayer-wall.html" class="nav-link block">Prayer Wall</a>
+                <a href="contact.html" class="nav-link block">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- About Us Hero Section -->
+        <section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white bg-gray-700">
+            <img src="https://images.unsplash.com/photo-1507692049484-3a5f1657654a?q=80&w=2070&auto=format&fit=crop" 
+                 alt="A vibrant congregation worshipping inside a beautiful church" 
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/4A5568/E2E8F0?text=Church+Sanctuary';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent"></div>
+            <div class="relative z-10 text-center p-6 max-w-4xl mx-auto fade-in">
+                <p class="font-dancing-script text-3xl md:text-4xl text-amber-400 mb-4">The Story of His Faithfulness</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 font-lora leading-tight">
+                    Our Sacred Journey: A Chronicle of Faith, Service, and Divine Providence
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl font-light text-gray-200 font-eb-garamond italic max-w-3xl mx-auto">
+                    From a humble seed of a divine calling planted in the hearts of our founders, Nehemia Ministry has blossomed into a sprawling tree of life, offering spiritual shelter, healing, and hope to thousands. This is our story.
+                </p>
+            </div>
+        </section>
+
+        <!-- Founders' In-Depth Biography Section -->
+        <section id="founders-full-bio" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16 fade-in">
+                    <p class="section-title-script">The Vessels of the Vision</p>
+                    <h2 class="section-title-main">An In-Depth Look at Our Beloved Founders</h2>
+                </div>
+                <div class="max-w-7xl mx-auto bg-orange-50/50 p-8 md:p-12 rounded-xl shadow-lg">
+                    <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                        <div class="md:col-span-5 fade-in">
+                            <img src="https://placehold.co/600x750/E2E8F0/4A5568?text=Bishop+David+&+Rev+Selina+Walukhu" 
+                                 alt="An elegant portrait of Bishop David Walukhu and Reverend Selina Walukhu" 
+                                 class="rounded-xl shadow-2xl w-full object-cover aspect-[4/5]">
+                        </div>
+                        <div class="md:col-span-7 text-gray-700 space-y-6 leading-relaxed text-left md:text-lg font-eb-garamond fade-in" style="transition-delay: 0.2s;">
+                            <h3 class="font-lora text-3xl font-bold text-orange-800">Bishop David & Reverend Selina Walukhu</h3>
+                            <p class="italic text-xl text-orange-700 font-lora">"For we are God’s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do." (Ephesians 2:10)</p>
+                            <p>The narrative of Nehemia Ministry is a divine tapestry, intricately woven with the threads of faith, sacrifice, and unwavering obedience of its founders, Bishop David Walukhu and his cherished wife, Reverend Selina Walukhu. Their journey is a powerful testament to what God can accomplish through hearts fully surrendered to His will. Long before the first stone of the ministry was laid, a divine call was stirring in their spirits—a call to rebuild the walls of faith, restore hope to the brokenhearted, and establish a sanctuary where the transformative power of the Gospel could be experienced by all.</p>
+                            <p>Bishop David Walukhu, a man of profound biblical insight and a shepherd's heart, spent his early years in ministry serving with distinction in various capacities, all the while sensing a deeper, more specific purpose that God had ordained for him. This period of preparation was marked by intense prayer, diligent study of the Word, and a growing burden for the spiritual and physical well-being of the people in Kakamega County. In 2006, after a season of profound spiritual encounters, the vision for Nehemia Ministry was birthed—clear, compelling, and divinely mandated. His leadership is characterized by bold, faith-filled preaching that challenges the comfortable and comforts the challenged, coupled with a strategic vision that has seen the ministry grow from a small fellowship into a holistic, community-transforming force.</p>
+                            <p>Standing resolutely by his side is Reverend Selina Walukhu, a woman of extraordinary grace, fervent prayer, and immense spiritual strength. Her journey has been one of deep partnership in the Gospel, providing the essential spiritual backbone and compassionate touch that has defined the ministry's character. With a special anointing for intercession and a deep passion for empowering women and nurturing children, Reverend Selina has been the driving force behind many of the ministry's most impactful outreach programs. She has tirelessly championed the cause of the vulnerable, overseeing the New Promise Home with a mother's love and leading the women's ministry with wisdom and grace. Her life is a beautiful portrait of the Proverbs 31 woman, a pillar of strength and a wellspring of wisdom for the entire congregation.</p>
+                            <p>Together, they are more than just leaders; they are spiritual parents to a generation. They have navigated immense challenges, celebrated countless miracles, and consistently placed the needs of their flock and community above their own. Their shared legacy is not built in brick and mortar, but in the thousands of transformed lives, restored families, and rekindled hopes that are the true testimony of Nehemia Ministry Kenya. Their story is a continuous unfolding of God's faithfulness, an inspiration for all who dare to dream, believe, and step out in faith to answer God's call.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Core Beliefs Section -->
+        <section id="our-beliefs" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16 fade-in">
+                    <p class="section-title-script">The Foundation of Our Faith</p>
+                    <h2 class="section-title-main">What We Believe</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto font-eb-garamond">Our ministry is built upon the unshakable foundation of God's Word. These core tenets of our faith guide our worship, our fellowship, and our service to the world.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="belief-card fade-in">
+                        <i class="fas fa-book-bible belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">The Holy Scriptures</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe the Bible, in its 66 books of the Old and New Testaments, is the inspired, infallible, and authoritative Word of God, the ultimate guide for faith and life.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">2 Timothy 3:16-17</p>
+                    </div>
+                    <div class="belief-card fade-in" style="transition-delay: 0.1s;">
+                        <i class="fas fa-users belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">The Holy Trinity</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe in one God, eternally existing in three distinct persons: the Father, the Son (Jesus Christ), and the Holy Spirit, co-equal in power and glory.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">Matthew 28:19</p>
+                    </div>
+                    <div class="belief-card fade-in" style="transition-delay: 0.2s;">
+                        <i class="fas fa-cross belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">Salvation by Grace</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe that salvation is a free gift from God, received by grace through faith in the atoning sacrifice of Jesus Christ, not by human works or merit.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">Ephesians 2:8-9</p>
+                    </div>
+                    <div class="belief-card fade-in" style="transition-delay: 0.3s;">
+                        <i class="fas fa-hand-holding-heart belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">The Person of Jesus Christ</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe in the deity of our Lord Jesus Christ, in His virgin birth, His sinless life, His miracles, His vicarious and atoning death, His bodily resurrection, and His ascension to the right hand of the Father.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">John 1:1, 14</p>
+                    </div>
+                    <div class="belief-card fade-in" style="transition-delay: 0.4s;">
+                        <i class="fas fa-wind belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">The Holy Spirit</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe in the present ministry of the Holy Spirit, whose indwelling enables believers to live a godly life, empowers them for service, and endows them with spiritual gifts.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">Acts 1:8</p>
+                    </div>
+                    <div class="belief-card fade-in" style="transition-delay: 0.5s;">
+                        <i class="fas fa-church belief-icon"></i>
+                        <h3 class="text-2xl font-lora font-bold text-gray-800 mb-3">The Church & Great Commission</h3>
+                        <p class="font-eb-garamond text-gray-600">We believe in the spiritual unity of all believers in our Lord Jesus Christ, who form the Church. We are mandated by the Great Commission to make disciples of all nations.</p>
+                        <p class="font-eb-garamond text-sm text-orange-700 mt-4 italic">Matthew 28:19-20</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ministry Timeline Section -->
+        <section id="our-history" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <p class="section-title-script">A Journey Marked by Grace</p>
+                    <h2 class="section-title-main">Our Ministry Milestones</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">2006: The Divine Spark</h3>
+                            <p class="text-sm text-gray-500 mb-2">The Genesis of a Movement</p>
+                            <p class="font-eb-garamond text-gray-700">Following a period of intense prayer and seeking, Bishop David Walukhu receives the divine vision for Nehemia Ministry. A small, passionate group begins meeting for fellowship in Mukhonje, laying the spiritual foundation for all that was to come.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">2010: A Haven of Hope</h3>
+                            <p class="text-sm text-gray-500 mb-2">New Promise Home is Born</p>
+                            <p class="font-eb-garamond text-gray-700">With a deep burden for the region's vulnerable children, the ministry establishes the New Promise Home. This wasn't just a building, but a loving sanctuary dedicated to providing care, education, and spiritual nurturing to orphans.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">2015: Healing Hands Extended</h3>
+                            <p class="text-sm text-gray-500 mb-2">Kingdom Faith Based Hospital Opens</p>
+                            <p class="font-eb-garamond text-gray-700">Recognizing the critical need for accessible healthcare, the ministry undertakes its most ambitious project yet. The Kingdom Faith Based Hospital is inaugurated, offering quality, compassionate medical care as a tangible expression of Christ's love.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">2018: Empowering the Next Generation</h3>
+                            <p class="text-sm text-gray-500 mb-2">Launch of Malaha Technical College</p>
+                            <p class="font-eb-garamond text-gray-700">To equip young people with both spiritual truth and practical skills, the Malaha Technical College is launched. This initiative combines theological studies with vocational training, empowering students for life and ministry.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">2022: Expanding the Digital Tent</h3>
+                            <p class="text-sm text-gray-500 mb-2">Global Online Outreach</p>
+                            <p class="font-eb-garamond text-gray-700">Embracing technology for the Gospel, the ministry launches a comprehensive website with sermon archives, online giving, and innovative AI tools, extending its reach far beyond the borders of Kenya to a global audience.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-container right fade-in">
+                        <div class="timeline-content">
+                            <h3 class="font-lora text-xl font-bold text-orange-800">Today & Beyond: The Vision Continues</h3>
+                            <p class="text-sm text-gray-500 mb-2">Pressing Toward the Mark</p>
+                            <p class="font-eb-garamond text-gray-700">Nehemia Ministry continues to grow, driven by the same founding vision: to be a beacon of faith, hope, and love. We are passionately pursuing new avenues of service and discipleship, trusting God for an even greater impact in the years to come.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Team Section -->
+        <section id="our-team" class="py-16 md:py-24 bg-orange-50/50">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16 fade-in">
+                    <p class="section-title-script">Servant Hearts, United in Purpose</p>
+                    <h2 class="section-title-main">Meet Our Pastoral Team</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="team-card fade-in">
+                        <img src="https://placehold.co/400x400/BFDBFE/1E3A8A?text=Pastor+1" alt="Portrait of Associate Pastor" class="team-card-image">
+                        <div class="team-card-content">
+                            <h3 class="text-xl font-lora font-bold text-gray-800">Pastor John Omondi</h3>
+                            <p class="text-orange-700 font-semibold mb-2">Associate Pastor</p>
+                            <p class="font-eb-garamond text-sm text-gray-600">A gifted teacher with a passion for discipleship, Pastor John oversees our small groups and educational programs.</p>
+                        </div>
+                    </div>
+                    <div class="team-card fade-in" style="transition-delay: 0.1s;">
+                        <img src="https://placehold.co/400x400/FBCFE8/831843?text=Pastor+2" alt="Portrait of Youth Pastor" class="team-card-image">
+                        <div class="team-card-content">
+                            <h3 class="text-xl font-lora font-bold text-gray-800">Pastor Grace Wanjiru</h3>
+                            <p class="text-orange-700 font-semibold mb-2">Youth & Worship Pastor</p>
+                            <p class="font-eb-garamond text-sm text-gray-600">Pastor Grace leads our vibrant youth ministry and ushers the congregation into God's presence through worship.</p>
+                        </div>
+                    </div>
+                    <div class="team-card fade-in" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/400x400/D1FAE5/064E3B?text=Pastor+3" alt="Portrait of Outreach Coordinator" class="team-card-image">
+                        <div class="team-card-content">
+                            <h3 class="text-xl font-lora font-bold text-gray-800">Mr. Samuel Koech</h3>
+                            <p class="text-orange-700 font-semibold mb-2">Outreach Coordinator</p>
+                            <p class="font-eb-garamond text-sm text-gray-600">Samuel coordinates our community development projects and local missions, putting faith into action.</p>
+                        </div>
+                    </div>
+                    <div class="team-card fade-in" style="transition-delay: 0.3s;">
+                        <img src="https://placehold.co/400x400/FEE2E2/991B1B?text=Admin+1" alt="Portrait of Ministry Administrator" class="team-card-image">
+                        <div class="team-card-content">
+                            <h3 class="text-xl font-lora font-bold text-gray-800">Mrs. Esther Atieno</h3>
+                            <p class="text-orange-700 font-semibold mb-2">Ministry Administrator</p>
+                            <p class="font-eb-garamond text-sm text-gray-600">The organizational heart of the ministry, Esther ensures that all our operations run smoothly and efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16 fade-in">
+                    <p class="section-title-script">A Glimpse into Our Life</p>
+                    <h2 class="section-title-main">Moments of Faith and Fellowship</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1555581825-380c8ed4a745?q=80&w=1974&auto=format&fit=crop" alt="A joyful church service with hands raised in worship" onerror="this.onerror=null;this.src='https://placehold.co/600x800';"></div>
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1618081464012-a7a721c43710?q=80&w=2070&auto=format&fit=crop" alt="A group of volunteers distributing food to the community" onerror="this.onerror=null;this.src='https://placehold.co/600x400';"></div>
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1541410933248-3a7d5b21c25a?q=80&w=1974&auto=format&fit=crop" alt="Smiling children playing outside the New Promise Home" onerror="this.onerror=null;this.src='https://placehold.co/600x900';"></div>
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1600399152377-50b283442399?q=80&w=1974&auto=format&fit=crop" alt="A pastor laying hands on a person in prayer" onerror="this.onerror=null;this.src='https://placehold.co/600x400';"></div>
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1593125279575-73898a72b6a9?q=80&w=2070&auto=format&fit=crop" alt="A baptism ceremony taking place in a river" onerror="this.onerror=null;this.src='https://placehold.co/600x700';"></div>
+                    <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1580454842295-629839f5202d?q=80&w=2070&auto=format&fit=crop" alt="A small group Bible study session in a home" onerror="this.onerror=null;this.src='https://placehold.co/600x400';"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-bg pt-16 pb-10">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <h5 class="text-xl font-semibold text-white mb-5 font-lora">Nehemia Ministry Kenya</h5>
+                    <p class="text-sm mb-4 leading-relaxed font-eb-garamond">
+                        A dedicated sanctuary of profound faith, enduring hope, and unconditional love, faithfully serving the community of Mukhonje, Kakamega, Kenya, and beyond since our divine inception in 2006.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-xl font-semibold text-white mb-5 font-lora">Explore Our Ministry</h5>
+                    <ul class="space-y-3 font-eb-garamond">
+                        <li><a href="about.html" class="text-sm footer-link"><i class="fas fa-info-circle mr-2 opacity-70"></i>Our Journey & Vision</a></li>
+                        <li><a href="ministries.html" class="text-sm footer-link"><i class="fas fa-church mr-2 opacity-70"></i>Our Diverse Ministries</a></li>
+                        <li><a href="sermons.html" class="text-sm footer-link"><i class="fas fa-book-open mr-2 opacity-70"></i>Sermons & Teachings</a></li>
+                        <li><a href="events.html" class="text-sm footer-link"><i class="fas fa-calendar-alt mr-2 opacity-70"></i>Upcoming Events</a></li>
+                        <li><a href="contact.html" class="text-sm footer-link"><i class="fas fa-envelope-open-text mr-2 opacity-70"></i>Get In Touch</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xl font-semibold text-white mb-5 font-lora">Connect With Us</h5>
+                    <ul class="space-y-3 text-sm font-eb-garamond">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-orange-500"></i> <span class="flex-1">Mukhonje Market, Kakamega North,<br>Kakamega County, Kenya.</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-3 text-orange-500"></i> <a href="tel:+254700000000" class="footer-link">+254 700 000 000 (Sample)</a></li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-orange-500"></i> <a href="mailto:info@nehemiaministry.org" class="footer-link">info@nehemiaministry.org (Sample)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xl font-semibold text-white mb-5 font-lora">Stay Spiritually Nourished</h5>
+                    <p class="text-sm mb-4 font-eb-garamond">Subscribe for uplifting messages, ministry updates, and event notifications.</p>
+                    <form action="#" class="flex mb-4">
+                        <input type="email" placeholder="Your Email" class="w-full px-4 py-2 text-gray-800 rounded-l-md focus:outline-none" aria-label="Email for newsletter">
+                        <button type="submit" title="Subscribe" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-r-md"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm font-eb-garamond">
+                <p>&copy; <span id="currentYear"></span> Nehemia Ministry Kenya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => { preloader.classList.add('hidden'); }, 200);
+            }
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('main-navbar');
+        window.onscroll = () => {
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            }
+        };
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after animation to save resources
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
  
