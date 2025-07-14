@@ -9,223 +9,699 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .animated-button { animation: pulse 2s infinite; }
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Enhanced Reveal Animation */
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(60px) scale(0.95); 
+      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: blur(3px);
+    }
+    .reveal.visible { 
+      opacity: 1; 
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Staggered animations */
+    .reveal:nth-child(1) { transition-delay: 0.1s; }
+    .reveal:nth-child(2) { transition-delay: 0.2s; }
+    .reveal:nth-child(3) { transition-delay: 0.3s; }
+    .reveal:nth-child(4) { transition-delay: 0.4s; }
+    .reveal:nth-child(5) { transition-delay: 0.5s; }
+    .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Floating Animation */
+    .float {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Enhanced Button Animations */
+    .animated-button { 
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .animated-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s;
+    }
+
+    .animated-button:hover::before {
+      left: 100%;
+    }
+
+    .animated-button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Particle Background */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) translateX(0px);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Timeline Enhanced */
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background: #667eea;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+      animation: pulse 2s infinite;
+    }
+
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.85; }
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+      }
+      50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+      }
+    }
+
+    /* Tech Stack Hover Effects */
+    .tech-icon {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+    }
+
+    .tech-icon:hover {
+      transform: translateY(-10px) rotate(5deg) scale(1.1);
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Morphing Background */
+    .morphing-bg {
+      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      background-size: 400% 400%;
+      animation: morphing 15s ease infinite;
+    }
+
+    @keyframes morphing {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Counter Animation Enhancement */
+    .counter-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+    }
+
+    .counter-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+    }
+
+    /* Quote Cards Enhancement */
+    .quote-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.8s;
+    }
+
+    .quote-card:hover::before {
+      left: 100%;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-10px) rotateY(5deg);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #764ba2, #667eea);
     }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
-  <!-- HERO SECTION -->
-  <section class="relative bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 text-white py-24 px-6 text-center overflow-hidden">
+  <!-- ENHANCED HERO SECTION -->
+  <section class="relative morphing-bg text-white py-32 px-6 text-center overflow-hidden min-h-screen flex items-center">
+    <!-- Particle Background -->
+    <div class="particles">
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+    </div>
+
+    <!-- Animated Background Elements -->
+    <div class="absolute top-20 left-20 w-64 h-64 bg-white opacity-5 rounded-full float"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-white opacity-10 rounded-full float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-10 w-16 h-16 bg-white opacity-15 rounded-full float" style="animation-delay: 2s;"></div>
+
+    <!-- Lottie Animation -->
     <div class="absolute top-0 left-0 w-full h-full z-0 opacity-20">
       <lottie-player
         src="https://assets7.lottiefiles.com/packages/lf20_0fhlytwe.json"
         background="transparent"
-        speed="1"
+        speed="0.8"
         style="width: 100%; height: 100%; object-fit: cover;"
         loop autoplay
       ></lottie-player>
     </div>
-    <div class="relative z-10 max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">The Power Trio Fueling Bold Digital Transformation</h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto text-purple-100">
-        At Danco & Team, we don’t just build products — we forge impact. This isn’t your typical dev squad. We’re scientists, artists, and digital warriors designing tomorrow’s infrastructure — today.
-      </p>
-    </div>
-  </section>
 
-  <!-- TIMELINE SECTION -->
-  <section class="py-24 px-6 bg-white">
-    <div class="max-w-4xl mx-auto text-center mb-20">
-      <h2 class="text-4xl font-bold mb-4">Our Journey</h2>
-      <p class="text-gray-600">From humble beginnings to hard-earned breakthroughs. This timeline marks the rise of Danco & Team.</p>
-    </div>
-    <div class="relative border-l-4 border-indigo-500 pl-6 space-y-16 max-w-3xl mx-auto">
-      <div class="reveal">
-        <span class="text-indigo-600 font-bold text-sm">2019</span>
-        <h3 class="text-xl font-semibold">The First Lines of Code</h3>
-        <p class="text-gray-600">In a dusty Nairobi apartment, Daniel began crafting open-source tools by candlelight. That hunger lit the fire.</p>
-      </div>
-      <div class="reveal">
-        <span class="text-indigo-600 font-bold text-sm">2020</span>
-        <h3 class="text-xl font-semibold">The Founders Connect</h3>
-        <p class="text-gray-600">Daniel meets Khadija at a design hackathon. Austin joins after a DEFCON-style CTF. Trust is forged through code.</p>
-      </div>
-      <div class="reveal">
-        <span class="text-indigo-600 font-bold text-sm">2021</span>
-        <h3 class="text-xl font-semibold">Danco & Team Is Born</h3>
-        <p class="text-gray-600">The trio launches their first major client platform. Word spreads. The waitlist grows. They begin to hire.</p>
-      </div>
-      <div class="reveal">
-        <span class="text-indigo-600 font-bold text-sm">2023</span>
-        <h3 class="text-xl font-semibold">AI, Finance, Cyber</h3>
-        <p class="text-gray-600">Expanding globally, the team leads cross-border deployments in fintech, healthcare, and security infrastructure.</p>
-      </div>
-      <div class="reveal">
-        <span class="text-indigo-600 font-bold text-sm">2024 - ∞</span>
-        <h3 class="text-xl font-semibold">The Vision Amplifies</h3>
-        <p class="text-gray-600">Danco & Team doubles down on ML-first design systems, zero-trust architectures, and immersive client platforms.</p>
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <div class="glass-card p-12 mb-8 reveal">
+        <h1 class="text-6xl md:text-8xl font-extrabold leading-tight mb-8 gradient-text">
+          The Power Trio Fueling Bold Digital Transformation
+        </h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 mb-8 leading-relaxed">
+          At Danco & Team, we don't just build products — we forge impact. This isn't your typical dev squad. We're scientists, artists, and digital warriors designing tomorrow's infrastructure — today.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <div class="glass-card px-6 py-3 float">
+            <span class="text-sm font-semibold">🚀 Innovation</span>
+          </div>
+          <div class="glass-card px-6 py-3 float" style="animation-delay: 0.5s;">
+            <span class="text-sm font-semibold">⚡ Performance</span>
+          </div>
+          <div class="glass-card px-6 py-3 float" style="animation-delay: 1s;">
+            <span class="text-sm font-semibold">🔒 Security</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- TECH STACK SHOWCASE -->
-  <section class="py-24 px-6 bg-gray-50">
-    <div class="text-center mb-20">
-      <h2 class="text-4xl font-bold mb-4">Tools We Live By</h2>
-      <p class="text-gray-600">We don’t just use tools — we master them. Here's what powers our digital ecosystem.</p>
+  <!-- ENHANCED TIMELINE SECTION -->
+  <section class="py-32 px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 left-0 w-full h-full" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, #000 2px, #000 4px);"></div>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-6xl mx-auto">
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-python-plain text-5xl text-blue-500"></i>
-        <span class="text-sm text-gray-700">Python</span>
+
+    <div class="max-w-6xl mx-auto text-center mb-20 relative z-10">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 gradient-text reveal">Our Journey</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto reveal">From humble beginnings to hard-earned breakthroughs. This timeline marks the rise of Danco & Team.</p>
+    </div>
+    
+    <div class="relative border-l-4 border-gradient-to-b from-indigo-500 to-purple-600 pl-12 space-y-20 max-w-4xl mx-auto">
+      <div class="timeline-item reveal">
+        <div class="glass-card p-8 hover:shadow-2xl transition-all duration-500">
+          <span class="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">2019</span>
+          <h3 class="text-2xl font-bold mb-3 gradient-text">The First Lines of Code</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">In a dusty Nairobi apartment, Daniel began crafting open-source tools by candlelight. That hunger lit the fire that would eventually burn bright across the digital landscape.</p>
+        </div>
       </div>
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-react-original text-5xl text-cyan-500"></i>
-        <span class="text-sm text-gray-700">React</span>
+      
+      <div class="timeline-item reveal">
+        <div class="glass-card p-8 hover:shadow-2xl transition-all duration-500">
+          <span class="inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">2020</span>
+          <h3 class="text-2xl font-bold mb-3 gradient-text">The Founders Connect</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">Daniel meets Khadija at a design hackathon. Austin joins after a DEFCON-style CTF. Trust is forged through code, friendship through late-night debugging sessions.</p>
+        </div>
       </div>
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-django-plain text-5xl text-green-600"></i>
-        <span class="text-sm text-gray-700">Django</span>
+      
+      <div class="timeline-item reveal">
+        <div class="glass-card p-8 hover:shadow-2xl transition-all duration-500">
+          <span class="inline-block bg-gradient-to-r from-pink-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">2021</span>
+          <h3 class="text-2xl font-bold mb-3 gradient-text">Danco & Team Is Born</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">The trio launches their first major client platform. Word spreads. The waitlist grows. They begin to hire the brightest minds in the industry.</p>
+        </div>
       </div>
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-tailwindcss-plain text-5xl text-sky-400"></i>
-        <span class="text-sm text-gray-700">Tailwind CSS</span>
+      
+      <div class="timeline-item reveal">
+        <div class="glass-card p-8 hover:shadow-2xl transition-all duration-500">
+          <span class="inline-block bg-gradient-to-r from-green-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">2023</span>
+          <h3 class="text-2xl font-bold mb-3 gradient-text">AI, Finance, Cyber</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">Expanding globally, the team leads cross-border deployments in fintech, healthcare, and security infrastructure. Innovation becomes their second nature.</p>
+        </div>
       </div>
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-git-plain text-5xl text-orange-500"></i>
-        <span class="text-sm text-gray-700">Git</span>
-      </div>
-      <div class="flex flex-col items-center space-y-2 reveal">
-        <i class="devicon-aws-plain text-5xl text-yellow-500"></i>
-        <span class="text-sm text-gray-700">AWS</span>
+      
+      <div class="timeline-item reveal">
+        <div class="glass-card p-8 hover:shadow-2xl transition-all duration-500">
+          <span class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">2024 - ∞</span>
+          <h3 class="text-2xl font-bold mb-3 gradient-text">The Vision Amplifies</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">Danco & Team doubles down on ML-first design systems, zero-trust architectures, and immersive client platforms that redefine user experience.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="relative bg-gray-900 text-white py-24 px-6 text-center overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-full bg-fixed bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1542744173-05336fcc7ad4');"></div>
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <h2 class="text-4xl font-bold mb-4">Ready to Build With Us?</h2>
-      <p class="text-lg mb-8 text-gray-300">
-        Whether you're launching your startup, scaling your analytics, or reinforcing your digital fortress — we're the squad that makes it real. No bloated teams. No fluff. Just precision.
-      </p>
-      <a href="https://calendly.com/yourname/15min" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 transition px-8 py-3 rounded-lg font-semibold text-white shadow-lg animated-button">Schedule a Free Consultation</a>
-      <p class="mt-6 text-sm text-gray-500">We'll help you architect your vision, one brilliant line of code at a time.</p>
+  <!-- ENHANCED TECH STACK SHOWCASE -->
+  <section class="py-32 px-6 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="text-center mb-20 relative z-10">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 reveal">Tools We Live By</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto reveal">We don't just use tools — we master them. Here's what powers our digital ecosystem and drives our innovation.</p>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-12 max-w-6xl mx-auto relative z-10">
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-python text-4xl text-blue-400"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">Python</span>
+      </div>
+      
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-react text-4xl text-cyan-400"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">React</span>
+      </div>
+      
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-js-square text-4xl text-yellow-400"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">JavaScript</span>
+      </div>
+      
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-node-js text-4xl text-green-400"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">Node.js</span>
+      </div>
+      
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-git-alt text-4xl text-orange-400"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">Git</span>
+      </div>
+      
+      <div class="flex flex-col items-center space-y-4 tech-icon reveal">
+        <div class="glass-card p-6 w-20 h-20 flex items-center justify-center">
+          <i class="fab fa-aws text-4xl text-orange-300"></i>
+        </div>
+        <span class="text-sm text-gray-300 font-semibold">AWS</span>
+      </div>
     </div>
   </section>
 
+  <!-- ENHANCED METRICS DASHBOARD -->
+  <section class="py-32 px-6 bg-gradient-to-br from-white to-gray-100 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto text-center mb-20">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 gradient-text reveal">Impact in Numbers</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto reveal">We let the data speak. Here's a glimpse of our footprint and firepower across the digital landscape.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div class="counter-card p-8 rounded-2xl text-center reveal">
+        <div class="text-6xl font-bold text-indigo-600 mb-4" id="projectsCount">0</div>
+        <p class="text-gray-700 text-lg font-semibold">Projects Deployed</p>
+        <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full" style="width: 76%;"></div>
+        </div>
+      </div>
+      
+      <div class="counter-card p-8 rounded-2xl text-center reveal">
+        <div class="text-6xl font-bold text-green-600 mb-4" id="uptime">0%</div>
+        <p class="text-gray-700 text-lg font-semibold">Uptime Guaranteed</p>
+        <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full" style="width: 99%;"></div>
+        </div>
+      </div>
+      
+      <div class="counter-card p-8 rounded-2xl text-center reveal">
+        <div class="text-6xl font-bold text-yellow-600 mb-4" id="clients">0</div>
+        <p class="text-gray-700 text-lg font-semibold">Happy Clients</p>
+        <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full" style="width: 85%;"></div>
+        </div>
+      </div>
+      
+      <div class="counter-card p-8 rounded-2xl text-center reveal">
+        <div class="text-6xl font-bold text-pink-600 mb-4" id="countries">0</div>
+        <p class="text-gray-700 text-lg font-semibold">Countries Served</p>
+        <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-pink-500 to-rose-600 rounded-full" style="width: 60%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED FOUNDER QUOTES -->
+  <section class="py-32 px-6 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-1/4 left-1/6 w-32 h-32 border border-white rounded-full animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/6 w-24 h-24 border border-white rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 right-1/3 w-16 h-16 border border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto text-center mb-20 relative z-10">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 reveal">Words We Live By</h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto reveal">The heartbeat of our work is conviction. Here's what each founder believes in — fiercely and passionately.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-12 max-w-7xl mx-auto relative z-10">
+      <div class="quote-card p-10 rounded-3xl reveal">
+        <div class="text-6xl text-indigo-400 mb-6">"</div>
+        <p class="text-xl italic mb-6 leading-relaxed">Code is the sharpest weapon in the digital revolution — wield it with precision and purpose.</p>
+        <div class="flex items-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mr-4">D</div>
+          <div>
+            <p class="font-bold text-indigo-400 text-lg">Daniel Wanjala</p>
+            <p class="text-gray-400 text-sm">Lead Developer & Co-Founder</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="quote-card p-10 rounded-3xl reveal">
+        <div class="text-6xl text-yellow-400 mb-6">"</div>
+        <p class="text-xl italic mb-6 leading-relaxed">Design isn't what it looks like. It's how the user *feels* two seconds after touching it.</p>
+        <div class="flex items-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-full flex items-center justify-center text-2xl font-bold mr-4">K</div>
+          <div>
+            <p class="font-bold text-yellow-400 text-lg">Khadija</p>
+            <p class="text-gray-400 text-sm">UX/UI Designer & Co-Founder</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="quote-card p-10 rounded-3xl reveal">
+        <div class="text-6xl text-green-400 mb-6">"</div>
+        <p class="text-xl italic mb-6 leading-relaxed">If your app isn't secure, you don't have a product — you have a liability.</p>
+        <div class="flex items-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mr-4">A</div>
+          <div>
+            <p class="font-bold text-green-400 text-lg">Austin Wopata</p>
+            <p class="text-gray-400 text-sm">Security Expert & Co-Founder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED CALL TO ACTION -->
+  <section class="relative morphing-bg text-white py-32 px-6 text-center overflow-hidden">
+    <!-- Floating Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white/20 rounded-full float"></div>
+    <div class="absolute bottom-10 right-10 w-32 h-32 border-2 border-white/20 rounded-full float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 right-20 w-16 h-16 border-2 border-white/20 rounded-full float" style="animation-delay: 2s;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <div class="glass-card p-12 reveal">
+        <h2 class="text-5xl md:text-6xl font-bold mb-8">Ready to Build With Us?</h2>
+        <p class="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
+          Whether you're launching your startup, scaling your analytics, or reinforcing your digital fortress — we're the squad that makes it real. No bloated teams. No fluff. Just precision.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+          <a href="https://calendly.com/yourname/15min" target="_blank" class="animated-button px-12 py-4 rounded-2xl font-bold text-xl text-white shadow-2xl inline-flex items-center">
+            Schedule a Free Consultation
+            <i class="fas fa-rocket ml-3 text-xl"></i>
+          </a>
+          
+          <a href="#portfolio" class="glass-card px-8 py-4 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 inline-flex items-center">
+            View Our Work
+            <i class="fas fa-eye ml-3"></i>
+          </a>
+        </div>
+        
+        <p class="text-sm text-white/70 max-w-lg mx-auto">
+          We'll help you architect your vision, one brilliant line of code at a time. Join over 120+ satisfied clients worldwide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Scripts -->
   <script>
-    const reveals = document.querySelectorAll('.reveal');
-    window.addEventListener('scroll', () => {
-      for (const el of reveals) {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 50) el.classList.add('visible');
-      }
+    // Enhanced reveal animation with intersection observer
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
-  </script>
 
-  <!-- previous content remains unchanged -->
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
 
-<!-- LIVE METRICS DASHBOARD -->
-<section class="py-24 px-6 bg-white">
-  <div class="max-w-6xl mx-auto text-center mb-16">
-    <h2 class="text-4xl font-bold mb-4">Impact in Numbers</h2>
-    <p class="text-gray-600">We let the data speak. Here's a glimpse of our footprint and firepower.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
-    <div class="reveal">
-      <p class="text-5xl font-bold text-indigo-600" id="projectsCount">0</p>
-      <p class="text-gray-700 mt-2">Projects Deployed</p>
-    </div>
-    <div class="reveal">
-      <p class="text-5xl font-bold text-green-500" id="uptime">0%</p>
-      <p class="text-gray-700 mt-2">Uptime Guaranteed</p>
-    </div>
-    <div class="reveal">
-      <p class="text-5xl font-bold text-yellow-500" id="clients">0</p>
-      <p class="text-gray-700 mt-2">Happy Clients</p>
-    </div>
-    <div class="reveal">
-      <p class="text-5xl font-bold text-pink-500" id="countries">0</p>
-      <p class="text-gray-700 mt-2">Countries Served</p>
-    </div>
-  </div>
-</section>
+    // Enhanced counter animation
+    function animateValue(id, start, end, duration, suffix = "") {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      
+      let timer = setInterval(function () {
+        current += increment;
+        obj.textContent = current + suffix;
+        if (current == end) {
+          clearInterval(timer);
+          // Add completion animation
+          obj.style.transform = 'scale(1.1)';
+          setTimeout(() => {
+            obj.style.transform = 'scale(1)';
+          }, 200);
+        }
+      }, stepTime);
+    }
 
-<!-- FOUNDER QUOTES -->
-<section class="py-24 px-6 bg-gradient-to-tr from-gray-900 to-gray-800 text-white">
-  <div class="max-w-5xl mx-auto text-center mb-16">
-    <h2 class="text-4xl font-bold mb-4">Words We Live By</h2>
-    <p class="text-gray-400">The heartbeat of our work is conviction. Here's what each founder believes in — fiercely.</p>
-  </div>
-  <div class="grid md:grid-cols-3 gap-12">
-    <div class="bg-gray-900 p-6 rounded-xl shadow-xl reveal">
-      <p class="text-xl italic mb-4">"Code is the sharpest weapon in the digital revolution — wield it with precision and purpose."</p>
-      <p class="font-bold text-indigo-400">— Daniel Wanjala</p>
-    </div>
-    <div class="bg-gray-900 p-6 rounded-xl shadow-xl reveal">
-      <p class="text-xl italic mb-4">"Design isn’t what it looks like. It’s how the user *feels* two seconds after touching it."</p>
-      <p class="font-bold text-yellow-400">— Khadija</p>
-    </div>
-    <div class="bg-gray-900 p-6 rounded-xl shadow-xl reveal">
-      <p class="text-xl italic mb-4">"If your app isn’t secure, you don’t have a product — you have a liability."</p>
-      <p class="font-bold text-green-400">— Austin Wopata</p>
-    </div>
-  </div>
-</section>
+    // Counter trigger with enhanced detection
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          
+          // Staggered counter animations
+          setTimeout(() => animateValue("projectsCount", 0, 76, 2000), 300);
+          setTimeout(() => animateValue("uptime", 0, 99, 2000, "%"), 600);
+          setTimeout(() => animateValue("clients", 0, 120, 2000), 900);
+          setTimeout(() => animateValue("countries", 0, 19, 2000), 1200);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
 
-<!-- SCRIPTED COUNTER ANIMATION -->
-<script>
-  function animateValue(id, start, end, duration, suffix = "") {
-    let range = end - start;
-    let current = start;
-    let increment = end > start ? 1 : -1;
-    let stepTime = Math.abs(Math.floor(duration / range));
-    let obj = document.getElementById(id);
-    let timer = setInterval(function () {
-      current += increment;
-      obj.textContent = current + suffix;
-      if (current == end) clearInterval(timer);
-    }, stepTime);
-  }
-
-  window.addEventListener('scroll', () => {
     const counters = document.querySelectorAll('#projectsCount, #uptime, #clients, #countries');
-    for (const el of counters) {
-      const top = el.getBoundingClientRect().top;
-      if (!el.classList.contains('counted') && top < window.innerHeight) {
-        el.classList.add('counted');
-        animateValue("projectsCount", 0, 76, 1500);
-        animateValue("uptime", 0, 99, 1500, "%");
-        animateValue("clients", 0, 120, 1500);
-        animateValue("countries", 0, 19, 1500);
+    counters.forEach(counter => {
+      counterObserver.observe(counter.parentElement);
+    });
+
+    // Enhanced particle generation
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      
+      const particlesContainer = document.querySelector('.particles');
+      if (particlesContainer) {
+        particlesContainer.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 25000);
       }
     }
-  });
-</script>
-    <script>
-        // Initialize SplitType for animated text
-        document.querySelectorAll('.reveal').forEach(el => {
-        new SplitType(el, { types: 'lines, words, chars' });
-        });
-    
-        // Trigger reveal on scroll
-        window.addEventListener('scroll', () => {
-        document.querySelectorAll('.reveal').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 50) {
-            el.classList.add('visible');
-            }
-        });
-        });
-    </script>
+
+    // Create particles periodically
+    setInterval(createParticle, 2000);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Loading animation for buttons
+    document.querySelectorAll('.animated-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        if (this.href && this.href.includes('calendly')) {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<div class="spinner"></div>';
+          
+          setTimeout(() => {
+            this.innerHTML = originalText;
+          }, 2000);
+        }
+      });
+    });
+
+    // Tech icon interactions
+    document.querySelectorAll('.tech-icon').forEach(icon => {
+      icon.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) rotate(5deg) scale(1.1)';
+      });
+      
+      icon.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotate(0deg) scale(1)';
+      });
+    });
+  </script>
 
 </body>
 </html>
