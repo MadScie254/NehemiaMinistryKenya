@@ -3,286 +3,884 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danco & Khadija - Who We Are</title>
-    <!-- Same head elements as in index.html -->
+    <title>Who We Are - Danco & Khadija</title>
+    <link rel="icon" href="https://placehold.co/32x32/7c3aed/ffffff?text=DK" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    
-    <!-- Core Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* Same theme variables as in index.html */
+        /* --- Theme Variables (Copied from index.html for consistency) --- */
         :root {
-            --bg-primary: #f3f4f6;
-            --bg-secondary: #ffffff;
-            --bg-accent: #e5e7eb;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --text-accent: #0ea5e9;
-            --gradient-start: #1e40af;
-            --gradient-mid: #0d9488;
-            --gradient-end: #047857;
+            --bg-primary: #f3f4f6; --bg-secondary: #ffffff; --bg-accent: #e5e7eb;
+            --text-primary: #1f2937; --text-secondary: #4b5563; --text-accent: #0ea5e9;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --gradient-start: #1e40af; --gradient-mid: #0d9488; --gradient-end: #047857;
+            --glass-bg: rgba(255, 255, 255, 0.5); --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-color: rgba(14, 165, 233, 0.15);
+            --hero-overlay-bg: rgba(248, 250, 252, 0.6);
         }
 
+        .dark-mode {
+            --bg-primary: #0a0a23; --bg-secondary: #111827; --bg-accent: #1f2937;
+            --text-primary: #e0e0ff; --text-secondary: #9ca3af; --text-accent: #38bdf8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --gradient-start: #2563eb; --gradient-mid: #14b8a6; --gradient-end: #059669;
+            --glass-bg: rgba(31, 41, 55, 0.4); --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(56, 189, 248, 0.25);
+            --hero-overlay-bg: rgba(17, 24, 39, 0.5);
+        }
+
+        /* --- Base Styles --- */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-
-        .who-we-are {
-            padding: 120px 0;
-            background: var(--bg-secondary);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .team-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            padding: 60px 20px;
-        }
-
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .team-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 5px solid var(--text-accent);
-            overflow: hidden;
-        }
-
-        .team-image img {
-            object-fit: cover;
+        
+        /* Particle background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+        }
+        .dark-mode #particle-canvas { opacity: 0.3; }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
-        .team-name {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: 80px; }
 
-        .team-title {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
+        /* --- Navigation (Copied from index.html) --- */
+        #main-header { 
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
-
-        .team-description {
-            line-height: 1.6;
-            margin-bottom: 20px;
+        #main-header.scrolled {
+            background: var(--glass-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+        .dark-mode #main-header.scrolled {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-
-        .skill {
-            background: var(--skill-icon-bg);
-            color: var(--skill-icon-text);
-            padding: 8px 12px;
-            border-radius: 20px;
+        .nav-link {
+            color: var(--text-primary);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            padding: 0.5rem 0.6rem;
             font-size: 0.9rem;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover { color: var(--text-accent); }
+        .nav-link.active { color: var(--text-accent); font-weight: 600; border-bottom-color: var(--text-accent); }
+        #mobile-menu { background-color: var(--bg-accent); border-top: 1px solid var(--border-color); }
+        .dark-mode #mobile-menu { background-color: var(--bg-accent); }
+        #mobile-menu a { color: var(--text-primary); display: block; padding: 0.75rem 1.5rem; }
+        #mobile-menu a:hover { background-color: var(--bg-primary); }
+        #mobile-menu a.active { color: var(--text-accent); font-weight: 600; background-color: var(--bg-primary); }
+        #theme-toggle, #theme-toggle-mobile {
+            background: none; border: none; color: var(--text-secondary); cursor: pointer;
+            font-size: 1.25rem; transition: color 0.3s ease; padding: 0.5rem;
+        }
+        #theme-toggle:hover, #theme-toggle-mobile:hover { color: var(--text-accent); }
+
+        /* --- Page-Specific Hero --- */
+        .page-hero {
+            padding: 10rem 1.5rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--gradient-start) 15%, transparent), color-mix(in srgb, var(--gradient-end) 15%, transparent));
+        }
+        .page-hero h1 {
+            color: var(--text-primary);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .page-hero p {
+            color: var(--text-secondary);
+        }
+        .dark-mode .page-hero h1 { color: var(--text-primary); }
+        .dark-mode .page-hero p { color: var(--text-secondary); }
+
+        /* --- Content Card (reused and enhanced) --- */
+        .content-card { 
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem; 
+            padding: 2rem; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dark-mode .content-card { box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+
+        /* --- Timeline Section for "Our Journey" --- */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--text-accent);
+            opacity: 0.3;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left { left: 0; }
+        .timeline-container.right { left: 50%; }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-secondary);
+            border: 4px solid var(--text-accent);
+            top: 28px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after { left: -10px; }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--bg-secondary);
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-content h3 { color: var(--text-accent); }
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 20px; }
+            .timeline-container { width: 100%; padding-left: 60px; padding-right: 15px; }
+            .timeline-container.right { left: 0%; }
+            .timeline-container.left::after, .timeline-container.right::after { left: 12px; }
+        }
+
+        /* --- Team Section: "Our Core Innovators" --- */
+        .team-card {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+        .team-card-bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, color-mix(in srgb, var(--text-accent) 20%, transparent) 0%, transparent 70%);
+            transition: opacity 0.5s ease;
+            opacity: 0;
+            z-index: 0;
+            animation: rotate-bg 20s linear infinite;
+        }
+        @keyframes rotate-bg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .team-card:hover .team-card-bg { opacity: 0.3; }
+        .team-card-content { position: relative; z-index: 1; }
+        .team-image-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+        }
+        .team-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg-secondary);
+            box-shadow: 0 0 0 4px var(--text-accent);
+            transition: transform 0.4s ease;
+        }
+        .team-card:hover .team-image-wrapper img {
+            transform: scale(1.1);
+        }
+        .team-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .team-card .title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-accent);
+            margin-bottom: 1rem;
+        }
+        .team-card .description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: left;
+        }
+        .team-social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .team-social-links a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .team-social-links a:hover {
+            color: var(--text-accent);
+            transform: scale(1.2);
+        }
+
+        /* --- Scroll Animation --- */
+        .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .reveal-up.visible { opacity: 1; transform: translateY(0); }
+        
+        /* --- Buttons --- */
+        .cta-button { 
+            transition: all 0.3s ease; 
+            padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; display: inline-block; text-align: center;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid)); color: white;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px); box-shadow: 0 6px 20px color-mix(in srgb, var(--shadow-color) 130%, black);
+        }
+
+        /* --- Enhanced Footer --- */
+        .site-footer {
+            background-color: var(--bg-accent);
+            color: var(--text-secondary);
+            padding: 4rem 1.5rem 2rem;
+            position: relative;
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark-mode .site-footer {
+            background-color: #0f172a; /* A darker blue-gray */
+        }
+        .footer-logo {
+            display: inline-block;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .footer-tagline {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 350px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-socials a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-socials a:hover {
+            color: var(--text-accent);
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            position: relative;
+        }
+        .footer-links a:hover {
+            color: var(--text-accent);
+            padding-left: 5px;
+        }
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+        .local-time {
+            display: flex;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 45px;
+            height: 45px;
+            background: var(--text-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            background: color-mix(in srgb, var(--text-accent) 80%, black);
         }
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navbar from index.html -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glassmorphic">
+
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header (Copied from index.html, 'active' class updated) -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
-            <a href="#hero" class="flex-shrink-0 flex items-center" title="Danco & Khadija Home">
+            <a href="index.html" class="flex-shrink-0 flex items-center" title="Danco & Khadija Home">
                 <span class="text-xl md:text-2xl font-bold gradient-text">Danco & Khadija</span>
             </a>
             <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-wrap justify-end">
-                <a href="#who-we-are" class="nav-link active">Who We Are</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#our-process" class="nav-link">Our Process</a>
-                <a href="#tech-skills" class="nav-link">Expertise</a>
-                <a href="who_we_are.html" class="nav-link">Who We Are</a>
-                <a href="#portfolio" class="nav-link">Our Work</a>
-                <a href="#publications" class="nav-link">Publications</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="index.html#hero" class="nav-link">Home</a>
+                <a href="who_we_are.html" class="nav-link active">Who We Are</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#our-process" class="nav-link">Our Process</a>
+                <a href="index.html#tech-skills" class="nav-link">Expertise</a>
+                <a href="index.html#portfolio" class="nav-link">Our Work</a>
+                <a href="index.html#publications" class="nav-link">Publications</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
                 <button id="theme-toggle" title="Toggle Theme" class="ml-2">
                     <i class="fas fa-sun"></i>
                 </button>
             </div>
             <div class="lg:hidden flex items-center space-x-3">
-                <button id="theme-toggle-mobile" class="text-xl" title="Toggle Theme">
-                    <i class="fas fa-sun"></i>
-                </button>
-                <button id="mobile-menu-button" class="focus:outline-none text-2xl" title="Toggle Mobile Menu">
+                 <button id="theme-toggle-mobile" class="text-xl" title="Toggle Theme">
+                     <i class="fas fa-sun"></i>
+                 </button>
+                 <button id="mobile-menu-button" class="focus:outline-none text-2xl" title="Toggle Mobile Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
         <div id="mobile-menu" class="hidden lg:hidden">
-            <!-- Mobile menu content -->
+            <a href="index.html#hero" class="block px-4 py-2">Home</a>
+            <a href="who_we_are.html" class="active block px-4 py-2">Who We Are</a>
+            <a href="index.html#services" class="block px-4 py-2">Services</a>
+            <a href="index.html#our-process" class="block px-4 py-2">Our Process</a>
+            <a href="index.html#tech-skills" class="block px-4 py-2">Expertise</a>
+            <a href="index.html#portfolio" class="block px-4 py-2">Our Work</a>
+            <a href="index.html#publications" class="block px-4 py-2">Publications</a>
+            <a href="index.html#contact" class="block px-4 py-2">Contact</a>
         </div>
     </header>
 
-    <section class="who-we-are">
-        <div class="container mx-auto px-4">
-            <div class="hero-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Architects of Digital Transformation
-                </h2>
-                <p class="text-lg md:text-xl text-secondary max-w-3xl mx-auto">
-                    We are Danco & Khadija, a dynamic partnership combining technical expertise with strategic insight to create intelligent digital solutions that drive real impact.
+    <main>
+        <!-- Page Hero Section -->
+        <section class="page-hero">
+            <div class="container mx-auto px-6 relative z-10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 reveal-up">The Minds Behind the Mission</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto reveal-up" style="transition-delay: 0.2s;">
+                    We are more than just developers and strategists; we are architects of the digital future, driven by a shared passion for innovation, intelligence, and impact.
                 </p>
             </div>
+        </section>
 
-            <div class="team-section">
-                <!-- Daniel Wanjala -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://placehold.co/200x200" alt="Daniel Wanjala">
+        <!-- Our Genesis Section -->
+        <section id="genesis" class="py-16 md:py-24 bg-primary">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="reveal-up">
+                        <img src="https://placehold.co/600x450/111827/38bdf8?text=Genesis" alt="Abstract image representing ideas and collaboration" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
-                    <h3 class="team-name">Daniel Wanjala</h3>
-                    <p class="team-title">Chief Technical Architect</p>
-                    <p class="team-description">
-                        With a deep expertise in software development and data science, Daniel leads our technical strategy, ensuring our solutions are scalable, efficient, and未来-proof.
-                    </p>
-                    <div class="skills">
-                        <span class="skill">
-                            <i class="fas fa-code"></i> Python
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-brain"></i> Machine Learning
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-database"></i> Database Architecture
-                        </span>
+                    <div class="reveal-up" style="transition-delay: 0.2s;">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="gradient-text">Genesis</span></h2>
+                        <p class="text-secondary mb-4 leading-relaxed">
+                            Danco & Khadija was born from a convergence of two powerful forces: a deep-seated expertise in the intricate world of data science and artificial intelligence, and a visionary approach to strategic digital transformation. We saw a critical gap between raw technological capability and its meaningful application to solve real-world business challenges.
+                        </p>
+                        <p class="text-secondary leading-relaxed">
+                            Our partnership was forged in the crucible of shared ambition—to not just build software, but to engineer holistic solutions. We believe that the most profound impact is achieved when elegant code, intelligent algorithms, and strategic foresight coalesce into a singular, seamless experience. This is our founding principle and the promise we bring to every collaboration.
+                        </p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Khadija Khalid -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://placehold.co/200x200" alt="Khadija Khalid">
-                    </div>
-                    <h3 class="team-name">Khadija Khalid</h3>
-                    <p class="team-title">Chief Strategy Officer</p>
-                    <p class="team-description">
-                        Khadija brings extensive experience in digital strategy and business development, shaping our approach to align with client objectives and market trends.
+        <!-- Our Core Innovators Section -->
+        <section id="our-team" class="py-16 md:py-24 bg-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16 reveal-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Our Core Innovators</h2>
+                    <p class="text-lg text-secondary max-w-3xl mx-auto">
+                        Meet the dedicated leadership team steering our vision. A blend of technical mastery, strategic acumen, and unwavering commitment to security forms the bedrock of our success.
                     </p>
-                    <div class="skills">
-                        <span class="skill">
-                            <i class="fas fa-chart-line"></i> Strategy Planning
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-lightbulb"></i> Innovation
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-team"></i> Collaboration
-                        </span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Team Member 1: Daniel Wanjala -->
+                    <div class="team-card reveal-up">
+                        <div class="team-card-bg"></div>
+                        <div class="team-card-content">
+                            <div class="team-image-wrapper">
+                                <img src="https://avatars.githubusercontent.com/u/88295552?v=4" alt="Daniel Wanjala" onerror="this.onerror=null;this.src='https://placehold.co/150x150/0a0a23/e0e0ff?text=DW';">
+                            </div>
+                            <h3>Daniel Wanjala</h3>
+                            <p class="title">Chief Technical Architect</p>
+                            <p class="description">
+                                Daniel is the master architect of our technological ecosystem. With a profound and expansive background in full-stack development, machine learning engineering, and scalable cloud infrastructure, he translates complex business requirements into elegant, robust, and future-proof technical solutions. His relentless pursuit of innovation ensures that our platforms are not only built on cutting-edge technologies like Django, React, and TensorFlow, but are also optimized for peak performance, security, and scalability. Daniel's vision extends beyond mere code; he engineers comprehensive systems designed for long-term growth and adaptability, ensuring every project is a testament to technical excellence and strategic foresight.
+                            </p>
+                            <div class="team-social-links">
+                                <a href="https://github.com/madscie254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/daniel-wanjala-912b8b17b/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://x.com/yourprofile" target="_blank" rel="noopener noreferrer" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2: Khadija Khalid -->
+                    <div class="team-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="team-card-bg"></div>
+                        <div class="team-card-content">
+                            <div class="team-image-wrapper">
+                                <img src="https://placehold.co/150x150/111827/e0e0ff?text=KK" alt="Khadija Khalid">
+                            </div>
+                            <h3>Khadija Khalid</h3>
+                            <p class="title">Chief Strategy Officer</p>
+                            <p class="description">
+                                Khadija is the visionary strategist who ensures our technical endeavors are perfectly aligned with our clients' business objectives and market realities. Her expertise lies in dissecting market trends, identifying growth opportunities, and crafting comprehensive digital transformation roadmaps. Khadija bridges the gap between technology and business value, guiding product lifecycle management from ideation to launch and beyond. She champions a user-centric approach, ensuring that every solution we build is not only technically sound but also intuitive, engaging, and capable of delivering measurable ROI. Her strategic direction is the compass that guides our projects to impactful and sustainable success.
+                            </p>
+                             <div class="team-social-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3: Austin Arnold Wopata -->
+                    <div class="team-card reveal-up" style="transition-delay: 0.4s;">
+                        <div class="team-card-bg"></div>
+                        <div class="team-card-content">
+                            <div class="team-image-wrapper">
+                                <img src="https://placehold.co/150x150/1f2937/e0e0ff?text=AW" alt="Austin Arnold Wopata">
+                            </div>
+                            <h3>Austin Arnold Wopata</h3>
+                            <p class="title">Chief Information Security Officer</p>
+                            <p class="description">
+                                Austin is the guardian of our digital fortress, entrusted with the critical responsibility of safeguarding our clients' data and our platforms' integrity. With a deep and ever-evolving understanding of the cybersecurity landscape, he implements multi-layered security protocols, conducts rigorous vulnerability assessments, and ensures compliance with global data privacy standards like GDPR. Austin's proactive approach to risk management means that security is not an afterthought but a foundational principle woven into every stage of our development lifecycle. His vigilance and expertise provide our clients with the ultimate peace of mind, knowing their digital assets are protected by an industry-leading security framework.
+                            </p>
+                             <div class="team-social-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Austin Arnold Wopata -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://placehold.co/200x200" alt="Austin Arnold Wopata">
-                    </div>
-                    <h3 class="team-name">Austin Arnold Wopata</h3>
-                    <p class="team-title">Chief Information Security Officer</p>
-                    <p class="team-description">
-                        As our security expert, Austin ensures that all our solutions are robust and resilient, protecting our clients' data and systems with cutting-edge security practices.
+        <!-- Our Journey Timeline -->
+        <section id="journey" class="py-16 md:py-24 bg-primary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16 reveal-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Our Journey of Innovation</h2>
+                    <p class="text-lg text-secondary max-w-3xl mx-auto">
+                        A timeline of our milestones, marking our growth and commitment to excellence.
                     </p>
-                    <div class="skills">
-                        <span class="skill">
-                            <i class="fas fa-shield-alt"></i> Information Security
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-helmet"></i> Cybersecurity
-                        </span>
-                        <span class="skill">
-                            <i class="fas fa-encryption"></i> Encryption
-                        </span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-container left reveal-up">
+                        <div class="timeline-content">
+                            <h3 class="font-bold text-xl mb-2">2020: The Spark</h3>
+                            <p class="text-secondary">The initial collaboration begins, focusing on freelance data analysis projects and laying the groundwork for a future partnership.</p>
+                        </div>
                     </div>
+                    <div class="timeline-container right reveal-up">
+                        <div class="timeline-content">
+                            <h3 class="font-bold text-xl mb-2">2021: Formal Partnership</h3>
+                            <p class="text-secondary">Danco & Khadija is officially formed. We expand our services to include full-stack web development and strategic consulting.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left reveal-up">
+                        <div class="timeline-content">
+                            <h3 class="font-bold text-xl mb-2">2022: First Major AI Project</h3>
+                            <p class="text-secondary">We successfully develop and deploy our first large-scale machine learning solution for a client in the logistics sector, achieving a 30% efficiency increase.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right reveal-up">
+                        <div class="timeline-content">
+                            <h3 class="font-bold text-xl mb-2">2023: Team Expansion</h3>
+                            <p class="text-secondary">Our core team grows, bringing in specialized expertise in cybersecurity and UI/UX design to offer a more holistic service portfolio.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-container left reveal-up">
+                        <div class="timeline-content">
+                            <h3 class="font-bold text-xl mb-2">Today: Future-Forward</h3>
+                            <p class="text-secondary">We continue to push the boundaries of digital innovation, exploring new frontiers in generative AI and decentralized applications, while serving a growing portfolio of international clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="join-us" class="py-16 md:py-24 bg-secondary">
+            <div class="container mx-auto px-6 text-center">
+                 <div class="reveal-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Odyssey</h2>
+                    <p class="text-lg text-secondary max-w-3xl mx-auto mb-8">
+                        Your vision deserves a team that is as passionate about its potential as you are. Let's collaborate to build something truly extraordinary.
+                    </p>
+                    <a href="index.html#contact" class="cta-button text-lg">
+                        Start a Conversation <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Column 1: Brand -->
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="index.html" class="footer-logo">D&K</a>
+                    <p class="footer-tagline">Architects of the digital future, driven by a shared passion for innovation, intelligence, and impact.</p>
+                    <div class="footer-socials">
+                        <a href="https://github.com/madscie254" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/daniel-wanjala-912b8b17b/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Column 2: Company -->
+                <div>
+                    <h5 class="footer-heading">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="who_we_are.html">About Us</a></li>
+                        <li><a href="index.html#our-process">Our Process</a></li>
+                        <li><a href="index.html#portfolio">Our Work</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Services -->
+                <div>
+                    <h5 class="footer-heading">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Custom Software</a></li>
+                        <li><a href="index.html#services">Machine Learning & AI</a></li>
+                        <li><a href="index.html#services">Digital Strategy</a></li>
+                        <li><a href="index.html#services">Data Analytics</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Resources -->
+                <div>
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html#publications">Publications</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright-text">
+                    &copy; <span id="current-year"></span> Danco & Khadija. All Rights Reserved.
+                </div>
+                <div class="local-time">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span id="local-time-display">Loading local time...</span>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Same scripts as in index.html -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <a href="#" id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
     <script>
-        // Same initialization script as in index.html
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize theme
-            const body = document.body;
+    document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        const header = document.getElementById('main-header');
+
+        // --- 1. Theme Management ---
+        function initTheme() {
             const themeToggle = document.getElementById('theme-toggle');
             const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const sunIconClass = 'fa-sun';
+            const moonIconClass = 'fa-moon';
+            let currentTheme = localStorage.getItem('theme') || 'light';
 
-            function initTheme() {
-                const currentTheme = localStorage.getItem('theme') || 'light';
-                const isDarkMode = currentTheme === 'dark';
-                body.classList.toggle('dark-mode', isDarkMode);
-                
-                if (themeToggle) {
-                    const icon = themeToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.toggle('fa-sun', !isDarkMode);
-                        icon.classList.toggle('fa-moon', isDarkMode);
+            const applyTheme = (theme) => {
+                const iconToAdd = theme === 'dark' ? sunIconClass : moonIconClass;
+                const iconToRemove = theme === 'dark' ? moonIconClass : sunIconClass;
+                body.classList.toggle('dark-mode', theme === 'dark');
+                [themeToggle, themeToggleMobile].forEach(button => {
+                    if (button) {
+                        const iconElement = button.querySelector('i');
+                        if (iconElement) {
+                            iconElement.classList.remove(iconToRemove);
+                            iconElement.classList.add(iconToAdd);
+                        }
                     }
-                }
-                if (themeToggleMobile) {
-                    const icon = themeToggleMobile.querySelector('i');
-                    if (icon) {
-                        icon.classList.toggle('fa-sun', !isDarkMode);
-                        icon.classList.toggle('fa-moon', isDarkMode);
-                    }
-                }
-            }
+                });
+            };
 
-            initTheme();
+            const toggleTheme = () => {
+                currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+                localStorage.setItem('theme', currentTheme);
+                applyTheme(currentTheme);
+            };
 
-            // Add theme toggle functionality
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-                    localStorage.setItem('theme', currentTheme);
-                    initTheme();
+            applyTheme(currentTheme);
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+
+        // --- 2. Mobile Menu ---
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
+
+            if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuIcon.classList.toggle('fa-bars');
+                    mobileMenuIcon.classList.toggle('fa-times');
                 });
             }
-            if (themeToggleMobile) {
-                themeToggleMobile.addEventListener('click', () => {
-                    const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-                    localStorage.setItem('theme', currentTheme);
-                    initTheme();
+        }
+
+        // --- 3. Header Scroll Effect ---
+        function initHeaderScroll() {
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('scrolled', window.scrollY > 50);
                 });
             }
-        });
+        }
+
+        // --- 4. Scroll Reveal Animation ---
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal-up');
+            if ("IntersectionObserver" in window) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                revealElements.forEach(el => revealObserver.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('visible'));
+            }
+        }
+
+        // --- 5. Footer Current Year ---
+        function initFooter() {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        }
+        
+        // --- 6. Interactive Particle Background ---
+        function initParticleCanvas() {
+            const canvas = document.getElementById('particle-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const isDarkMode = () => document.body.classList.contains('dark-mode');
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.directionY = -this.directionY;
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const numberOfParticles = (canvas.height * canvas.width) / 9000;
+                const color = isDarkMode() ? 'rgba(224, 224, 255, 0.5)' : 'rgba(14, 165, 233, 0.5)';
+
+                for (let i = 0; i < numberOfParticles; i++) {
+                    const size = Math.random() * 2 + 1;
+                    const x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+                    const y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                    const directionX = (Math.random() * 0.4) - 0.2;
+                    const directionY = (Math.random() * 0.4) - 0.2;
+                    particles.push(new Particle(x, y, directionX, directionY, size, color));
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            });
+
+            // Re-initialize particles on theme change
+            ['theme-toggle', 'theme-toggle-mobile'].forEach(id => {
+                const button = document.getElementById(id);
+                if(button) button.addEventListener('click', () => setTimeout(initParticles, 100));
+            });
+            
+            initParticles();
+            animateParticles();
+        }
+
+        // --- 7. Back to Top Button ---
+        function initBackToTop() {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (!backToTopButton) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // --- 8. Local Time Display ---
+        function initLocalTime() {
+            const timeDisplay = document.getElementById('local-time-display');
+            if (!timeDisplay) return;
+
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                timeDisplay.textContent = `Your Local Time: ${timeString}`;
+            }
+
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+
+        // Initialize all components
+        initTheme();
+        initMobileMenu();
+        initHeaderScroll();
+        initScrollReveal();
+        initFooter();
+        initParticleCanvas();
+        initBackToTop();
+        initLocalTime();
+    });
     </script>
+
 </body>
 </html>
