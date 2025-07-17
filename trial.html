@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danco & Khadija - Who We Are</title>
+    <!-- Same head elements as in index.html -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* Same theme variables as in index.html */
+        :root {
+            --bg-primary: #f3f4f6;
+            --bg-secondary: #ffffff;
+            --bg-accent: #e5e7eb;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-accent: #0ea5e9;
+            --gradient-start: #1e40af;
+            --gradient-mid: #0d9488;
+            --gradient-end: #047857;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .who-we-are {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 60px 20px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid var(--text-accent);
+            overflow: hidden;
+        }
+
+        .team-image img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .team-title {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .team-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            background: var(--skill-icon-bg);
+            color: var(--skill-icon-text);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navbar from index.html -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glassmorphic">
+        <nav class="container mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
+            <a href="#hero" class="flex-shrink-0 flex items-center" title="Danco & Khadija Home">
+                <span class="text-xl md:text-2xl font-bold gradient-text">Danco & Khadija</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-wrap justify-end">
+                <a href="#who-we-are" class="nav-link active">Who We Are</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#our-process" class="nav-link">Our Process</a>
+                <a href="#tech-skills" class="nav-link">Expertise</a>
+                <a href="who_we_are.html" class="nav-link">Who We Are</a>
+                <a href="#portfolio" class="nav-link">Our Work</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button id="theme-toggle" title="Toggle Theme" class="ml-2">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+            <div class="lg:hidden flex items-center space-x-3">
+                <button id="theme-toggle-mobile" class="text-xl" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button id="mobile-menu-button" class="focus:outline-none text-2xl" title="Toggle Mobile Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <!-- Mobile menu content -->
+        </div>
+    </header>
+
+    <section class="who-we-are">
+        <div class="container mx-auto px-4">
+            <div class="hero-content">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Architects of Digital Transformation
+                </h2>
+                <p class="text-lg md:text-xl text-secondary max-w-3xl mx-auto">
+                    We are Danco & Khadija, a dynamic partnership combining technical expertise with strategic insight to create intelligent digital solutions that drive real impact.
+                </p>
+            </div>
+
+            <div class="team-section">
+                <!-- Daniel Wanjala -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://placehold.co/200x200" alt="Daniel Wanjala">
+                    </div>
+                    <h3 class="team-name">Daniel Wanjala</h3>
+                    <p class="team-title">Chief Technical Architect</p>
+                    <p class="team-description">
+                        With a deep expertise in software development and data science, Daniel leads our technical strategy, ensuring our solutions are scalable, efficient, and未来-proof.
+                    </p>
+                    <div class="skills">
+                        <span class="skill">
+                            <i class="fas fa-code"></i> Python
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-brain"></i> Machine Learning
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-database"></i> Database Architecture
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Khadija Khalid -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://placehold.co/200x200" alt="Khadija Khalid">
+                    </div>
+                    <h3 class="team-name">Khadija Khalid</h3>
+                    <p class="team-title">Chief Strategy Officer</p>
+                    <p class="team-description">
+                        Khadija brings extensive experience in digital strategy and business development, shaping our approach to align with client objectives and market trends.
+                    </p>
+                    <div class="skills">
+                        <span class="skill">
+                            <i class="fas fa-chart-line"></i> Strategy Planning
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-lightbulb"></i> Innovation
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-team"></i> Collaboration
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Austin Arnold Wopata -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://placehold.co/200x200" alt="Austin Arnold Wopata">
+                    </div>
+                    <h3 class="team-name">Austin Arnold Wopata</h3>
+                    <p class="team-title">Chief Information Security Officer</p>
+                    <p class="team-description">
+                        As our security expert, Austin ensures that all our solutions are robust and resilient, protecting our clients' data and systems with cutting-edge security practices.
+                    </p>
+                    <div class="skills">
+                        <span class="skill">
+                            <i class="fas fa-shield-alt"></i> Information Security
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-helmet"></i> Cybersecurity
+                        </span>
+                        <span class="skill">
+                            <i class="fas fa-encryption"></i> Encryption
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same scripts as in index.html -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        // Same initialization script as in index.html
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize theme
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+
+            function initTheme() {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const isDarkMode = currentTheme === 'dark';
+                body.classList.toggle('dark-mode', isDarkMode);
+                
+                if (themeToggle) {
+                    const icon = themeToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-sun', !isDarkMode);
+                        icon.classList.toggle('fa-moon', isDarkMode);
+                    }
+                }
+                if (themeToggleMobile) {
+                    const icon = themeToggleMobile.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-sun', !isDarkMode);
+                        icon.classList.toggle('fa-moon', isDarkMode);
+                    }
+                }
+            }
+
+            initTheme();
+
+            // Add theme toggle functionality
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+                    localStorage.setItem('theme', currentTheme);
+                    initTheme();
+                });
+            }
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', () => {
+                    const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+                    localStorage.setItem('theme', currentTheme);
+                    initTheme();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
