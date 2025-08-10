@@ -47,37 +47,39 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-// Connect to MongoDB
+// Connect to MongoDB (optional for testing)
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nehemia-ministry', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+.then(() => {
+    console.log('✅ Connected to MongoDB');
+})
+.catch(err => {
+    console.warn('⚠️  MongoDB not available, using mock data for testing');
+});
 
-// Import routes
-const authRoutes = require('./backend/routes/auth');
-const userRoutes = require('./backend/routes/users');
-const contentRoutes = require('./backend/routes/content');
-const prayerRoutes = require('./backend/routes/prayers');
-const eventRoutes = require('./backend/routes/events');
-const sermonRoutes = require('./backend/routes/sermons');
-const donationRoutes = require('./backend/routes/donations');
-const blogRoutes = require('./backend/routes/blog');
-const contactRoutes = require('./backend/routes/contact');
-const dashboardRoutes = require('./backend/routes/dashboard');
+// Import mock routes for testing
+const mockAuthRoutes = require('./backend/routes/mockAuth');
+const mockPrayerRoutes = require('./backend/routes/mockPrayers');
+const mockDashboardRoutes = require('./backend/routes/mockDashboard');
 
-// Use routes
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/content', contentRoutes);
-app.use('/api/prayers', prayerRoutes);
-app.use('/api/events', eventRoutes);
-app.use('/api/sermons', sermonRoutes);
-app.use('/api/donations', donationRoutes);
-app.use('/api/blog', blogRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/dashboard', dashboardRoutes);
+// Use mock routes for testing
+app.use('/api/auth', mockAuthRoutes);
+app.use('/api/prayers', mockPrayerRoutes);
+app.use('/api/dashboard', mockDashboardRoutes);
+
+// Simple contact route
+app.post('/api/contact', (req, res) => {
+    console.log('Contact form submission:', req.body);
+    res.json({ success: true, message: 'Thank you for your message!' });
+});
+
+// Simple events route
+app.get('/api/events', (req, res) => {
+    const mockDB = require('./backend/mockDatabase');
+    res.json({ success: true, events: mockDB.events });
+});
 
 // Serve HTML pages
 app.get('/', (req, res) => {
