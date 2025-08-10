@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Nehemia Ministry Kenya</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <style>
+        .nav-tab {
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+            margin: 0.25rem;
+        }
+        
+        .nav-tab:hover {
+            background: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+        
+        .nav-tab.active {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+        }
+        
+        .dashboard-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-eb-garamond">
+    <!-- Header -->
+    <header class="dashboard-header shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="../assets/logo.png" alt="Nehemia Ministry Logo" class="h-10 w-auto mr-3">
+                    <div>
+                        <h1 class="text-xl font-bold font-lora text-white">My Dashboard</h1>
+                        <p class="text-sm text-blue-200">Nehemia Ministry Kenya</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="text-white text-right">
+                        <div id="member-name" class="font-semibold">Member</div>
+                        <div id="member-role" class="text-xs text-blue-200">Loading...</div>
+                    </div>
+                    <div class="relative group">
+                        <button class="text-white hover:text-blue-200 transition-colors duration-200">
+                            <i class="fas fa-user-circle text-2xl"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-home mr-2"></i>Go to Website
+                            </a>
+                            <button onclick="showProfileModal()" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Edit Profile
+                            </button>
+                            <button onclick="authManager.logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 font-lora mb-2">Welcome back, <span id="welcome-name">Member</span>!</h2>
+            <p class="text-gray-600">Here's what's happening in your spiritual journey</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="dashboard-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 mr-4">
+                        <i class="fas fa-praying-hands text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-500">My Prayer Requests</h3>
+                        <p id="my-prayers-count" class="text-2xl font-bold text-gray-900">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 mr-4">
+                        <i class="fas fa-calendar-check text-green-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-500">Events Attended</h3>
+                        <p id="events-attended-count" class="text-2xl font-bold text-gray-900">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 mr-4">
+                        <i class="fas fa-heart text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-500">Days as Member</h3>
+                        <p id="member-days-count" class="text-2xl font-bold text-gray-900">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="mb-6">
+            <div class="flex space-x-2 bg-white p-2 rounded-lg shadow-sm">
+                <button onclick="showTab('overview')" class="nav-tab active px-4 py-2 font-medium">
+                    <i class="fas fa-tachometer-alt mr-2"></i>Overview
+                </button>
+                <button onclick="showTab('prayers')" class="nav-tab px-4 py-2 font-medium">
+                    <i class="fas fa-praying-hands mr-2"></i>My Prayers
+                </button>
+                <button onclick="showTab('events')" class="nav-tab px-4 py-2 font-medium">
+                    <i class="fas fa-calendar-alt mr-2"></i>My Events
+                </button>
+                <button onclick="showTab('profile')" class="nav-tab px-4 py-2 font-medium">
+                    <i class="fas fa-user mr-2"></i>Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="space-y-6">
+            <!-- Overview Tab -->
+            <div id="overview-tab" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Recent Prayer Requests -->
+                    <div class="dashboard-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Recent Prayer Requests</h3>
+                            <a href="../prayer-wall.html" class="text-orange-600 hover:text-orange-500 text-sm font-medium">
+                                View All <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                        <div id="recent-prayers" class="space-y-3">
+                            <p class="text-gray-500 text-center py-4">Loading...</p>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="dashboard-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Upcoming Events</h3>
+                            <a href="../events.html" class="text-orange-600 hover:text-orange-500 text-sm font-medium">
+                                View All <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                        <div id="upcoming-events" class="space-y-3">
+                            <p class="text-gray-500 text-center py-4">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ministry Involvement -->
+                <div class="dashboard-card">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Ministry Involvement</h3>
+                    <div id="ministry-info" class="text-gray-600">
+                        <p>Loading ministry information...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prayers Tab -->
+            <div id="prayers-tab" class="tab-content hidden">
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">My Prayer Requests</h3>
+                        <button onclick="showSubmitPrayerModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-plus mr-2"></i>Submit Prayer Request
+                        </button>
+                    </div>
+                    <div id="my-prayers-list" class="space-y-4">
+                        <p class="text-gray-500 text-center py-8">Loading your prayer requests...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events Tab -->
+            <div id="events-tab" class="tab-content hidden">
+                <div class="dashboard-card">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">My Events</h3>
+                    <div id="my-events-list" class="space-y-4">
+                        <p class="text-gray-500 text-center py-8">Loading your events...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content hidden">
+                <div class="dashboard-card">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">Profile Information</h3>
+                    <div id="profile-info" class="space-y-4">
+                        <p class="text-gray-500">Loading profile information...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Prayer Modal -->
+    <div id="submitPrayerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 font-lora">Submit Prayer Request</h2>
+                    <button onclick="closeSubmitPrayerModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="submitPrayerForm" class="space-y-4">
+                    <div>
+                        <label for="prayerTitle" class="block text-sm font-medium text-gray-700 mb-1">Prayer Title</label>
+                        <input type="text" id="prayerTitle" name="title" required
+                               class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                               placeholder="Enter a brief title for your prayer request">
+                    </div>
+                    
+                    <div>
+                        <label for="prayerContent" class="block text-sm font-medium text-gray-700 mb-1">Prayer Details</label>
+                        <textarea id="prayerContent" name="content" required rows="4"
+                                  class="form-textarea w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                                  placeholder="Share your prayer request details..."></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="prayerCategory" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <select id="prayerCategory" name="category"
+                                    class="form-select w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                                <option value="general">General</option>
+                                <option value="healing">Healing</option>
+                                <option value="family">Family</option>
+                                <option value="financial">Financial</option>
+                                <option value="spiritual">Spiritual Growth</option>
+                                <option value="guidance">Guidance</option>
+                                <option value="thanksgiving">Thanksgiving</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="prayerPriority" class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                            <select id="prayerPriority" name="priority"
+                                    class="form-select w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="prayerPublic" name="isPublic" checked class="form-checkbox text-orange-600">
+                        <label for="prayerPublic" class="ml-2 text-sm text-gray-600">
+                            Make this prayer request public (others can see and pray for it)
+                        </label>
+                    </div>
+                    
+                    <button type="submit" id="submitPrayerBtn"
+                            class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-paper-plane mr-2"></i>Submit Prayer Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!authManager.isAuthenticated()) {
+                window.location.href = '../index.html';
+                return;
+            }
+
+            const user = authManager.getUser();
+            document.getElementById('member-name').textContent = user.firstName + ' ' + user.lastName;
+            document.getElementById('member-role').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+            document.getElementById('welcome-name').textContent = user.firstName;
+
+            // Load dashboard data
+            loadDashboardData();
+        });
+
+        // Tab navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+
+            // Update active nav tab
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Load tab-specific data
+            if (tabName === 'prayers') {
+                loadMyPrayers();
+            } else if (tabName === 'events') {
+                loadMyEvents();
+            } else if (tabName === 'profile') {
+                loadProfileInfo();
+            }
+        }
+
+        // Modal functions
+        function showSubmitPrayerModal() {
+            document.getElementById('submitPrayerModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSubmitPrayerModal() {
+            document.getElementById('submitPrayerModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                const stats = await apiClient.getDashboardStats();
+                if (stats.success) {
+                    const data = stats.stats;
+                    document.getElementById('my-prayers-count').textContent = data.myPrayers || '0';
+                    document.getElementById('events-attended-count').textContent = data.myEvents || '0';
+                    
+                    // Calculate member days
+                    const user = authManager.getUser();
+                    const memberSince = new Date(user.memberSince || user.createdAt);
+                    const today = new Date();
+                    const daysDiff = Math.floor((today - memberSince) / (1000 * 60 * 60 * 24));
+                    document.getElementById('member-days-count').textContent = daysDiff;
+                }
+
+                // Load recent prayers
+                loadRecentPrayers();
+                loadUpcomingEvents();
+                loadMinistryInfo();
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        // Load recent prayers
+        async function loadRecentPrayers() {
+            try {
+                const prayers = await apiClient.request('/prayers/my-prayers');
+                const recentPrayersDiv = document.getElementById('recent-prayers');
+                
+                if (prayers.success && prayers.prayers.length > 0) {
+                    recentPrayersDiv.innerHTML = prayers.prayers.slice(0, 3).map(prayer => `
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-gray-900">${prayer.title}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${Utils.truncateText(prayer.content, 80)}</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs bg-${getPriorityColor(prayer.priority)}-100 text-${getPriorityColor(prayer.priority)}-800 px-2 py-1 rounded">
+                                    ${prayer.priority}
+                                </span>
+                                <span class="text-xs text-gray-500">${Utils.formatDate(prayer.createdAt)}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    recentPrayersDiv.innerHTML = '<p class="text-gray-500 text-center py-4">No prayer requests yet</p>';
+                }
+            } catch (error) {
+                console.error('Error loading recent prayers:', error);
+                document.getElementById('recent-prayers').innerHTML = '<p class="text-red-500 text-center py-4">Error loading prayers</p>';
+            }
+        }
+
+        // Load upcoming events
+        async function loadUpcomingEvents() {
+            try {
+                const events = await apiClient.getEvents({ upcoming: true, limit: 3 });
+                const upcomingEventsDiv = document.getElementById('upcoming-events');
+                
+                if (events.success && events.events.length > 0) {
+                    upcomingEventsDiv.innerHTML = events.events.map(event => `
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-gray-900">${event.title}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${Utils.truncateText(event.description, 60)}</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                                    ${event.category}
+                                </span>
+                                <span class="text-xs text-gray-500">${Utils.formatDate(event.date.start)}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    upcomingEventsDiv.innerHTML = '<p class="text-gray-500 text-center py-4">No upcoming events</p>';
+                }
+            } catch (error) {
+                console.error('Error loading upcoming events:', error);
+                document.getElementById('upcoming-events').innerHTML = '<p class="text-red-500 text-center py-4">Error loading events</p>';
+            }
+        }
+
+        // Load ministry info
+        function loadMinistryInfo() {
+            const user = authManager.getUser();
+            const ministryInfoDiv = document.getElementById('ministry-info');
+            
+            if (user.ministry) {
+                ministryInfoDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-church text-orange-600 text-xl mr-3"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">${getMinistryName(user.ministry)}</p>
+                            <p class="text-sm text-gray-600">Active member since ${Utils.formatDate(user.memberSince || user.createdAt)}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                ministryInfoDiv.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="fas fa-plus-circle text-orange-600 text-3xl mb-2"></i>
+                        <p class="text-gray-600 mb-4">You haven't joined a ministry yet</p>
+                        <button onclick="showProfileModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                            Join a Ministry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Submit prayer form
+        document.getElementById('submitPrayerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitPrayerBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                Utils.setLoading(submitBtn, true);
+                
+                const formData = new FormData(this);
+                const prayerData = {
+                    title: formData.get('title'),
+                    content: formData.get('content'),
+                    category: formData.get('category'),
+                    priority: formData.get('priority'),
+                    isPublic: formData.get('isPublic') === 'on'
+                };
+                
+                const result = await apiClient.submitPrayer(prayerData);
+                
+                if (result.success) {
+                    Utils.showNotification('Prayer request submitted successfully!', 'success');
+                    closeSubmitPrayerModal();
+                    this.reset();
+                    loadRecentPrayers();
+                    loadDashboardData();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                Utils.showNotification(error.message, 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Utility functions
+        function getPriorityColor(priority) {
+            switch(priority) {
+                case 'urgent': return 'red';
+                case 'high': return 'orange';
+                case 'medium': return 'yellow';
+                case 'low': return 'green';
+                default: return 'gray';
+            }
+        }
+
+        function getMinistryName(ministry) {
+            const ministryNames = {
+                'youth': 'Youth Ministry',
+                'children': 'Children Ministry',
+                'women': 'Women Ministry',
+                'men': 'Men Ministry',
+                'music': 'Music & Worship',
+                'prayer': 'Prayer Ministry',
+                'outreach': 'Outreach & Missions',
+                'media': 'Media & Technology',
+                'finance': 'Finance & Administration'
+            };
+            return ministryNames[ministry] || ministry;
+        }
+
+        // Placeholder functions for tab-specific data loading
+        function loadMyPrayers() {
+            // Implementation for loading all user prayers
+            console.log('Loading my prayers...');
+        }
+
+        function loadMyEvents() {
+            // Implementation for loading user events
+            console.log('Loading my events...');
+        }
+
+        function loadProfileInfo() {
+            // Implementation for loading profile info
+            console.log('Loading profile info...');
+        }
+
+        // Add the profile modal functionality from the main site
+        function showProfileModal() {
+            // This would open the profile edit modal from the main site
+            window.location.href = '../index.html#profile';
+        }
+    </script>
+</body>
+</html>
