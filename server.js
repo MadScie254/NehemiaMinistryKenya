@@ -123,10 +123,17 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Nehemia Ministry Server running on port ${PORT}`);
+    console.log('\n🚀 Nehemia Ministry Server Started Successfully!');
+    console.log('═══════════════════════════════════════════════');
+    console.log(`📡 Server Port: ${PORT}`);
     console.log(`🌐 Website: http://localhost:${PORT}`);
-    console.log(`📊 Admin: http://localhost:${PORT}/admin`);
-    console.log(`👤 Dashboard: http://localhost:${PORT}/dashboard`);
+    console.log(`📊 Admin Panel: http://localhost:${PORT}/admin`);
+    console.log(`👤 Member Dashboard: http://localhost:${PORT}/dashboard`);
+    console.log('═══════════════════════════════════════════════');
+    console.log('🎯 Test Accounts:');
+    console.log('   👑 Admin: admin@nehemiaministry.org / admin123');
+    console.log('   👤 Member: member@test.com / member123');
+    console.log('═══════════════════════════════════════════════\n');
 });
 
 module.exports = app;

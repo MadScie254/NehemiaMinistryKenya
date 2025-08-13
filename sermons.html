@@ -1,1 +1,1079 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons & Messages | Nehemia Ministry Kenya</title>
+    <meta name="description" content="Listen to powerful sermons and teachings from Nehemia Ministry Kenya. Download audio messages, watch video sermons, and grow in your faith through the Word of God.">
+    <meta name="keywords" content="Sermons, Bible Teachings, Audio Messages, Video Sermons, Nehemia Ministry, Christian Messages, Sunday Sermons, Pastor David Walukhu">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-dancing-script { font-family: 'Dancing Script', cursive; }
+        .font-eb-garamond { font-family: 'EB Garamond', serif; }
+        
+        /* Navigation Styles */
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #fed7aa;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link-active {
+            color: #fed7aa !important;
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+        }
+
+        /* Mobile menu specific styles */
+        .mobile-menu {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(67, 56, 202, 0.95) 50%, rgba(139, 69, 219, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .mobile-menu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fed7aa;
+        }
+        
+        .sermon-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-sermon {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-player {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+    </style>
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 shadow-xl">
+        <nav id="main-navbar" class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <a href="index.html" class="flex items-center space-x-3 text-white group">
+                    <img src="assets/logo.png" alt="Nehemia Ministry Kenya Logo" class="h-12 w-12 rounded-full shadow-lg border-2 border-orange-400 group-hover:border-orange-300 transition-all duration-200">
+                    <div>
+                        <h1 class="text-xl font-bold font-lora text-white">Nehemia Ministry</h1>
+                        <p class="text-xs text-orange-200 font-eb-garamond">Kenya</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-orange-300 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                        <span class="sr-only">Open menu</span>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="nav-link px-3 py-2">Home</a>
+                    <a href="about.html" class="nav-link px-3 py-2">About</a>
+                    <a href="ministries.html" class="nav-link px-3 py-2">Ministries</a>
+                    <a href="sermons.html" class="nav-link px-3 py-2 nav-link-active">Sermons</a>
+                    <a href="events.html" class="nav-link px-3 py-2">Events</a>
+                    <a href="blog.html" class="nav-link px-3 py-2">Blog</a>
+                    <a href="prayer-wall.html" class="nav-link px-3 py-2">Prayer Wall</a>
+                    <a href="give.html" class="nav-link px-3 py-2">Give</a>
+                    <a href="contact.html" class="nav-link px-3 py-2">Contact</a>
+                    <div id="google_translate_element_desktop" class="ml-3"></div>
+                </div>
+
+                <!-- Auth Buttons (Desktop) -->
+                <div id="auth-buttons" class="hidden lg:flex items-center space-x-4">
+                    <button onclick="showLoginModal()" class="text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- User Menu (Desktop) -->
+                <div id="user-menu" class="hidden lg:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button title="Open User Profile Menu" class="flex items-center space-x-2 text-white hover:text-orange-300 transition-colors duration-200">
+                            <i class="fas fa-user-circle text-2xl"></i>
+                            <div class="text-left">
+                                <div class="user-name text-sm font-semibold"></div>
+                                <div class="user-role text-xs text-orange-200"></div>
+                            </div>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="#" class="dashboard-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                            </a>
+                            <a href="#" onclick="showProfileModal()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="prayer-wall.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-praying-hands mr-2"></i>My Prayers
+                            </a>
+                            <hr class="my-2">
+                            <button onclick="authManager.logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden mobile-menu mt-2">
+                <a href="index.html" class="nav-link block">Home</a>
+                <a href="about.html" class="nav-link block">About</a>
+                <a href="ministries.html" class="nav-link block">Ministries</a>
+                <a href="sermons.html" class="nav-link block nav-link-active">Sermons</a>
+                <a href="events.html" class="nav-link block">Events</a>
+                <a href="blog.html" class="nav-link block">Blog</a>
+                <a href="prayer-wall.html" class="nav-link block">Prayer Wall</a>
+                <a href="give.html" class="nav-link block">Give</a>
+                <a href="contact.html" class="nav-link block">Contact</a>
+                
+                <!-- Mobile Auth Buttons -->
+                <div id="mobile-auth-buttons" class="flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <button onclick="showLoginModal()" class="text-left text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="text-left bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- Mobile User Menu -->
+                <div id="mobile-user-menu" class="hidden flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <div class="text-white">
+                        <div class="user-name font-semibold"></div>
+                        <div class="user-role text-sm text-orange-200"></div>
+                    </div>
+                    <a href="#" class="dashboard-link text-white hover:text-orange-300">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <button onclick="showProfileModal()" class="text-left text-white hover:text-orange-300">
+                        <i class="fas fa-user mr-2"></i>Profile
+                    </button>
+                    <button onclick="authManager.logout()" class="text-left text-red-300 hover:text-red-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+                
+                <div id="google_translate_element_mobile" class="mt-3 pt-3 border-t border-gray-200"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-sermon text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold font-lora mb-6">Sermons & Messages</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Experience the transforming power of God's Word through our collection of sermons, teachings, and biblical messages that will strengthen your faith and guide your spiritual journey.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="scrollToLatest()" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg transition-colors duration-200">
+                    <i class="fas fa-play mr-2"></i>Latest Sermons
+                </button>
+                <button onclick="scrollToSeries()" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg transition-colors duration-200">
+                    <i class="fas fa-list mr-2"></i>Sermon Series
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sermon -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 font-lora mb-4">Featured Message</h2>
+                <p class="text-gray-600 text-lg">This week's powerful message from Pastor David Walukhu</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="sermon-card rounded-xl p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Sunday Service</span>
+                            <h3 class="text-3xl font-bold text-gray-900 font-lora mt-4 mb-4">Walking in Divine Purpose</h3>
+                            <p class="text-gray-600 mb-6">Discover God's amazing plan for your life and learn how to walk confidently in your divine calling. This powerful message will inspire you to step into your God-given destiny.</p>
+                            
+                            <div class="flex items-center text-gray-500 text-sm mb-6">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span class="mr-6">August 4, 2024</span>
+                                <i class="fas fa-clock mr-2"></i>
+                                <span class="mr-6">45 minutes</span>
+                                <i class="fas fa-user mr-2"></i>
+                                <span>Pastor David Walukhu</span>
+                            </div>
+                            
+                            <div class="flex space-x-4">
+                                <button onclick="playFeaturedSermon()" class="play-button bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+                                    <i class="fas fa-play mr-2"></i>Play Audio
+                                </button>
+                                <button onclick="watchFeaturedSermon()" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg">
+                                    <i class="fas fa-video mr-2"></i>Watch Video
+                                </button>
+                                <button onclick="downloadFeaturedSermon()" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg">
+                                    <i class="fas fa-download mr-2"></i>Download
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pastor David Walukhu" class="w-full h-64 object-cover rounded-lg">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button onclick="playFeaturedSermon()" class="play-button bg-white bg-opacity-90 hover:bg-opacity-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-play text-xl ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Player Section -->
+    <div id="audioPlayerSection" class="hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg z-40">
+        <div class="container mx-auto px-6 py-4">
+            <div class="audio-player">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <button id="playPauseBtn" onclick="togglePlayPause()" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div>
+                            <div id="currentSermonTitle" class="font-semibold text-gray-900">Walking in Divine Purpose</div>
+                            <div id="currentSermonSpeaker" class="text-sm text-gray-600">Pastor David Walukhu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 mx-8">
+                        <div class="flex items-center space-x-4">
+                            <span id="currentTime" class="text-sm text-gray-600">0:00</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <span id="totalTime" class="text-sm text-gray-600">45:30</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <button onclick="changeVolume(-0.1)" class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-volume-down"></i>
+                        </button>
+                        <div class="w-20 bg-gray-200 rounded-full h-2">
+                            <div id="volumeBar" class="bg-gray-600 h-2 rounded-full" style="width: 70%"></div>
+                        </div>
+                        <button onclick="changeVolume(0.1)" class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <button onclick="closeAudioPlayer()" class="text-gray-600 hover:text-gray-800 ml-4">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest Sermons -->
+    <section id="latest" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 font-lora mb-4">Latest Sermons</h2>
+                <p class="text-gray-600 text-lg">Recent messages to strengthen your faith</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="sermonsGrid">
+                <!-- Sermons will be loaded here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button onclick="loadMoreSermons()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-colors duration-200">
+                    <i class="fas fa-plus mr-2"></i>Load More Sermons
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sermon Series -->
+    <section id="series" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 font-lora mb-4">Sermon Series</h2>
+                <p class="text-gray-600 text-lg">Explore our in-depth teaching series</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="sermon-card rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faith Series" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">8 Messages</span>
+                        <h3 class="text-xl font-bold text-gray-900 font-lora mt-4 mb-2">Walking by Faith</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive series on building unshakeable faith in every season of life.</p>
+                        <button onclick="viewSeries('faith')" class="text-blue-600 hover:text-blue-800 font-medium">
+                            View Series <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sermon-card rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Purpose Series" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">6 Messages</span>
+                        <h3 class="text-xl font-bold text-gray-900 font-lora mt-4 mb-2">Divine Purpose</h3>
+                        <p class="text-gray-600 mb-4">Discover God's unique plan and calling for your life through this powerful series.</p>
+                        <button onclick="viewSeries('purpose')" class="text-blue-600 hover:text-blue-800 font-medium">
+                            View Series <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sermon-card rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Prayer Series" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">5 Messages</span>
+                        <h3 class="text-xl font-bold text-gray-900 font-lora mt-4 mb-2">Power of Prayer</h3>
+                        <p class="text-gray-600 mb-4">Learn to pray effectively and experience God's power in your prayer life.</p>
+                        <button onclick="viewSeries('prayer')" class="text-blue-600 hover:text-blue-800 font-medium">
+                            View Series <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 font-lora mb-4">Find Messages</h2>
+                <p class="text-gray-600 text-lg">Search through our sermon library</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Search Messages</label>
+                            <input type="text" id="searchInput" placeholder="Enter keywords..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                            <select id="categoryFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">All Categories</option>
+                                <option value="sunday">Sunday Service</option>
+                                <option value="bible-study">Bible Study</option>
+                                <option value="special">Special Events</option>
+                                <option value="series">Series</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Speaker</label>
+                            <select id="speakerFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">All Speakers</option>
+                                <option value="david-walukhu">Pastor David Walukhu</option>
+                                <option value="selina-walukhu">Rev. Selina Walukhu</option>
+                                <option value="guest">Guest Speakers</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="searchSermons()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </button>
+                        <button onclick="clearFilters()" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-times mr-2"></i>Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="assets/logo.png" alt="Nehemia Ministry Logo" class="h-10 w-auto">
+                        <div>
+                            <h3 class="text-xl font-bold font-lora">Nehemia Ministry</h3>
+                            <p class="text-gray-400 text-sm">Kenya</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Rebuilding lives and restoring hope through the power of God's Word.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-200">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white transition-colors duration-200">Events</a></li>
+                        <li><a href="prayer-wall.html" class="text-gray-400 hover:text-white transition-colors duration-200">Prayer Wall</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="sermons.html" class="text-gray-400 hover:text-white transition-colors duration-200">Sermons</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors duration-200">Blog</a></li>
+                        <li><a href="ministries.html" class="text-gray-400 hover:text-white transition-colors duration-200">Ministries</a></li>
+                        <li><a href="give.html" class="text-gray-400 hover:text-white transition-colors duration-200">Give</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Mukhonje, Kakamega County</p>
+                        <p><i class="fas fa-phone mr-2"></i>+254 XXX XXX XXX</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@nehemiaministry.org</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Nehemia Ministry Kenya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include authentication JavaScript -->
+    <script src="assets/js/auth.js"></script>
+    
+    <script>
+        // Mock sermon data
+        const mockSermons = [
+            {
+                id: 1,
+                title: "Walking in Divine Purpose",
+                speaker: "Pastor David Walukhu",
+                date: "2024-08-04",
+                category: "Sunday Service",
+                duration: "45:30",
+                description: "Discover God's amazing plan for your life and learn how to walk confidently in your divine calling.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: "Divine Purpose"
+            },
+            {
+                id: 2,
+                title: "The Power of Faith",
+                speaker: "Rev. Selina Walukhu",
+                date: "2024-07-28",
+                category: "Bible Study",
+                duration: "38:15",
+                description: "Learn how to activate your faith and see God's supernatural power in your life.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: "Walking by Faith"
+            },
+            {
+                id: 3,
+                title: "Overcoming Life's Challenges",
+                speaker: "Pastor David Walukhu", 
+                date: "2024-07-21",
+                category: "Sunday Service",
+                duration: "42:20",
+                description: "Biblical strategies for overcoming obstacles and finding victory in difficult seasons.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: null
+            },
+            {
+                id: 4,
+                title: "Prayer That Gets Results",
+                speaker: "Rev. Selina Walukhu",
+                date: "2024-07-14",
+                category: "Special Event",
+                duration: "35:45",
+                description: "Discover the keys to effective prayer and how to see your prayers answered.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: "Power of Prayer"
+            },
+            {
+                id: 5,
+                title: "Building Strong Relationships",
+                speaker: "Pastor David Walukhu",
+                date: "2024-07-07",
+                category: "Sunday Service",
+                duration: "41:30",
+                description: "God's blueprint for healthy relationships in marriage, family, and friendship.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: null
+            },
+            {
+                id: 6,
+                title: "Financial Freedom God's Way",
+                speaker: "Guest Speaker",
+                date: "2024-06-30",
+                category: "Special Event",
+                duration: "39:25",
+                description: "Biblical principles for managing money and experiencing God's provision.",
+                audioUrl: "#",
+                videoUrl: "#",
+                series: null
+            }
+        ];
+
+        // Audio player state
+        let currentAudio = null;
+        let isPlaying = false;
+        let currentSermon = null;
+
+        // Load sermons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSermons();
+        });
+
+        function loadSermons() {
+            const sermonsGrid = document.getElementById('sermonsGrid');
+            sermonsGrid.innerHTML = '';
+
+            mockSermons.forEach(sermon => {
+                const sermonCard = createSermonCard(sermon);
+                sermonsGrid.appendChild(sermonCard);
+            });
+        }
+
+        function createSermonCard(sermon) {
+            const div = document.createElement('div');
+            div.className = 'sermon-card rounded-xl overflow-hidden';
+            
+            div.innerHTML = `
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="${sermon.title}" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <button onclick="playSermon(${sermon.id})" class="play-button bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-play ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">${sermon.category}</span>
+                        <span class="text-gray-500 text-sm">${sermon.duration}</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 font-lora mb-2">${sermon.title}</h3>
+                    <p class="text-gray-600 mb-4">${sermon.description}</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <span><i class="fas fa-user mr-1"></i>${sermon.speaker}</span>
+                        <span><i class="fas fa-calendar mr-1"></i>${formatDate(sermon.date)}</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="playSermon(${sermon.id})" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm transition-colors duration-200">
+                            <i class="fas fa-play mr-1"></i>Play
+                        </button>
+                        <button onclick="downloadSermon(${sermon.id})" class="border border-gray-300 text-gray-700 hover:bg-gray-50 py-2 px-4 rounded-lg text-sm transition-colors duration-200">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        function playSermon(sermonId) {
+            const sermon = mockSermons.find(s => s.id === sermonId);
+            if (!sermon) return;
+
+            currentSermon = sermon;
+            showAudioPlayer();
+            
+            // Update player info
+            document.getElementById('currentSermonTitle').textContent = sermon.title;
+            document.getElementById('currentSermonSpeaker').textContent = sermon.speaker;
+            
+            // Simulate playing
+            isPlaying = true;
+            updatePlayButton();
+            
+            // Show notification
+            if (window.Utils) {
+                Utils.showNotification(`Now playing: ${sermon.title}`, 'success');
+            }
+        }
+
+        function playFeaturedSermon() {
+            playSermon(1); // Play the featured sermon
+        }
+
+        function watchFeaturedSermon() {
+            if (window.Utils) {
+                Utils.showNotification('Video player will be available soon', 'info');
+            }
+        }
+
+        function downloadFeaturedSermon() {
+            if (window.Utils) {
+                Utils.showNotification('Download will start shortly', 'success');
+            }
+        }
+
+        function showAudioPlayer() {
+            document.getElementById('audioPlayerSection').classList.remove('hidden');
+        }
+
+        function closeAudioPlayer() {
+            document.getElementById('audioPlayerSection').classList.add('hidden');
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+            isPlaying = false;
+            updatePlayButton();
+        }
+
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            updatePlayButton();
+            
+            if (isPlaying && window.Utils) {
+                Utils.showNotification('Playing sermon', 'success');
+            }
+        }
+
+        function updatePlayButton() {
+            const btn = document.getElementById('playPauseBtn');
+            const icon = btn.querySelector('i');
+            
+            if (isPlaying) {
+                icon.className = 'fas fa-pause';
+            } else {
+                icon.className = 'fas fa-play';
+            }
+        }
+
+        function changeVolume(delta) {
+            // Volume control simulation
+            console.log('Volume changed by', delta);
+        }
+
+        function downloadSermon(sermonId) {
+            const sermon = mockSermons.find(s => s.id === sermonId);
+            if (sermon && window.Utils) {
+                Utils.showNotification(`Downloading: ${sermon.title}`, 'success');
+            }
+        }
+
+        function searchSermons() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const speaker = document.getElementById('speakerFilter').value;
+            
+            let filteredSermons = mockSermons;
+            
+            if (searchTerm) {
+                filteredSermons = filteredSermons.filter(sermon => 
+                    sermon.title.toLowerCase().includes(searchTerm) ||
+                    sermon.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            if (category) {
+                filteredSermons = filteredSermons.filter(sermon => 
+                    sermon.category.toLowerCase().includes(category)
+                );
+            }
+            
+            if (speaker) {
+                filteredSermons = filteredSermons.filter(sermon => 
+                    sermon.speaker.toLowerCase().includes(speaker.replace('-', ' '))
+                );
+            }
+            
+            displayFilteredSermons(filteredSermons);
+            
+            if (window.Utils) {
+                Utils.showNotification(`Found ${filteredSermons.length} sermons`, 'success');
+            }
+        }
+
+        function displayFilteredSermons(sermons) {
+            const sermonsGrid = document.getElementById('sermonsGrid');
+            sermonsGrid.innerHTML = '';
+            
+            if (sermons.length === 0) {
+                sermonsGrid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">No sermons found matching your criteria.</div>';
+                return;
+            }
+            
+            sermons.forEach(sermon => {
+                const sermonCard = createSermonCard(sermon);
+                sermonsGrid.appendChild(sermonCard);
+            });
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('speakerFilter').value = '';
+            loadSermons();
+            
+            if (window.Utils) {
+                Utils.showNotification('Filters cleared', 'success');
+            }
+        }
+
+        function loadMoreSermons() {
+            if (window.Utils) {
+                Utils.showNotification('Loading more sermons...', 'info');
+                // In a real app, this would load more sermons from the server
+                setTimeout(() => {
+                    Utils.showNotification('All sermons loaded', 'success');
+                }, 1000);
+            }
+        }
+
+        function viewSeries(seriesName) {
+            if (window.Utils) {
+                Utils.showNotification(`Loading ${seriesName} series...`, 'info');
+            }
+        }
+
+        function scrollToLatest() {
+            document.getElementById('latest').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToSeries() {
+            document.getElementById('series').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                    mobileMenuButton.querySelector('i').classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Authentication modal functions
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                document.getElementById('loginEmail').focus();
+            }
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                document.getElementById('loginForm').reset();
+            }
+        }
+
+        function showRegisterModal() {
+            const modal = document.getElementById('registerModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                document.getElementById('registerFirstName').focus();
+            }
+        }
+
+        function closeRegisterModal() {
+            const modal = document.getElementById('registerModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                document.getElementById('registerForm').reset();
+            }
+        }
+
+        function showProfileModal() {
+            if (window.Utils) {
+                Utils.showNotification('Profile management coming soon!', 'info');
+            }
+        }
+
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === registerModal) {
+                closeRegisterModal();
+            }
+        });
+
+        // Initialize authentication manager
+        const authManager = {
+            logout: function() {
+                if (window.Utils) {
+                    Utils.showNotification('Logged out successfully', 'success');
+                }
+                // Update UI to show logged out state
+                document.getElementById('auth-buttons').classList.remove('hidden');
+                document.getElementById('user-menu').classList.add('hidden');
+                document.getElementById('mobile-auth-buttons').classList.remove('hidden');
+                document.getElementById('mobile-user-menu').classList.add('hidden');
+            }
+        };
+    </script>
+
+    <!-- Authentication Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 font-lora">Welcome Back</h2>
+                    <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700" title="Close login modal">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="loginEmail" name="email" required
+                               class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                               placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div>
+                        <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <input type="password" id="loginPassword" name="password" required
+                                   class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 pr-10"
+                                   placeholder="Enter your password">
+                            <button type="button" onclick="togglePasswordVisibility('loginPassword', this)" 
+                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                    title="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox text-orange-600">
+                            <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-orange-600 hover:text-orange-500">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" id="loginBtn"
+                            class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Don't have an account? 
+                        <button onclick="showRegisterModal(); closeLoginModal();" class="text-orange-600 hover:text-orange-500 font-semibold">
+                            Join our community
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 font-lora">Join Our Family</h2>
+                    <button onclick="closeRegisterModal()" class="text-gray-500 hover:text-gray-700" title="Close registration modal">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="registerForm" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="registerFirstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text" id="registerFirstName" name="firstName" required
+                                   class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                                   placeholder="John">
+                        </div>
+                        <div>
+                            <label for="registerLastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text" id="registerLastName" name="lastName" required
+                                   class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                                   placeholder="Doe">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="registerEmail" name="email" required
+                               class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                               placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div>
+                        <label for="registerPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number (Optional)</label>
+                        <input type="tel" id="registerPhone" name="phone"
+                               class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                               placeholder="+254 700 000 000">
+                    </div>
+                    
+                    <div>
+                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <input type="password" id="registerPassword" name="password" required
+                                   class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 pr-10"
+                                   placeholder="Create a strong password">
+                            <button type="button" onclick="togglePasswordVisibility('registerPassword', this)" 
+                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                    title="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="flex items-center">
+                            <input type="checkbox" required class="form-checkbox text-orange-600">
+                            <span class="ml-2 text-sm text-gray-600">
+                                I agree to the <a href="#" class="text-orange-600 hover:text-orange-500">Terms of Service</a> 
+                                and <a href="#" class="text-orange-600 hover:text-orange-500">Privacy Policy</a>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" id="registerBtn"
+                            class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Our Community
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Already have an account? 
+                        <button onclick="showLoginModal(); closeRegisterModal();" class="text-orange-600 hover:text-orange-500 font-semibold">
+                            Sign in here
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
