@@ -1,1 +1,878 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries | Life-Changing Ministries at Nehemia Ministry Kenya</title>
+    <meta name="description" content="Discover the life-changing ministries at Nehemia Ministry Kenya. From powerful worship services to transformative community outreach, youth programs, women's ministry, children's church, and missions - find your place to grow and serve.">
+    <meta name="keywords" content="Church Ministries Kenya, Youth Ministry, Women's Ministry, Children's Church, Community Outreach, Worship Ministry, Missions, Church Programs Kakamega, Ministry Opportunities">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-dancing-script { font-family: 'Dancing Script', cursive; }
+        .font-eb-garamond { font-family: 'EB Garamond', serif; }
+        
+        /* Navigation Styles */
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            color: #fed7aa;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-link-active {
+            color: #fed7aa !important;
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+        }
+
+        .mobile-menu {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(67, 56, 202, 0.95) 50%, rgba(139, 69, 219, 0.95) 100%);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .mobile-menu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fed7aa;
+        }
+        
+        .hero-ministries {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3730a3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-ministries::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .ministry-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        }
+        
+        .ministry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ministry-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .ministry-card:hover .ministry-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .stats-bar {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .impact-story {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 6px solid #f59e0b;
+            transition: all 0.3s ease;
+        }
+        
+        .impact-story:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.2);
+        }
+        
+        .ministry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .join-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .schedule-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            font-size: 8rem;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 shadow-xl">
+        <nav id="main-navbar" class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <a href="index.html" class="flex items-center space-x-3 text-white group">
+                    <img src="./assets/logo.png" alt="Nehemia Ministry Kenya Logo" class="h-12 w-12 rounded-full shadow-lg border-2 border-orange-400 group-hover:border-orange-300 transition-all duration-200">
+                    <div>
+                        <h1 class="text-xl font-bold font-lora text-white">Nehemia Ministry</h1>
+                        <p class="text-xs text-orange-200 font-eb-garamond">Kenya</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-orange-300 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                        <span class="sr-only">Open menu</span>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="nav-link px-3 py-2">Home</a>
+                    <a href="about.html" class="nav-link px-3 py-2">About</a>
+                    <a href="ministries.html" class="nav-link px-3 py-2 nav-link-active">Ministries</a>
+                    <a href="sermons.html" class="nav-link px-3 py-2">Sermons</a>
+                    <a href="events.html" class="nav-link px-3 py-2">Events</a>
+                    <a href="blog.html" class="nav-link px-3 py-2">Blog</a>
+                    <a href="prayer-wall.html" class="nav-link px-3 py-2">Prayer Wall</a>
+                    <a href="give.html" class="nav-link px-3 py-2">Give</a>
+                    <a href="gallery.html" class="nav-link px-3 py-2">Gallery</a>
+                    <a href="leadership.html" class="nav-link px-3 py-2">Leadership</a>
+                    <a href="contact.html" class="nav-link px-3 py-2">Contact</a>
+                    <div id="google_translate_element_desktop" class="ml-3"></div>
+                </div>
+
+                <!-- Auth Buttons (Desktop) -->
+                <div id="auth-buttons" class="hidden lg:flex items-center space-x-4">
+                    <button onclick="showLoginModal()" class="text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- User Menu (Desktop) -->
+                <div id="user-menu" class="hidden lg:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button title="Open User Profile Menu" class="flex items-center space-x-2 text-white hover:text-orange-300 transition-colors duration-200">
+                            <i class="fas fa-user-circle text-2xl"></i>
+                            <div class="text-left">
+                                <div class="user-name text-sm font-semibold"></div>
+                                <div class="user-role text-xs text-orange-200"></div>
+                            </div>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="#" class="dashboard-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                            </a>
+                            <a href="#" onclick="showProfileModal()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="prayer-wall.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-praying-hands mr-2"></i>My Prayers
+                            </a>
+                            <hr class="my-2">
+                            <button onclick="authManager.logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden mobile-menu mt-2">
+                <a href="index.html" class="nav-link block">Home</a>
+                <a href="about.html" class="nav-link block">About</a>
+                <a href="ministries.html" class="nav-link block nav-link-active">Ministries</a>
+                <a href="sermons.html" class="nav-link block">Sermons</a>
+                <a href="events.html" class="nav-link block">Events</a>
+                <a href="blog.html" class="nav-link block">Blog</a>
+                <a href="prayer-wall.html" class="nav-link block">Prayer Wall</a>
+                <a href="give.html" class="nav-link block">Give</a>
+                <a href="gallery.html" class="nav-link block">Gallery</a>
+                <a href="leadership.html" class="nav-link block">Leadership</a>
+                <a href="contact.html" class="nav-link block">Contact</a>
+                
+                <!-- Mobile Auth Buttons -->
+                <div id="mobile-auth-buttons" class="flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <button onclick="showLoginModal()" class="text-left text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="text-left bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- Mobile User Menu -->
+                <div id="mobile-user-menu" class="hidden flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <div class="text-white">
+                        <div class="user-name font-semibold"></div>
+                        <div class="user-role text-sm text-orange-200"></div>
+                    </div>
+                    <a href="#" class="dashboard-link text-white hover:text-orange-300">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <button onclick="showProfileModal()" class="text-left text-white hover:text-orange-300">
+                        <i class="fas fa-user mr-2"></i>Profile
+                    </button>
+                    <button onclick="authManager.logout()" class="text-left text-red-300 hover:text-red-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+                
+                <div id="google_translate_element_mobile" class="mt-3 pt-3 border-t border-gray-200"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-ministries text-white py-24 relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-6xl font-bold font-lora mb-8 leading-tight">
+                Life-Changing <span class="font-dancing-script text-purple-300">Ministries</span>
+            </h1>
+            <p class="text-2xl mb-12 max-w-4xl mx-auto font-eb-garamond italic leading-relaxed">
+                At Nehemia Ministry Kenya, every ministry is designed with one purpose: to see lives transformed by the power of Jesus Christ. 
+                From dynamic worship that ushers you into God's presence, to compassionate outreach that touches the most vulnerable, 
+                to discipleship programs that mature believers into Kingdom leaders – find your place to grow, serve, and make an eternal impact.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="stats-bar p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">15+</div>
+                    <h3 class="text-sm font-semibold text-gray-900">Active Ministries</h3>
+                </div>
+                <div class="stats-bar p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">2,000+</div>
+                    <h3 class="text-sm font-semibold text-gray-900">Lives Impacted Monthly</h3>
+                </div>
+                <div class="stats-bar p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">500+</div>
+                    <h3 class="text-sm font-semibold text-gray-900">Active Volunteers</h3>
+                </div>
+                <div class="stats-bar p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-red-600 mb-2">47</div>
+                    <h3 class="text-sm font-semibold text-gray-900">Church Plants</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Ministries -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Core Ministries</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    These foundational ministries form the heartbeat of our church, creating spaces where every person can encounter God, 
+                    grow in their faith, and discover their divine purpose
+                </p>
+            </div>
+            
+            <div class="ministry-grid">
+                <!-- Worship Ministry -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-purple-500 to-purple-700">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Worship Ministry</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Experience Heaven on Earth through our anointed worship services. Our talented team of musicians, singers, and worship leaders 
+                        create an atmosphere where the presence of God is tangible, hearts are opened, and lives are transformed through authentic praise and worship.
+                    </p>
+                    <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-purple-800 mb-2">What We Offer:</h4>
+                        <ul class="text-purple-700 text-sm space-y-1">
+                            <li>• Contemporary and traditional worship styles</li>
+                            <li>• Music training and development programs</li>
+                            <li>• Special worship nights and concerts</li>
+                            <li>• Youth and children's worship teams</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Meeting Times:</strong> Sundays 9:00 AM & 11:30 AM</p>
+                        <button class="join-button">Join Our Worship Team</button>
+                    </div>
+                </div>
+
+                <!-- Youth Ministry -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-orange-500 to-orange-700">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Youth Ministry</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Igniting passion for Jesus in the hearts of young people aged 13-25. Our dynamic youth ministry combines relevant teaching, 
+                        exciting activities, leadership development, and authentic community to help young people navigate life's challenges 
+                        while building an unshakeable foundation in Christ.
+                    </p>
+                    <div class="bg-orange-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-orange-800 mb-2">Programs Include:</h4>
+                        <ul class="text-orange-700 text-sm space-y-1">
+                            <li>• Weekly youth services with relevant teaching</li>
+                            <li>• Annual youth conferences and retreats</li>
+                            <li>• Community service and outreach projects</li>
+                            <li>• Leadership training and mentorship</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Meeting Times:</strong> Fridays 6:00 PM, Sundays 2:00 PM</p>
+                        <button class="join-button">Connect with Youth</button>
+                    </div>
+                </div>
+
+                <!-- Women's Ministry -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-pink-500 to-pink-700">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Women's Ministry</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Empowering women to embrace their identity in Christ and fulfill their divine destiny. Through Bible studies, 
+                        fellowship gatherings, mentorship programs, and community outreach, we create a nurturing environment where women 
+                        can grow spiritually, build meaningful relationships, and discover their unique calling.
+                    </p>
+                    <div class="bg-pink-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-pink-800 mb-2">Ministry Highlights:</h4>
+                        <ul class="text-pink-700 text-sm space-y-1">
+                            <li>• Weekly Bible studies and prayer meetings</li>
+                            <li>• Marriage and family enrichment seminars</li>
+                            <li>• Women's conferences and retreats</li>
+                            <li>• Skills training and empowerment programs</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Meeting Times:</strong> Thursdays 2:00 PM, Saturdays 10:00 AM</p>
+                        <button class="join-button">Join Women's Ministry</button>
+                    </div>
+                </div>
+
+                <!-- Children's Ministry -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-green-500 to-green-700">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Children's Ministry</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Building strong foundations in young hearts through age-appropriate teaching, engaging activities, and loving care. 
+                        Our children's ministry serves ages 2-12, providing a safe and nurturing environment where children can learn about Jesus, 
+                        develop godly character, and experience God's love through dedicated teachers and volunteers.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-green-800 mb-2">Age Groups:</h4>
+                        <ul class="text-green-700 text-sm space-y-1">
+                            <li>• Nursery (2-3 years) - Basic Bible stories and songs</li>
+                            <li>• Preschool (4-5 years) - Interactive learning and play</li>
+                            <li>• Elementary (6-12 years) - Scripture memory and character building</li>
+                            <li>• Special events and children's church productions</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Meeting Times:</strong> Sundays 9:00 AM & 11:30 AM</p>
+                        <button class="join-button">Register Your Child</button>
+                    </div>
+                </div>
+
+                <!-- Community Outreach -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-blue-500 to-blue-700">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Community Outreach</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Demonstrating God's love through practical action in our community. Our comprehensive outreach programs address hunger, 
+                        healthcare, education, and spiritual needs throughout Kakamega County and beyond, serving as the hands and feet of Jesus 
+                        to those who need hope and healing most.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-blue-800 mb-2">Outreach Programs:</h4>
+                        <ul class="text-blue-700 text-sm space-y-1">
+                            <li>• Weekly feeding program (850+ children)</li>
+                            <li>• Free medical clinic and health services</li>
+                            <li>• Educational scholarships and school supplies</li>
+                            <li>• Clean water projects and well drilling</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Volunteer Days:</strong> Wednesdays & Saturdays</p>
+                        <button class="join-button">Volunteer Today</button>
+                    </div>
+                </div>
+
+                <!-- Missions Ministry -->
+                <div class="ministry-card p-8 text-center">
+                    <div class="ministry-icon bg-gradient-to-br from-red-500 to-red-700">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 font-lora mb-4">Missions Ministry</h3>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        Taking the Gospel to the ends of the earth through strategic church planting, cross-cultural missions, and leadership development. 
+                        Our missions ministry has established 47 churches across East Africa and continues to train indigenous leaders 
+                        who will multiply the Kingdom impact for generations to come.
+                    </p>
+                    <div class="bg-red-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-red-800 mb-2">Mission Fields:</h4>
+                        <ul class="text-red-700 text-sm space-y-1">
+                            <li>• Kenya: 32 church plants in rural communities</li>
+                            <li>• Uganda: 8 congregations and training centers</li>
+                            <li>• Tanzania: 7 churches and orphan care ministry</li>
+                            <li>• Leadership training and Bible schools</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-3"><strong>Training:</strong> Monthly missions preparation classes</p>
+                        <button class="join-button">Join Missions Team</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministry Schedule -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Weekly Ministry Schedule</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    Join us throughout the week for diverse ministry opportunities designed to fit your schedule and spiritual needs
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 font-lora mb-6">Sundays</h3>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Morning Worship Service</h4>
+                                <span class="text-blue-600 font-semibold">9:00 AM</span>
+                            </div>
+                            <p class="text-gray-700">Traditional service with choir, communion, and expository preaching</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Contemporary Service</h4>
+                                <span class="text-blue-600 font-semibold">11:30 AM</span>
+                            </div>
+                            <p class="text-gray-700">Modern worship with contemporary music and relevant teaching</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Youth Service</h4>
+                                <span class="text-blue-600 font-semibold">2:00 PM</span>
+                            </div>
+                            <p class="text-gray-700">High-energy service designed for teens and young adults</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 font-lora mb-6">Weekdays</h3>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Prayer & Intercession</h4>
+                                <span class="text-blue-600 font-semibold">Tue 6:00 AM</span>
+                            </div>
+                            <p class="text-gray-700">Corporate prayer for church, community, and nations</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Midweek Bible Study</h4>
+                                <span class="text-blue-600 font-semibold">Wed 7:00 PM</span>
+                            </div>
+                            <p class="text-gray-700">In-depth Bible study with practical life application</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Women's Fellowship</h4>
+                                <span class="text-blue-600 font-semibold">Thu 2:00 PM</span>
+                            </div>
+                            <p class="text-gray-700">Bible study, prayer, and fellowship for women of all ages</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Youth Night</h4>
+                                <span class="text-blue-600 font-semibold">Fri 6:00 PM</span>
+                            </div>
+                            <p class="text-gray-700">Games, worship, teaching, and fellowship for teenagers</p>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xl font-bold text-gray-900">Community Outreach</h4>
+                                <span class="text-blue-600 font-semibold">Sat 9:00 AM</span>
+                            </div>
+                            <p class="text-gray-700">Hands-on service projects in the local community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Ministry Impact Stories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    Witness the incredible transformation happening through our ministries as lives are touched, 
+                    communities are changed, and the Kingdom of God advances
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="impact-story p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 font-lora">Educational Transformation</h3>
+                            <p class="text-orange-600 font-semibold">Through Our Children's Ministry</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        "When Mary Wanjiku first brought her three children to our church, they couldn't afford school fees and the children 
+                        had been out of school for two years. Through our educational scholarship program and children's ministry support, 
+                        all three children are now enrolled in school. Her eldest daughter recently graduated top of her class and received 
+                        a scholarship to secondary school. Mary says, 'Nehemia Ministry didn't just help my children get an education – 
+                        they gave my family hope for the future.'"
+                    </p>
+                    <div class="bg-white/50 p-4 rounded-lg">
+                        <div class="flex justify-between text-sm">
+                            <span><strong>120 scholarships</strong> provided this year</span>
+                            <span><strong>95% graduation rate</strong> among recipients</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-story p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 font-lora">Healthcare Miracle</h3>
+                            <p class="text-orange-600 font-semibold">Through Our Medical Outreach</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        "Pastor James discovered 8-year-old Samuel collapsed by the roadside, severely malnourished and fighting malaria. 
+                        Through our medical clinic, Samuel received immediate treatment and ongoing care. Today, three months later, 
+                        Samuel is healthy, attending school, and actively participating in our children's ministry. His grandmother testifies, 
+                        'This church saved my grandson's life. We thought we had lost him, but God used Nehemia Ministry to bring him back to us.'"
+                    </p>
+                    <div class="bg-white/50 p-4 rounded-lg">
+                        <div class="flex justify-between text-sm">
+                            <span><strong>1,500 patients</strong> treated this year</span>
+                            <span><strong>Free medical care</strong> for all services</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-story p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-praying-hands"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 font-lora">Spiritual Breakthrough</h3>
+                            <p class="text-orange-600 font-semibold">Through Our Youth Ministry</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        "Rebecca came to youth ministry as a rebellious teenager struggling with substance abuse and family conflicts. 
+                        Through consistent mentoring, prayer support, and the love of her youth leaders, she surrendered her life to Christ. 
+                        Now 19, Rebecca leads our peer counseling program and has helped over 20 other young people overcome similar struggles. 
+                        She declares, 'This ministry didn't just change my life – it gave me a purpose worth living for.'"
+                    </p>
+                    <div class="bg-white/50 p-4 rounded-lg">
+                        <div class="flex justify-between text-sm">
+                            <span><strong>200+ youth</strong> served annually</span>
+                            <span><strong>50+ life transformations</strong> documented</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-story p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 font-lora">Church Planting Success</h3>
+                            <p class="text-orange-600 font-semibold">Through Our Missions Ministry</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed mb-6">
+                        "In the remote village of Kitale, Pastor David planted a church with just five families in 2022. 
+                        Through our missions support, training, and resources, this small congregation has grown to over 150 members. 
+                        They've established a primary school, drilled a water well, and started three satellite churches in neighboring villages. 
+                        Pastor David reports, 'The entire region has been transformed by the Gospel. What seemed impossible became reality through God's power and Nehemia's partnership.'"
+                    </p>
+                    <div class="bg-white/50 p-4 rounded-lg">
+                        <div class="flex justify-between text-sm">
+                            <span><strong>47 churches</strong> planted to date</span>
+                            <span><strong>8,000+ souls</strong> reached through church plants</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Ministry Leaders Share</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    Hear from our ministry leaders about the heart behind each program and the vision that drives our service
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c27b1c66?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Pastor Grace Wanjala" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 font-lora">Pastor Grace Wanjala</h4>
+                            <p class="text-blue-600 font-semibold">Women's Ministry Leader</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed italic relative z-10">
+                        "Every woman who walks through our doors carries a story of struggle, hope, or searching. 
+                        Our ministry isn't just about Bible studies – it's about creating a safe space where women can be vulnerable, 
+                        heal from past wounds, and discover the incredible woman God created them to be."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Pastor Mary Njoki" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 font-lora">Pastor Mary Njoki</h4>
+                            <p class="text-blue-600 font-semibold">Youth Pastor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed italic relative z-10">
+                        "Young people today face pressures our generation never imagined. Our youth ministry meets them where they are – 
+                        in their pain, their questions, their dreams – and shows them that Jesus is not just relevant, but essential 
+                        for navigating life's challenges with purpose and hope."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Pastor Peter Kariuki" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 font-lora">Pastor Peter Kariuki</h4>
+                            <p class="text-blue-600 font-semibold">Outreach Pastor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed italic relative z-10">
+                        "When we feed the hungry, heal the sick, and care for orphans, we're not just meeting physical needs – 
+                        we're demonstrating the heart of our Father. Every meal served, every well drilled, every life touched 
+                        is a declaration that God sees, God cares, and God acts through His people."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold font-lora mb-8">Find Your Ministry Home</h2>
+            <p class="text-2xl mb-12 max-w-3xl mx-auto font-eb-garamond">
+                God has a specific place for you to grow, serve, and make an eternal impact. Whether you're just beginning your faith journey 
+                or have been walking with Jesus for years, there's a ministry waiting for your unique gifts and passion.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="contact.html" class="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 font-bold">
+                    <i class="fas fa-phone mr-3"></i>Connect with Ministry Leaders
+                </a>
+                <a href="events.html" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-10 py-4 rounded-lg text-lg transition-all duration-200 transform hover:scale-105">
+                    <i class="fas fa-calendar mr-3"></i>Explore Upcoming Events
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                    mobileMenuButton.querySelector('i').classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Authentication modal functions
+        function showLoginModal() {
+            alert('Login functionality coming soon!');
+        }
+
+        function showRegisterModal() {
+            alert('Registration functionality coming soon!');
+        }
+
+        function showProfileModal() {
+            alert('Profile management coming soon!');
+        }
+
+        // Initialize authentication manager
+        const authManager = {
+            logout: function() {
+                alert('Logged out successfully');
+                document.getElementById('auth-buttons').classList.remove('hidden');
+                document.getElementById('user-menu').classList.add('hidden');
+                document.getElementById('mobile-auth-buttons').classList.remove('hidden');
+                document.getElementById('mobile-user-menu').classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
+
