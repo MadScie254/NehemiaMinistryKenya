@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give with Joy | Stewardship & Offerings - Nehemia Ministry Kenya</title>
+    <meta name="description" content="Experience the joy of giving at Nehemia Ministry Kenya. Learn about biblical stewardship, tithing, and offerings. Support our mission to transform lives and communities through your generous gifts. Multiple secure giving options available.">
+    <meta name="keywords" content="Church Giving, Tithe Online, Offerings Kenya, Biblical Stewardship, Support Ministry, Donate Church, Financial Blessing, Generosity, Church Support, Ministry Funding">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-dancing-script { font-family: 'Dancing Script', cursive; }
+        .font-eb-garamond { font-family: 'EB Garamond', serif; }
+        
+        /* Navigation Styles */
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            color: #fed7aa;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-link-active {
+            color: #fed7aa !important;
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+        }
+
+        .mobile-menu {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(67, 56, 202, 0.95) 50%, rgba(139, 69, 219, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .mobile-menu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fed7aa;
+        }
+        
+        .hero-give {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3730a3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-give::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .giving-option-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .giving-option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .giving-option-card:hover::before {
+            left: 100%;
+        }
+        
+        .giving-option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #22c55e;
+        }
+        
+        .stewardship-principle {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 6px solid #f59e0b;
+            position: relative;
+        }
+        
+        .stewardship-principle::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px dashed #f59e0b;
+            border-radius: 0.5rem;
+            opacity: 0.3;
+        }
+        
+        .testimony-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #22c55e;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimony-card::after {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 8rem;
+            color: #22c55e;
+            opacity: 0.1;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .impact-stat {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .impact-stat::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .verse-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            position: relative;
+        }
+        
+        .verse-highlight::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            font-size: 5rem;
+            color: #f59e0b;
+            opacity: 0.3;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .giving-form {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .amount-button {
+            border: 2px solid #d1d5db;
+            transition: all 0.2s ease;
+        }
+        
+        .amount-button:hover,
+        .amount-button.active {
+            border-color: #22c55e;
+            background-color: #22c55e;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 shadow-xl">
+        <nav id="main-navbar" class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <a href="index.html" class="flex items-center space-x-3 text-white group">
+                    <img src="./assets/logo.png" alt="Nehemia Ministry Kenya Logo" class="h-12 w-12 rounded-full shadow-lg border-2 border-orange-400 group-hover:border-orange-300 transition-all duration-200">
+                    <div>
+                        <h1 class="text-xl font-bold font-lora text-white">Nehemia Ministry</h1>
+                        <p class="text-xs text-orange-200 font-eb-garamond">Kenya</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-orange-300 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                        <span class="sr-only">Open menu</span>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="nav-link px-3 py-2">Home</a>
+                    <a href="about.html" class="nav-link px-3 py-2">About</a>
+                    <a href="ministries.html" class="nav-link px-3 py-2">Ministries</a>
+                    <a href="sermons.html" class="nav-link px-3 py-2">Sermons</a>
+                    <a href="events.html" class="nav-link px-3 py-2">Events</a>
+                    <a href="blog.html" class="nav-link px-3 py-2">Blog</a>
+                    <a href="prayer-wall.html" class="nav-link px-3 py-2">Prayer Wall</a>
+                    <a href="give.html" class="nav-link px-3 py-2 nav-link-active">Give</a>
+                    <a href="contact.html" class="nav-link px-3 py-2">Contact</a>
+                    <div id="google_translate_element_desktop" class="ml-3"></div>
+                </div>
+
+                <!-- Auth Buttons (Desktop) -->
+                <div id="auth-buttons" class="hidden lg:flex items-center space-x-4">
+                    <button onclick="showLoginModal()" class="text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- User Menu (Desktop) -->
+                <div id="user-menu" class="hidden lg:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button title="Open User Profile Menu" class="flex items-center space-x-2 text-white hover:text-orange-300 transition-colors duration-200">
+                            <i class="fas fa-user-circle text-2xl"></i>
+                            <div class="text-left">
+                                <div class="user-name text-sm font-semibold"></div>
+                                <div class="user-role text-xs text-orange-200"></div>
+                            </div>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="#" class="dashboard-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                            </a>
+                            <a href="#" onclick="showProfileModal()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="prayer-wall.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-praying-hands mr-2"></i>My Prayers
+                            </a>
+                            <hr class="my-2">
+                            <button onclick="authManager.logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden mobile-menu mt-2">
+                <a href="index.html" class="nav-link block">Home</a>
+                <a href="about.html" class="nav-link block">About</a>
+                <a href="ministries.html" class="nav-link block">Ministries</a>
+                <a href="sermons.html" class="nav-link block">Sermons</a>
+                <a href="events.html" class="nav-link block">Events</a>
+                <a href="blog.html" class="nav-link block">Blog</a>
+                <a href="prayer-wall.html" class="nav-link block">Prayer Wall</a>
+                <a href="give.html" class="nav-link block nav-link-active">Give</a>
+                <a href="contact.html" class="nav-link block">Contact</a>
+                
+                <!-- Mobile Auth Buttons -->
+                <div id="mobile-auth-buttons" class="flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <button onclick="showLoginModal()" class="text-left text-white hover:text-orange-300 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="showRegisterModal()" class="text-left bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>Join Us
+                    </button>
+                </div>
+
+                <!-- Mobile User Menu -->
+                <div id="mobile-user-menu" class="hidden flex flex-col space-y-2 pt-4 border-t border-orange-400">
+                    <div class="text-white">
+                        <div class="user-name font-semibold"></div>
+                        <div class="user-role text-sm text-orange-200"></div>
+                    </div>
+                    <a href="#" class="dashboard-link text-white hover:text-orange-300">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <button onclick="showProfileModal()" class="text-left text-white hover:text-orange-300">
+                        <i class="fas fa-user mr-2"></i>Profile
+                    </button>
+                    <button onclick="authManager.logout()" class="text-left text-red-300 hover:text-red-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+                
+                <div id="google_translate_element_mobile" class="mt-3 pt-3 border-t border-gray-200"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-give text-white py-24 relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-6xl font-bold font-lora mb-8 leading-tight">
+                Give with <span class="font-dancing-script text-green-300">Joy</span>
+            </h1>
+            <p class="text-2xl mb-12 max-w-4xl mx-auto font-eb-garamond italic leading-relaxed">
+                Experience the incredible blessing of generous giving. When you give to Nehemia Ministry Kenya, 
+                you're not just supporting a church – you're investing in eternal transformation, 
+                touching lives across Kenya and beyond, and partnering with God in His magnificent work.
+            </p>
+            <div class="verse-highlight p-8 rounded-xl max-w-3xl mx-auto mb-12">
+                <p class="text-2xl font-bold text-green-100 font-eb-garamond italic">
+                    "Give, and it will be given to you. A good measure, pressed down, shaken together and running over, 
+                    will be poured into your lap. For with the measure you use, it will be measured to you."
+                </p>
+                <p class="text-lg text-green-200 mt-4 font-semibold">— Luke 6:38 (NIV)</p>
+            </div>
+            <div class="pulse-animation">
+                <button onclick="document.getElementById('giving-form').scrollIntoView({behavior: 'smooth'})" 
+                        class="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 shadow-2xl">
+                    <i class="fas fa-heart mr-3"></i>Give Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biblical Foundation -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Biblical Stewardship</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    Discover the profound joy and blessing that comes from following God's principles of generous giving
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="stewardship-principle p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-seedling text-2xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">The Principle of Sowing</h3>
+                    </div>
+                    <p class="text-gray-800 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        Just as a farmer sows seeds expecting a harvest, when we give with faith and expectancy, 
+                        God multiplies our seed and increases our harvest of righteousness.
+                    </p>
+                    <div class="verse-highlight p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-gray-700 italic">
+                            "Remember: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously."
+                        </p>
+                        <p class="text-xs text-gray-600 mt-2">— 2 Corinthians 9:6</p>
+                    </div>
+                </div>
+                
+                <div class="stewardship-principle p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-hands-helping text-2xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">Cheerful Giving</h3>
+                    </div>
+                    <p class="text-gray-800 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        God doesn't want reluctant gifts or offerings given under pressure. 
+                        He delights in hearts that give joyfully, motivated by love and gratitude.
+                    </p>
+                    <div class="verse-highlight p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-gray-700 italic">
+                            "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, 
+                            for God loves a cheerful giver."
+                        </p>
+                        <p class="text-xs text-gray-600 mt-2">— 2 Corinthians 9:7</p>
+                    </div>
+                </div>
+                
+                <div class="stewardship-principle p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-crown text-2xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">Honoring God First</h3>
+                    </div>
+                    <p class="text-gray-800 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        When we honor God with our firstfruits – our best and our first – 
+                        He promises to fill our storehouses with abundance.
+                    </p>
+                    <div class="verse-highlight p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-gray-700 italic">
+                            "Honor the LORD with your wealth, with the firstfruits of all your crops; 
+                            then your barns will be filled to overflowing."
+                        </p>
+                        <p class="text-xs text-gray-600 mt-2">— Proverbs 3:9-10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giving Options -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Ways to Give</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    Choose the giving option that best suits your heart's desire to support God's work through our ministry
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="giving-option-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-percentage text-3xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">Tithe</h3>
+                        <p class="text-green-600 font-semibold">10% of Income</p>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        Your faithful tithe supports the ongoing ministry of our church, 
+                        enabling us to maintain our facilities, support our pastoral staff, 
+                        and continue preaching the Gospel with power and demonstration.
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Pastoral Support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Church Operations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Ministry Programs</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Facility Maintenance</li>
+                    </ul>
+                </div>
+                
+                <div class="giving-option-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-gift text-3xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">Offerings</h3>
+                        <p class="text-blue-600 font-semibold">Above & Beyond</p>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        Your generous offerings fuel our outreach programs, 
+                        special projects, and missions work. These gifts enable us to 
+                        extend our reach and touch more lives with the love of Christ.
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i>Community Outreach</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i>Missions Support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i>Special Projects</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i>Emergency Relief</li>
+                    </ul>
+                </div>
+                
+                <div class="giving-option-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-building text-3xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 font-lora">Building Fund</h3>
+                        <p class="text-purple-600 font-semibold">Expansion Project</p>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed text-center mb-6">
+                        Help us expand our capacity to serve more people! 
+                        Your building fund contributions are creating spaces where 
+                        thousands more can encounter God and experience transformation.
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i>New Sanctuary</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i>Children's Facilities</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i>Conference Center</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i>Parking Expansion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Giving Form -->
+    <section id="giving-form" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 font-lora mb-6">Give Securely Online</h2>
+                    <p class="text-lg text-gray-600 font-eb-garamond">
+                        Your gift is secure, and you'll receive an instant receipt for your records
+                    </p>
+                </div>
+                
+                <div class="giving-form p-8 rounded-2xl">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Choose Giving Type</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <button type="button" onclick="selectGivingType('tithe')" 
+                                        class="giving-type-btn p-4 rounded-lg border-2 border-gray-300 hover:border-green-500 transition-all duration-200"
+                                        data-type="tithe">
+                                    <i class="fas fa-percentage text-2xl text-green-600 mb-2"></i>
+                                    <div class="font-semibold">Tithe</div>
+                                </button>
+                                <button type="button" onclick="selectGivingType('offering')" 
+                                        class="giving-type-btn p-4 rounded-lg border-2 border-gray-300 hover:border-blue-500 transition-all duration-200"
+                                        data-type="offering">
+                                    <i class="fas fa-gift text-2xl text-blue-600 mb-2"></i>
+                                    <div class="font-semibold">Offering</div>
+                                </button>
+                                <button type="button" onclick="selectGivingType('building')" 
+                                        class="giving-type-btn p-4 rounded-lg border-2 border-gray-300 hover:border-purple-500 transition-all duration-200"
+                                        data-type="building">
+                                    <i class="fas fa-building text-2xl text-purple-600 mb-2"></i>
+                                    <div class="font-semibold">Building</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Select Amount (KES)</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                                <button type="button" onclick="selectAmount(500)" class="amount-button p-3 rounded-lg text-center font-semibold">500</button>
+                                <button type="button" onclick="selectAmount(1000)" class="amount-button p-3 rounded-lg text-center font-semibold">1,000</button>
+                                <button type="button" onclick="selectAmount(2500)" class="amount-button p-3 rounded-lg text-center font-semibold">2,500</button>
+                                <button type="button" onclick="selectAmount(5000)" class="amount-button p-3 rounded-lg text-center font-semibold">5,000</button>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">KES</span>
+                                <input type="number" id="custom-amount" placeholder="Enter custom amount" 
+                                       class="w-full pl-16 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                       min="1">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Giving Frequency</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <button type="button" onclick="selectFrequency('one-time')" 
+                                        class="frequency-btn p-3 rounded-lg border-2 border-gray-300 hover:border-green-500 transition-all duration-200 active"
+                                        data-frequency="one-time">
+                                    <div class="font-semibold">One Time</div>
+                                </button>
+                                <button type="button" onclick="selectFrequency('monthly')" 
+                                        class="frequency-btn p-3 rounded-lg border-2 border-gray-300 hover:border-green-500 transition-all duration-200"
+                                        data-frequency="monthly">
+                                    <div class="font-semibold">Monthly</div>
+                                </button>
+                                <button type="button" onclick="selectFrequency('weekly')" 
+                                        class="frequency-btn p-3 rounded-lg border-2 border-gray-300 hover:border-green-500 transition-all duration-200"
+                                        data-frequency="weekly">
+                                    <div class="font-semibold">Weekly</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="donor-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="donor-name" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                       placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="donor-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="donor-email" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                       placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="donor-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number (for M-Pesa)</label>
+                            <input type="tel" id="donor-phone" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                   placeholder="+254 700 000 000">
+                        </div>
+                        
+                        <div>
+                            <label for="giving-note" class="block text-sm font-medium text-gray-700 mb-1">Prayer Request or Note (Optional)</label>
+                            <textarea id="giving-note" rows="3"
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                      placeholder="Share any prayer requests or special notes..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="anonymous-giving" class="mr-2">
+                            <label for="anonymous-giving" class="text-sm text-gray-600">Make this gift anonymous</label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105">
+                            <i class="fas fa-heart mr-2"></i>Complete Your Gift
+                        </button>
+                        
+                        <p class="text-xs text-gray-500 text-center">
+                            Your transaction is secured with 256-bit SSL encryption. 
+                            You will receive a receipt via email immediately after your gift is processed.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 font-lora mb-6">Your Giving Makes a Difference</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-eb-garamond">
+                    See how God multiplies your generous gifts to transform lives and communities
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="impact-stat p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">850</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Children Fed Daily</h3>
+                    <p class="text-gray-600 text-sm">Through our feeding program</p>
+                </div>
+                
+                <div class="impact-stat p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2">120</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Scholarships Awarded</h3>
+                    <p class="text-gray-600 text-sm">Education for underprivileged children</p>
+                </div>
+                
+                <div class="impact-stat p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">45</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Wells Drilled</h3>
+                    <p class="text-gray-600 text-sm">Clean water for rural communities</p>
+                </div>
+                
+                <div class="impact-stat p-6 rounded-xl text-center">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">1,500</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Medical Treatments</h3>
+                    <p class="text-gray-600 text-sm">Free healthcare provided annually</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="testimony-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c27b1c66?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Grace Wanjiku" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 font-lora">Grace Wanjiku</h4>
+                            <p class="text-green-600 font-semibold">Scholarship Recipient</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed italic">
+                        "Thanks to the generous givers at Nehemia Ministry, I was able to complete my education and become a nurse. 
+                        Today, I serve in our community clinic, giving back the same love that was shown to me. 
+                        Your gifts don't just change lives – they create a ripple effect of blessing that continues for generations."
+                    </p>
+                </div>
+                
+                <div class="testimony-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="James Ochieng" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 font-lora">James Ochieng</h4>
+                            <p class="text-green-600 font-semibold">Community Leader</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 font-eb-garamond text-lg leading-relaxed italic">
+                        "When our village received clean water through the church's well-drilling project, everything changed. 
+                        Our children stopped getting sick, families had more time for productive work, and hope returned to our community. 
+                        The generosity of God's people through this ministry has literally saved lives."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold font-lora mb-8">Your Gift Today, God's Miracle Tomorrow</h2>
+            <p class="text-2xl mb-12 max-w-3xl mx-auto font-eb-garamond">
+                Every seed you sow today becomes a harvest of blessing tomorrow. 
+                Join the thousands who have discovered the incredible joy of generous giving.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button onclick="document.getElementById('giving-form').scrollIntoView({behavior: 'smooth'})" 
+                        class="bg-white text-green-600 hover:bg-gray-100 px-10 py-4 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 font-bold">
+                    <i class="fas fa-heart mr-3"></i>Give Now
+                </button>
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-green-600 px-10 py-4 rounded-lg text-lg transition-all duration-200 transform hover:scale-105">
+                    <i class="fas fa-question-circle mr-3"></i>Have Questions?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                    mobileMenuButton.querySelector('i').classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Giving form functionality
+        let selectedGivingType = '';
+        let selectedAmount = 0;
+        let selectedFrequency = 'one-time';
+
+        function selectGivingType(type) {
+            selectedGivingType = type;
+            document.querySelectorAll('.giving-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#d1d5db';
+            });
+            const selectedBtn = document.querySelector(`[data-type="${type}"]`);
+            selectedBtn.classList.add('active');
+            if (type === 'tithe') selectedBtn.style.borderColor = '#22c55e';
+            if (type === 'offering') selectedBtn.style.borderColor = '#3b82f6';
+            if (type === 'building') selectedBtn.style.borderColor = '#8b5cf6';
+        }
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.querySelectorAll('.amount-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            document.getElementById('custom-amount').value = amount;
+        }
+
+        function selectFrequency(frequency) {
+            selectedFrequency = frequency;
+            document.querySelectorAll('.frequency-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#d1d5db';
+                btn.style.backgroundColor = 'white';
+                btn.style.color = 'black';
+            });
+            const selectedBtn = document.querySelector(`[data-frequency="${frequency}"]`);
+            selectedBtn.classList.add('active');
+            selectedBtn.style.borderColor = '#22c55e';
+            selectedBtn.style.backgroundColor = '#22c55e';
+            selectedBtn.style.color = 'white';
+        }
+
+        // Initialize with one-time frequency selected
+        document.addEventListener('DOMContentLoaded', function() {
+            selectFrequency('one-time');
+        });
+
+        // Authentication modal functions
+        function showLoginModal() {
+            alert('Login functionality coming soon!');
+        }
+
+        function showRegisterModal() {
+            alert('Registration functionality coming soon!');
+        }
+
+        function showProfileModal() {
+            alert('Profile management coming soon!');
+        }
+
+        // Initialize authentication manager
+        const authManager = {
+            logout: function() {
+                alert('Logged out successfully');
+                document.getElementById('auth-buttons').classList.remove('hidden');
+                document.getElementById('user-menu').classList.add('hidden');
+                document.getElementById('mobile-auth-buttons').classList.remove('hidden');
+                document.getElementById('mobile-user-menu').classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
+
